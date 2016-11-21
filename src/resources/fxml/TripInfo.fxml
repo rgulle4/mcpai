@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXSlider?>
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox fx:id="tripInfoInputsContainer" spacing="25">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+            <VBox spacing="5">
+                <Label styleClass="input-label">Starting location:</Label>
+                <JFXTextField fx:id="startLocationInput" promptText="" />
+            </VBox>
+            <VBox spacing="5">
+                <Label styleClass="input-label">Destination:</Label>
+                <JFXTextField fx:id="destinationLocationInput" promptText="" />
+            </VBox>
+            <VBox spacing="5">
+                <Label styleClass="input-label">Start date:</Label>
+                <JFXDatePicker fx:id="startDateInput" promptText="" />
+            </VBox>
+            <VBox spacing="5">
+                <Label styleClass="input-label">End date: </Label>
+                <JFXDatePicker fx:id="endDateInput" promptText="" />
+            </VBox>
+            <!--<VBox spacing="5">-->
+                <!--<Label styleClass="input-label">Number of travelers: </Label>-->
+                <!--<JFXTextField fx:id="numberOfTraverlersInput" promptText="" />-->
+            <!--</VBox>-->
+            <VBox spacing="5">
+                <JFXCheckBox fx:id="isRoundTripInput" text="Roundtrip?" />
+            </VBox>
+            <VBox spacing="5">
+                <Label styleClass="input-label">Max budget ($): </Label>
+                <JFXTextField fx:id="maxBudgetInput" promptText="" />
+            </VBox>
+            <VBox spacing="5">
+                <Label styleClass="input-label">Money &lt;----vs----&gt; Time (TODO): </Label>
+                <JFXSlider fx:id="timeWeightInput" styleClass="jfx-slider-style" maxWidth="300"/>
+            </VBox>
+            <ButtonBar>
+                <buttons>
+                    <JFXButton fx:id="tripInfoTestButton" text="println" visible="false"/>
+                </buttons>
+            </ButtonBar>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<StackPane fx:id="root"
+           xmlns="http://javafx.com/javafx/8.0.65"
+           xmlns:fx="http://javafx.com/fxml/1">
+    <!-- fx:controller="controllers.MainController" -->
+    <children>
+        <BorderPane minHeight="400.0" minWidth="400.0">
+            <top>
+            </top>
+            <center>
+                <AnchorPane prefHeight="400.0" prefWidth="600.0"
+                            BorderPane.alignment="CENTER">
+                    <children>
+                        <JFXTabPane fx:id="mainTabPane"
+                                    AnchorPane.bottomAnchor="0.0"
+                                    AnchorPane.leftAnchor="0.0"
+                                    AnchorPane.rightAnchor="0.0"
+                                    AnchorPane.topAnchor="0.0">
+                            <Tab fx:id="tripInfoTab" text="[Trip Info]">
+                                <!--<fx:include source="TripInfo.fxml" />-->
+                            </Tab>
+                            <Tab fx:id="drivingInfoTab" text="[Driving Info]"/>
+                            <Tab fx:id="flyingInfoTab" text="[Flying Info]"/>
+                            <Tab fx:id="resultsTab" text="[Results]"/>
+                        </JFXTabPane>
+                    </children>
+                </AnchorPane>
+            </center>
+            <bottom>
+                <JFXToolbar>
+                    <right>
+                        <HBox spacing="5" style="-fx-background-color:  derive(#8888cc,-10%);">
+                            <Label fx:id="driveTimeLabel" styleClass="input-label">1111</Label>
+                            <Label fx:id="driveDistanceLabel" styleClass="input-label">2222</Label>
+                            <JFXButton fx:id="testButton" text="println"/>
+                        </HBox>
+                    </right>
+                </JFXToolbar>
+                <!--<HBox spacing="5" BorderPane.alignment="CENTER">-->
+                    <!---->
+                    <!--&lt;!&ndash;<ButtonBar prefHeight="40.0" prefWidth="200.0"&ndash;&gt;-->
+                               <!--&lt;!&ndash;BorderPane.alignment="CENTER">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<buttons>&ndash;&gt;-->
+                            <!---->
+                        <!--&lt;!&ndash;</buttons>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ButtonBar>&ndash;&gt;-->
+                <!--</HBox>-->
+            </bottom>
+        </BorderPane>
+    </children>
+</StackPane>

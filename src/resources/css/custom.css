@@ -1,0 +1,144 @@
+/**
+ * Custom css.
+ */
+
+/*******************************************************************************
+*                                                                              *
+* Misc                                                                         *
+*                                                                              *
+*******************************************************************************/
+
+.title-label {
+    -fx-font-size: 16.0px;
+    -fx-padding	: 14.0px;
+    -fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
+}
+
+.input-label {
+    -fx-font-weight: BOLD;
+    -fx-font-size: 1.1em;
+    /*-fx-font-size: 16.0px;*/
+    /*-fx-padding	: 14.0px;*/
+    -fx-text-fill: derive(#5264AE,-20%);
+}
+
+/*******************************************************************************
+*                                                                              *
+* JFX Textfield                                                                *
+*                                                                              *
+*******************************************************************************/
+
+.jfx-text-field, .jfx-password-field, .jfx-text-area {
+    -fx-background-color: transparent ;
+    -fx-font-weight: BOLD;
+    -fx-prompt-text-fill: #808080;
+    -fx-alignment: top-left ;
+    -fx-max-width: 300.0;
+    -fx-pref-width:300.0;
+    -fx-focus-color: #4059A9;
+    -fx-unfocus-color: #4d4d4d;
+}
+
+.jfx-text-field:error , .jfx-password-field:error , .jfx-text-area:error {
+    -fx-focus-color: #D34336;
+    -fx-unfocus-color: #D34336;
+}
+
+.jfx-text-field .errorLabel, .jfx-password-field .errorLabel, .jfx-text-area .errorLabel {
+    -fx-text-fill : #D34336;
+    -fx-font-size: 0.75em;
+}
+.jfx-text-field .errorIcon, .jfx-password-field .errorIcon , .jfx-text-area .errorIcon {
+    -fx-text-fill : #D34336;
+    -fx-font-size: 1.0em;
+}
+
+.jfx-text-area .viewport {
+    -fx-background-color: #F4F4F4;
+}
+
+/*******************************************************************************
+*                                                                              *
+* JFX Decorator                                                                *
+*                                                                              *
+*******************************************************************************/
+
+.jfx-decorator {
+    -fx-decorator-color: derive(#5264AE,-20%);
+}
+.jfx-decorator .jfx-decorator-buttons-container{
+    -fx-background-color:-fx-decorator-color;
+}
+
+.jfx-decorator .resize-border{
+    -fx-border-color:-fx-decorator-color;
+    -fx-border-width: 0 1 1 1;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * JFX Tab Pane                                                                *
+ *                                                                             *
+ ******************************************************************************/
+
+.jfx-tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #8888cc;
+
+}
+
+.jfx-tab-pane .tab .tab-label {
+    /*-fx-font-family: "Roboto";*/
+    /*-fx-text-fill: #bb0000;*/
+    -fx-font-size: 1em;
+    /*-fx-font-weight: BOLD;*/
+}
+
+.tab:selected .tab-label {
+    /*-fx-text-fill: #000000;*/
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * JFX Tool Bar                                                                *
+ *                                                                             *
+ ******************************************************************************/
+
+.jfx-tool-bar {
+    -fx-font-size: 12.0;
+    -fx-font-weight: BOLD;
+    -fx-background-color: #8888cc;
+    -fx-pref-width: 100.0%;
+    -fx-pref-height: 32.0px;
+}
+
+.jfx-tool-bar HBox {
+    -fx-alignment:center;
+    -fx-spacing: 25.0;
+    -fx-padding: 0.0 10.0;
+}
+
+.jfx-tool-bar Label {
+    -fx-text-fill: WHITE;
+}
+
+.jfx-tool-bar .jfx-options-burger {
+    -fx-padding: 22px;
+}
+.jfx-tool-bar .jfx-options-burger StackPane {
+    -fx-pref-width:4px;
+}
+
+.jfx-tool-bar .jfx-rippler {
+    -fx-rippler-fill: WHITE;
+}
+
+.option-list-view {
+    -fx-pref-width: 160.0px;
+    -fx-background-color: WHITE ;
+}
+
+.option-jfx-list-view-icon {
+    -fx-text-fill: #5264AE;
+    -fx-padding: 0.0 10.0 0.0 5.0 ;
+    -fx-cursor: hand;
+}
