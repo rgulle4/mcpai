@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="io.datafx:datafx:8.0.7" type="repository">
+    <properties maven-id="io.datafx:datafx:8.0.7" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/datafx-8.0.7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/datafx-8.0.7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
