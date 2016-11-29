@@ -25,7 +25,7 @@ public final class Geocoder {
     private static final Gson GSON = new Gson();
 
     private static final GeoApiContext
-          geoApiContext = new GeoApiContext().setApiKey(GOOGLE_API_KEY);
+          geoApiContext = Helper.GEO_API_CONTEXT;
 
     public static Location geoCode(Location location) {
         String locationString = location.getLocationString();
@@ -33,7 +33,7 @@ public final class Geocoder {
         try {
             results = GeocodingApi.geocode(
                   geoApiContext,
-                  locationString).await();
+                  locationString).awaitIgnoreError();
         } catch (Exception e) { /* idc */ }
         GeocodingResult r = results[0];
         location.setFormattedAddress(r.formattedAddress);

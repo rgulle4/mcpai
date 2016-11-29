@@ -1,5 +1,6 @@
 package models.places;
 
+import com.google.maps.model.LatLng;
 import helpers.Helper;
 import mapUtils.Geocoder;
 
@@ -9,12 +10,11 @@ import mapUtils.Geocoder;
 public class Location {
     private String locationString;
     private String formattedAddress;
-    private double lat;
-    private double lng;
-    private double[] latLng = new double[] { lat, lng };
+    private Double lat;
+    private Double lng;
+    private boolean isAirport = false;
 
     public Location() {
-
     }
 
     public Location(String locationString) {
@@ -22,7 +22,17 @@ public class Location {
         setLocationString(locationString);
     }
 
-    public boolean isAirport() { return false; }
+    public Location(String locationString, boolean isAirport) {
+        this();
+        setLocationString(locationString);
+        setIsAirport(isAirport);
+    }
+
+    public boolean getIsAirport() { return isAirport; }
+    public Location setIsAirport(boolean val) {
+        isAirport = val;
+        return this;
+    }
 
     public String getLocationString() { return locationString; }
     public Location setLocationString(String locationString) {
@@ -39,20 +49,24 @@ public class Location {
         return this;
     }
 
-    public double getLat() { return lat; }
-    public Location setLat(double val) {
+    public Double getLat() { return lat; }
+    public Location setLat(Double val) {
         this.lat = val;
         return this;
     }
 
-    public double getLng() { return lng; }
-    public Location setLng(double val) {
+    public Double getLng() { return lng; }
+    public Location setLng(Double val) {
         this.lng = val;
         return this;
     }
 
-    public double[] getLatLng() {
-        return latLng;
+    public Double[] getLatLngPair() {
+        return new Double[] { lat, lng };
+    }
+
+    public LatLng getLatLng() {
+        return new LatLng(lat, lng);
     }
 
     @Override
