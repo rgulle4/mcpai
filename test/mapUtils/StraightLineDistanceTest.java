@@ -1,5 +1,6 @@
 package mapUtils;
 
+import models.places.Location;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,5 +19,11 @@ public class StraightLineDistanceTest {
                     36.12, -86.67,
                     33.94, -118.40),
               1);
+
+        Location a = new Location("Norman, OK");
+        Location b = new Location("Bakersfield, CA");
+        Double expected = 1216.0;
+        Double delta = expected * 0.01;
+        assertEquals(expected, StraightLineDistance.slDistance(a, b), delta);
     }
 }

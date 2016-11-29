@@ -1,5 +1,7 @@
 package mapUtils;
 
+import models.places.Location;
+
 /**
  * Provides methods to get straight line distance between two points on Earth,
  * using the Haversine formula.
@@ -22,6 +24,10 @@ public final class StraightLineDistance
     public static double slDistance(double lat1, double lon1,
                                     double lat2, double lon2) {
         return haversine(lat1, lon1, lat2, lon2);
+    }
+
+    public static double slDistance(Location a, Location b) {
+        return slDistance(a.getLat(), a.getLng(), b.getLat(), b.getLng());
     }
 
     /**
