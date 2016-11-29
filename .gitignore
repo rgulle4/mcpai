@@ -1,3 +1,6 @@
+# credential files
+config/credentials/
+
 # sqlite database
 *.db
 
