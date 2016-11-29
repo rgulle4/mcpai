@@ -1,6 +1,7 @@
 package mapUtils;
 
 import com.google.gson.Gson;
+import helpers.Helper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.Map;
  */
 public final class RoadDistance {
 
+    private static final String GOOGLE_API_KEY = Helper.GOOGLE_API_KEY;
     private static final Gson GSON = new Gson();
     private static final String BASE_URL = "https://maps.googleapis.com/" +
           "maps/api/distancematrix/json?" +

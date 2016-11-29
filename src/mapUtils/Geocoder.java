@@ -1,5 +1,8 @@
 package mapUtils;
 
+import com.google.gson.Gson;
+import helpers.Helper;
+
 /**
  * TODO: get coordinates, formatted address, and maybe other info from Google
  *    In the response, we probably just want - results[i].formatted_address
@@ -13,4 +16,6 @@ package mapUtils;
  *     https://maps.googleapis.com/maps/api/geocode/json?&address=baton%20rouge%2C%20LA
  */
 public class Geocoder {
+    private static final String GOOGLE_API_KEY = Helper.GOOGLE_API_KEY;
+    private static final Gson GSON = new Gson();
 }
