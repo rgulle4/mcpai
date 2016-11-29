@@ -5,10 +5,10 @@ import com.google.gson.GsonBuilder;
 
 public final class Helper {
 
-    public static final String GOOGLE_API_KEY
-          = System.getenv("MCPAIGOOGLEAPIKEY");
+    public static final String GOOGLE_API_KEY = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
+//          = System.getenv("MCPAIGOOGLEAPIKEY");
 
-    private static final Gson GSON_PP
+    public static final Gson GSON_PP
           = new GsonBuilder().setPrettyPrinting().create();
     private static final Gson GSON
           = new Gson();

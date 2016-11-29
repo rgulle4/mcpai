@@ -89,5 +89,6 @@
     </orderEntry>
     <orderEntry type="library" name="io.datafx:datafx:8.0.7" level="project" />
     <orderEntry type="library" name="com.google.maps:google-maps-services:0.1.16" level="project" />
+    <orderEntry type="library" name="com.google.apis:google-api-services-qpxExpress:v1-rev23-1.22.0" level="project" />
   </component>
 </module>
