@@ -47,18 +47,25 @@ public final class DrivingCalculator {
     public DrivingCalculator() { /* noop */ }
 
     /**
-     * Construct a new driving calculator.
+     * Construct a new driving calculator, and immediately calc tripPrice and
+     * tripDuration.
      * @param miles the trip's total driving miles
      * @param hours the trip's total driving hours.
      */
     public DrivingCalculator(double miles, double hours) {
         this.miles = miles;
         this.hours = hours;
+        calc();
     }
     
-    private static final RoadDistance rd = new RoadDistance();
+    private static final RoadDistance RD = new RoadDistance();
+    
+    /**
+     * Construct a new driving calculator using two Location objects, and
+     * immediately calc tripPrice and tripDuration.
+     */
     public DrivingCalculator(Location originLocation, Location destinationLocation) {
-        
+        calc(originLocation, destinationLocation);
     }
 
     /* -- calculate the cost and duration ------------------- */
@@ -78,6 +85,24 @@ public final class DrivingCalculator {
         if (hasInputForHours())
             return 0;
         return miles / assumedMilesPerHour;
+    }
+    
+    /**
+     * Gets trip price, including hotels, with customizable assumptions:
+     *
+     *     miles = taken from RoadDistance.getRoadDistance()
+     *     hours = taken from RoadDistance.getRoadTime()
+     *     assumedMilesPerHour = 70 (only used if hours isn't set)
+     *     milesPerGallon = 35.0
+     *     dollarsPerGallon = 2.15
+     *     hoursPerDay = 12
+     *     hoursPerSleep = 8
+     *     hotelPrice = 75.0
+     */
+    public double calc(Location originLocation, Location destinationLocation) {
+        miles = RD.getRoadDistance(originLocation, destinationLocation);
+        hours = RD.getRoadTime(originLocation, destinationLocation);
+        return calc(miles, hours);
     }
 
     /**
@@ -188,10 +213,12 @@ public final class DrivingCalculator {
     /* -- getters and setters for calculated fields --------- */
     
     public double getTripPrice() {
+        calc();
         return tripPrice;
     }
     
     public double getTripDuration() {
+        calc();
         return tripDuration;
     }
     

@@ -1,5 +1,6 @@
 package mapUtils;
 
+import models.places.Location;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -34,6 +35,25 @@ public class DrivingCalculatorTest {
         assertNotEquals(287.66, t, 0.1);
         assertNotEquals(287.66, dCalc.getTripPrice(), 0.01);
         assertEquals(47.60, dCalc.getTripDuration(), 0.01);
+    
+        Location bogalusa = new Location("Bogalusa, LA");
+        Location sfo = new Location("SFO airport");
+        dCalc = new DrivingCalculator(bogalusa, sfo);
+        double expectedTripPrice = 290.25;
+        double expectedTripDuration = 48.40;
+        assertEq(expectedTripPrice, dCalc.getTripPrice());
+        assertEq(expectedTripDuration, dCalc.getTripDuration(), 0.1);
+    }
+    
+    private static final void assertEq(double expected, double actual) {
+        double delta = expected * 0.05;
+        assertEquals(expected, actual, delta);
+    }
+    
+    private static final void assertEq(double expected, double actual,
+                                       double pctDelta)
+    {
+            assertEquals(expected, actual, expected * pctDelta);
     }
     
 }
