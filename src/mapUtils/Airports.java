@@ -12,6 +12,7 @@ import java.util.*;
  */
 public final class Airports {
     public static final Map<String, LatLng> AIRPORTS_DICT = new HashMap<>();
+    private static final StraightLineDistance SLD = Helper.SLD;
     
     public static boolean EMPTY = true;
     
@@ -44,8 +45,8 @@ public final class Airports {
                     double lng = s.nextDouble();    // -90.258028
                     put(iata, lat, lng);
                 }
-    
             }
+            EMPTY = false;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -134,8 +135,6 @@ public final class Airports {
         }
         return results;
     }
-    
-    private static final StraightLineDistance SLD = Helper.SLD;
     
     public static void main(String[] args) {
         Airports.fill();
