@@ -16,7 +16,7 @@ public final class Helper {
 
     public static final Gson GSON_PP
           = new GsonBuilder().setPrettyPrinting().create();
-    private static final Gson GSON
+    public static final Gson GSON
           = new Gson();
 
     public static void printObject(Object o) {

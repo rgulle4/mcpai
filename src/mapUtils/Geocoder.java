@@ -3,8 +3,8 @@ package mapUtils;
 import com.google.gson.Gson;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
-import com.google.maps.GeocodingApiRequest;
 import com.google.maps.model.GeocodingResult;
+import com.google.maps.model.LatLng;
 import helpers.Helper;
 import models.places.Location;
 
@@ -22,23 +22,50 @@ import models.places.Location;
  */
 public final class Geocoder {
     private static final String GOOGLE_API_KEY = Helper.GOOGLE_API_KEY;
-    private static final Gson GSON = new Gson();
+    private static final Gson GSON = Helper.GSON;
 
     private static final GeoApiContext
           geoApiContext = Helper.GEO_API_CONTEXT;
-
-    public static Location geoCode(Location location) {
-        String locationString = location.getLocationString();
-        GeocodingResult[] results = new GeocodingResult[0];
-        try {
-            results = GeocodingApi.geocode(
-                  geoApiContext,
-                  locationString).awaitIgnoreError();
-        } catch (Exception e) { /* idc */ }
+    
+    /**
+     * Geocodes a location; if latlng exists, reverseGeocode using latlng (latlng will
+     * be unchanged, but all other fields will potentially change), next try
+     * geocoding using locationString.
+     * @param location A Location object.
+     * @return The same Location object, after it's been fully geocoded.
+     */
+    public static Location geocode(Location location) {
+        GeocodingResult[] results;
+        if (location.hasLatLng())
+            results = reverseGeocode(location.getLatLng());
+        else
+            results = geocode(location.getLocationString());
         GeocodingResult r = results[0];
         location.setFormattedAddress(r.formattedAddress);
         location.setLat(r.geometry.location.lat);
         location.setLng(r.geometry.location.lng);
         return location;
+    }
+    
+    private static GeocodingResult[] reverseGeocode(double lat, double lng) {
+        return reverseGeocode(new LatLng(lat, lng));
+    }
+    
+    private static GeocodingResult[] reverseGeocode(LatLng latlng) {
+        GeocodingResult[] results = new GeocodingResult[0];
+        try { results = GeocodingApi
+                  .reverseGeocode(geoApiContext, latlng)
+                  .awaitIgnoreError();
+        } catch (Exception e) { /* idc */ }
+        return results;
+    }
+    
+    private static GeocodingResult[] geocode(String locationString) {
+        GeocodingResult[] results = new GeocodingResult[0];
+        try { results = GeocodingApi
+                  .geocode(geoApiContext, locationString)
+                  .awaitIgnoreError();
+        } catch (Exception e) { /* idc */ }
+        return results;
     }
 }

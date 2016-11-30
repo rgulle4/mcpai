@@ -1,7 +1,6 @@
 package models.places;
 
 import com.google.maps.model.LatLng;
-import helpers.Helper;
 import mapUtils.Geocoder;
 
 /**
@@ -27,15 +26,15 @@ public class Location {
     public boolean hasBeenGeocoded() { return hasBeenGeoCoded; }
     public boolean hasNotBeenGeocoded() { return !hasBeenGeoCoded; }
     
-    public Location geoCode() {
-        geoCode(false);
+    public Location geocode() {
+        geocode(false);
         return this;
     }
     
-    public Location geoCode(boolean force) {
+    public Location geocode(boolean force) {
         if (!force && hasBeenGeoCoded)
             return this;
-        Geocoder.geoCode(this);
+        Geocoder.geocode(this);
         this.latlng = new LatLng(lat, lng);
         hasBeenGeoCoded = true;
         return this;
@@ -76,28 +75,61 @@ public class Location {
     }
 
     public Double getLat() {
-        if (hasNoLatLng())
-            geoCode();
+        if (lat == null)
+            geocode(true);
         return lat;
     }
     public Location setLat(Double val) {
         this.lat = val;
+        resetLatLng();
         return this;
+    }
+    
+    private void resetLatLng() {
+        if (lat != null && lng != null)
+            this.latlng = new LatLng(this.lat, this.lng);
     }
 
     public Double getLng() {
-        if (hasNoLatLng())
-            geoCode();
+        if (lng == null)
+            geocode(true);
         return lng;
     }
     public Location setLng(Double val) {
         this.lng = val;
+        resetLatLng();
+        return this;
+    }
+    
+    public Location setLatLng(LatLng latlng) {
+        this.latlng = latlng;
+        this.lat = latlng.lat;
+        this.lng = latlng.lng;
+        this.geocode(true);
+        return this;
+    }
+    
+    public Location setLatLng(Double lat, Double lng) {
+        this.latlng = new LatLng(lat, lng);
+        this.lat = latlng.lat;
+        this.lng = latlng.lng;
+        this.geocode(true);
+        return this;
+    }
+    
+    public Location setLatLng(Double[] latlngPair) {
+        if (latlngPair.length != 2)
+            return this;
+        this.lat = latlngPair[0];
+        this.lng = latlngPair[1];
+        this.latlng = new LatLng(lat, lng);
+        this.geocode(true);
         return this;
     }
 
     public Double[] getLatLngPair() {
         if (hasNoLatLng())
-            geoCode();
+            geocode();
         return new Double[] { lat, lng };
     }
     
@@ -107,7 +139,7 @@ public class Location {
      */
     public LatLng getLatLng() {
         if (hasNoLatLng())
-            geoCode();
+            geocode();
         return latlng;
     }
 
