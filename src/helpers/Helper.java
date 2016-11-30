@@ -6,7 +6,7 @@ import com.google.maps.GeoApiContext;
 
 public final class Helper {
 
-    public static final boolean DEBUG_MODE = true;
+    public static boolean DEBUG_MODE = true;
 
     public static final String GOOGLE_API_KEY = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
 //          = System.getenv("MCPAIGOOGLEAPIKEY");
