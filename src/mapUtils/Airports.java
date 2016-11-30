@@ -73,25 +73,27 @@ public final class Airports {
     }
     
     /**
-     * Given a lat, lng, and distanceLimit; fill two corresponding arraylists
+     * Given a lat, lng, and radius; fill two corresponding arraylists
      * for airports and their distances (you can get them by the same indexes).
      * @param lat 30.5043.
      * @param lng -90.4611.
-     * @param distanceLimit 150 miles or something.
-     * @param airportCodesArrayList This should be an empty arrayList; you
-     *                               get to keep the pointer :).
-     * @param distancesArrayList This should be an empty arrayList; you
-     *                               get to keep the pointer :).
+     * @param radius 150 miles or something.
+     * @param airportCodesArrayList
+     *           This should be an empty arrayList; you
+     *           get to keep the pointer :).
+     * @param distancesArrayList
+     *           This should be an empty arrayList; you
+     *           get to keep the pointer :).
      */
     public static void getAirPortsWithinRadius(
                                   double lat,
                                   double lng,
-                                  double distanceLimit,
+                                  double radius,
                                   ArrayList<String> airportCodesArrayList,
                                   ArrayList<Double> distancesArrayList)
     {
         TreeMap<Double, String> r
-              = getAirPortsWithinRadius(lat, lng, distanceLimit);
+              = getAirPortsWithinRadius(lat, lng, radius);
         
         for (Double distance : r.keySet()) {
             String code = r.get(distance);
@@ -114,13 +116,13 @@ public final class Airports {
      *   }
      * @param lat 30.5043.
      * @param lng -90.4611.
-     * @param distanceLimit 150 miles or something.
+     * @param radius 150 miles or something.
      * @return
      */
     public static TreeMap<Double, String> getAirPortsWithinRadius(
           double lat,
           double lng,
-          double distanceLimit)
+          double radius)
     {
         if (EMPTY)
             fill();
@@ -130,7 +132,7 @@ public final class Airports {
             Double distance = SLD.slDistance(
                   lat, lng,
                   coords.lat, coords.lng);
-            if (distance <= distanceLimit)
+            if (distance <= radius)
                 results.put(distance, code);
         }
         return results;
@@ -147,12 +149,12 @@ public final class Airports {
               modestoLat, modestoLng
         );
     
-        double distanceLimit;
-        distanceLimit = totalSLD;
-        distanceLimit = 150;
+        double radius;
+        radius = totalSLD;
+        radius = 150;
 
         TreeMap<Double, String> results
-              = getAirPortsWithinRadius(myLat, myLng, distanceLimit);
+              = getAirPortsWithinRadius(myLat, myLng, radius);
         System.out.println();
         System.out.println();
         Helper.printObject(results, "results");

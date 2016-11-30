@@ -3,10 +3,16 @@ package models.places;
 import com.google.maps.model.LatLng;
 import mapUtils.Geocoder;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * TODO: see 00notes/location-etc/
  */
 public class Location {
+    
+    /* --------------------------------------------------------- */
+    
     private String locationString;
     private String formattedAddress;
     private Double lat;
@@ -14,6 +20,30 @@ public class Location {
     private LatLng latlng;
     private boolean hasBeenGeoCoded = false;
     private boolean isAirport = false;
+    
+    /**
+     * Nearest airports, ordered by distance, kv pairs are like so:
+     *   {
+     *       "MSY" -> 37.31
+     *       "BTR" -> 41.04
+     *       "GPT" -> 83.13
+     *       "LFT" -> 93.35
+     *   }
+     */
+    private Map<String, Double> airportCodesDistances = new LinkedHashMap<>();
+    
+    /**
+     * Nearest airports, ordered by distance, kv pairs are like so:
+     *   {
+     *       37.31 -> "MSY"
+     *       41.04 -> "BTR"
+     *       83.13 -> "GPT"
+     *       93.35 -> "LFT"
+     *   }
+     */
+    private Map<String, Double> distancesAirportCodes = new LinkedHashMap<>();
+    
+    /* --------------------------------------------------------- */
     
     public boolean hasNoLatLng() {
         return (lat == null || lng == null);
@@ -26,6 +56,8 @@ public class Location {
     public boolean hasBeenGeocoded() { return hasBeenGeoCoded; }
     public boolean hasNotBeenGeocoded() { return !hasBeenGeoCoded; }
     
+     /* --------------------------------------------------------- */
+     
     /**
      * TODO: make this real
      * @return eg "MSY"
@@ -33,6 +65,12 @@ public class Location {
     public String getNearestAirportCode() {
         return locationString;
     }
+    
+    private void getAirportsWithinRadius(double radius) {
+        
+    }
+    
+    /* --------------------------------------------------------- */
     
     public Location geocode() {
         geocode(false);
@@ -47,7 +85,9 @@ public class Location {
         hasBeenGeoCoded = true;
         return this;
     }
-
+    
+    /* --------------------------------------------------------- */
+    
     public Location() {
     }
 
@@ -61,7 +101,9 @@ public class Location {
         setLocationString(locationString);
         setIsAirport(isAirport);
     }
-
+    
+    /* --------------------------------------------------------- */
+    
     public boolean getIsAirport() { return isAirport; }
     public Location setIsAirport(boolean val) {
         isAirport = val;
@@ -81,6 +123,8 @@ public class Location {
         formattedAddress = val;
         return this;
     }
+    
+    /* --------------------------------------------------------- */
 
     public Double getLat() {
         if (lat == null)
@@ -103,6 +147,8 @@ public class Location {
             geocode(true);
         return lng;
     }
+
+  
     public Location setLng(Double val) {
         this.lng = val;
         resetLatLng();
@@ -134,7 +180,9 @@ public class Location {
         this.geocode(true);
         return this;
     }
-
+    
+    /* --------------------------------------------------------- */
+    
     public Double[] getLatLngPair() {
         if (hasNoLatLng())
             geocode();
@@ -150,7 +198,9 @@ public class Location {
             geocode();
         return latlng;
     }
-
+    
+    /* --------------------------------------------------------- */
+    
     @Override
     public String toString() { return locationString; }
 }
