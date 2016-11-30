@@ -11,11 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO: need to find a good flights API, and figure out a model that works for us.
- * We basically just need to find price, and time between two airports. Probably
- * just the "best" result; or two of them (best time / best price), or a list of them idk.
- *
- * TODO: deal with the rate limit of 50 requests / day!
+ * Finds flights; getBestFlight()
  */
 public final class FlightFinder {
     private static final String GOOGLE_API_KEY = Helper.GOOGLE_API_KEY;
@@ -60,9 +56,21 @@ public final class FlightFinder {
         this.solutions = val;
         return this;
     }
-
-
-
+    
+    /**
+     * Gets the best flight
+     * @param origin eg "btr" (String)
+     * @param destination eg "sfo" (String)
+     * @param date eg "2016-12-25" (String)
+     * @return a {@link Flight} object for the best flight.
+     */
+    public Flight getBestFlight(String origin, String destination, String date) {
+        setOrigin(origin);
+        setDestination(destination);
+        setDate(date);
+        return getBestFlight();
+    }
+    
     public Flight getBestFlight() {
         List<Flight> flights = getFlights();
         if (flights != null)
