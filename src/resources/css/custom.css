@@ -8,6 +8,13 @@
 *                                                                              *
 *******************************************************************************/
 
+.debug-info {
+    -fx-font-family: monospace;
+    -fx-font-size: 8pt;
+    -fx-font-weight: normal;
+    -fx-font-style: normal;
+}
+
 .worse-of-the-two {
     -fx-background-color: derive(#8888cc,-10%);
 }

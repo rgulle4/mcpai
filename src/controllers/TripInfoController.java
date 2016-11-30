@@ -12,6 +12,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import models.MainModel;
 
@@ -37,7 +38,10 @@ public final class TripInfoController {
     @FXML JFXTextField maxBudgetInput;
     @FXML JFXCheckBox isRoundTripInput;
     @FXML JFXSlider timeWeightInput;
-
+    
+    @FXML AnchorPane miscInfoContainer;
+    @FXML public JFXTextArea debugTextArea;
+    
     /**
      * Constructor then initialize then init
      */
@@ -59,6 +63,7 @@ public final class TripInfoController {
         setMainModel((MainModel) context.getRegisteredObject("mainModel"));
         loadDefaultValues();
         setUpAutoSave();
+        setDebugTextArea("nothing yet..." + this);
     }
 
     private void loadDefaultValues() {
@@ -148,12 +153,18 @@ public final class TripInfoController {
     public MainModel getMainModel() { return mainModel; }
     public TripInfoController setMainModel(MainModel mainModel) {
         this.mainModel = mainModel;
+        mainModel.tripInfoController = this;
         return this;
     }
 
     public MainController getMainController() { return mainController; }
     public TripInfoController setMainController(MainController mainController) {
         this.mainController = mainController;
+        return this;
+    }
+    
+    public TripInfoController setDebugTextArea(String s) {
+        debugTextArea.setText(s);
         return this;
     }
 }

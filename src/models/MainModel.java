@@ -1,6 +1,7 @@
 package models;
 
 import com.google.maps.model.LatLng;
+import controllers.TripInfoController;
 import helpers.Helper;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
@@ -15,6 +16,7 @@ import java.util.Map;
 public final class MainModel {
 
     private String testString;
+    public TripInfoController tripInfoController;
 
     private Location startLocation = new Location("MSY");
     private Location destinationLocation = new Location("SFO");
@@ -34,7 +36,7 @@ public final class MainModel {
           
     private final RoadDistance RD = new RoadDistance();
     private final DrivingCalculator DC = new DrivingCalculator();
-    private Flight bestFlight;
+    public Flight bestFlight;
     private final FlightFinder FF = new FlightFinder();
     
     public static final DateTimeFormatter formatter

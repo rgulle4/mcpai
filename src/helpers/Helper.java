@@ -10,8 +10,8 @@ public final class Helper {
     public static boolean DEBUG_MODE = true;
 
     public static final String GOOGLE_API_KEY
-//          = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
-          = "AIzaSyCxC53nAkMaeEDWFCmCT8JXOA8Qcv8ej0g";
+          = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
+//          = "AIzaSyCxC53nAkMaeEDWFCmCT8JXOA8Qcv8ej0g";
 //          = System.getenv("MCPAIGOOGLEAPIKEY");
 
     public static final GeoApiContext

@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
+import mapUtils.Flight;
 import models.MainModel;
 
 import javax.annotation.PostConstruct;
@@ -47,6 +48,7 @@ public final class MainController {
     @FXML HBox flyingBox;
     @FXML Label flyPriceLabel;
     @FXML Label flyDurationLabel;
+    
     
     private String testString;
 
@@ -102,8 +104,17 @@ public final class MainController {
         Helper.printObject(mainModel, "mainModel");
     }
 
-    private void testButtonAction() {
-        printTest();
+    private void printlnButtonAction() {
+        new Thread(() -> {printTest();}).start();
+        Flight bestFlight = mainModel.bestFlight;
+        if (bestFlight == null)
+            setDebugTextArea("bestFlight = " + null);
+        setDebugTextArea("bestFlight = " + mainModel.bestFlight + "\n"
+              + Helper.toJsonPretty(bestFlight));
+    }
+    
+    public void setDebugTextArea(String msg) {
+        mainModel.tripInfoController.setDebugTextArea(msg);
     }
 
     @FXML
@@ -124,7 +135,8 @@ public final class MainController {
         setDefaultFlowContainer(
               (DefaultFlowContainer) context.getRegisteredObject("defaultFlowContainer"));
 
-        testButton.setOnAction(e -> {testButtonAction();});
+        testButton.setOnAction(e -> {
+            printlnButtonAction();});
         calcButton.setOnAction(e -> {
             mainModel.calculateDrive();
             mainModel.calculateFlight();

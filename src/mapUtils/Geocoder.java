@@ -21,7 +21,10 @@ import models.places.Location;
  *     https://maps.googleapis.com/maps/api/geocode/json?&address=baton%20rouge%2C%20LA
  */
 public final class Geocoder {
-    private static final String GOOGLE_API_KEY = Helper.GOOGLE_API_KEY;
+    private static final String GOOGLE_API_KEY
+          = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
+//          = "AIzaSyCxC53nAkMaeEDWFCmCT8JXOA8Qcv8ej0g";
+    //          = Helper.GOOGLE_API_KEY;
     private static final Gson GSON = Helper.GSON;
 
     private static final GeoApiContext
