@@ -4,6 +4,8 @@ import com.google.maps.model.LatLng;
 import helpers.Helper;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -47,4 +49,26 @@ public class AirportsTest {
         assertTrue(result.lastEntry().getValue().equals("AEX"));
     }
     
+    @Test
+    public void getAirPortsWithinRadius1() throws Exception {
+        // Hammond
+        double myLat = 30.504;
+        double myLng = -90.461;
+        double radius = 150; // miles
+        
+        ArrayList<String> airportCodes = new ArrayList<>();
+        ArrayList<Double> distances = new ArrayList<>();
+        Airports.getAirPortsWithinRadius(
+              myLat, myLng, radius,
+              airportCodes, distances);
+
+        assertTrue(airportCodes.get(0).equals("MSY"));
+        assertEquals(37.31, distances.get(0), 1.5);
+
+        assertTrue(airportCodes.get(1).equals("BTR"));
+        assertEquals(41.04, distances.get(1), 1.5);
+
+        assertTrue(airportCodes.get(3).equals("LFT"));
+        assertEquals(93.35, distances.get(3), 1.5);
+    }
 }

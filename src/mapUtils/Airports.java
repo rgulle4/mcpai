@@ -5,10 +5,7 @@ import helpers.Helper;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Hacks for airports
@@ -75,6 +72,34 @@ public final class Airports {
     }
     
     /**
+     * Given a lat, lng, and distanceLimit; fill two corresponding arraylists
+     * for airports and their distances (you can get them by the same indexes).
+     * @param lat 30.5043.
+     * @param lng -90.4611.
+     * @param distanceLimit 150 miles or something.
+     * @param airportCodesArrayList This should be an empty arrayList; you
+     *                               get to keep the pointer :).
+     * @param distancesArrayList This should be an empty arrayList; you
+     *                               get to keep the pointer :).
+     */
+    public static void getAirPortsWithinRadius(
+                                  double lat,
+                                  double lng,
+                                  double distanceLimit,
+                                  ArrayList<String> airportCodesArrayList,
+                                  ArrayList<Double> distancesArrayList)
+    {
+        TreeMap<Double, String> r
+              = getAirPortsWithinRadius(lat, lng, distanceLimit);
+        
+        for (Double distance : r.keySet()) {
+            String code = r.get(distance);
+            airportCodesArrayList.add(code);
+            distancesArrayList.add(distance);
+        }
+    }
+    
+    /**
      * Dict of distance : airportCode, sorted by distance; for hammond, 150...
      *   {
      *     "37.31": "MSY",
@@ -86,8 +111,9 @@ public final class Airports {
      *     "132.59": "MOB",
      *     "136.2": "AEX"
      *   }
-     * @param lat 30.5043
-     * @param lng -90.4611
+     * @param lat 30.5043.
+     * @param lng -90.4611.
+     * @param distanceLimit 150 miles or something.
      * @return
      */
     public static TreeMap<Double, String> getAirPortsWithinRadius(
