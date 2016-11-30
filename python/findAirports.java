@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class findAirports {
     
     public static void main(String[] args) {
-        airport[] airports = new airport[1459]; //stores airport information
+        airport[] airports = new airport[1459]; //stores Airport information
         
         //my location
         double myLo = 30.4583;
@@ -39,7 +39,7 @@ public class findAirports {
         
         
         for (int j = 0; j<1459; j++){
-            //get coordinates of current airport
+            //get coordinates of current Airport
             currx = airports[j].getLo();
             curry = airports[j].getLa();
             

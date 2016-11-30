@@ -37,7 +37,7 @@ public class DrivingCalculatorTest {
         assertEquals(47.60, dCalc.getTripDuration(), 0.01);
     
         Location bogalusa = new Location("Bogalusa, LA");
-        Location sfo = new Location("SFO airport");
+        Location sfo = new Location("SFO Airport");
         dCalc = new DrivingCalculator(bogalusa, sfo);
         double expectedTripPrice = 290.25;
         double expectedTripDuration = 48.40;

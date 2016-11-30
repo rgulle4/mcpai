@@ -3,6 +3,7 @@ package helpers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.maps.GeoApiContext;
+import mapUtils.StraightLineDistance;
 
 public final class Helper {
 
@@ -20,7 +21,9 @@ public final class Helper {
           = new GsonBuilder().setPrettyPrinting().create();
     public static final Gson GSON
           = new Gson();
-
+    
+    public static final StraightLineDistance SLD = new StraightLineDistance();
+    
     public static void printObject(Object o) {
         System.out.print(o + ": ");
         System.out.println(GSON_PP.toJson(o));

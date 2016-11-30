@@ -36,12 +36,12 @@ public class AirportFinder {
                     location.getLatLng());
         searchRequest.rankby(RankBy.DISTANCE);
         searchRequest.type(PlaceType.AIRPORT);
-        searchRequest.name("airport");
+        searchRequest.name("Airport");
         response = searchRequest.awaitIgnoreError();
         results = Arrays.asList(response.results);
         List<Location> airports = new ArrayList<Location>();
         for (PlacesSearchResult r : results) {
-//            if (r.name.toLowerCase().contains("airport")) {
+//            if (r.name.toLowerCase().contains("Airport")) {
                 Location a = new Location();
                 a.setIsAirport(true);
                 a.setLocationString(r.name);

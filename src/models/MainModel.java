@@ -1,17 +1,16 @@
 package models;
 
+import com.google.maps.model.LatLng;
 import helpers.Helper;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import mapUtils.DrivingCalculator;
-import mapUtils.Flight;
-import mapUtils.FlightFinder;
-import mapUtils.RoadDistance;
+import mapUtils.*;
 import models.places.Location;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 public final class MainModel {
 
@@ -46,7 +45,9 @@ public final class MainModel {
     private boolean isRoundTrip = false;
     private int maxBudget = 700;
     private double timeWeight = 100;
-
+    
+    public static final Map<String, LatLng> AIRPORTS_DICT = Airports.AIRPORTS_DICT;
+    
     public MainModel() {
 //        calculateDrive();
 //        calculateFlight();
