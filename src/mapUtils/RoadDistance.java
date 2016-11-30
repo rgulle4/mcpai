@@ -2,6 +2,7 @@ package mapUtils;
 
 import com.google.gson.Gson;
 import helpers.Helper;
+import models.places.Location;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -55,6 +56,28 @@ public final class RoadDistance {
 
         double distance = response.rows[0].elements[0].distance.getMiles();
         return distance;
+    }
+    
+    public double getRoadDistance(Location origin, Location destination) {
+        String originString = parseLocationString(origin);
+        String destinationString = parseLocationString(destination);
+        return getRoadDistance(originString, destinationString);
+    }
+    
+    public double getRoadTime(Location origin, Location destination) {
+        String originString = parseLocationString(origin);
+        String destinationString = parseLocationString(destination);
+        return getRoadTime(originString, destinationString);
+    }
+    
+    private String parseLocationString(Location location) {
+        if (location.hasLatLng()) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(location.getLat()).append(",").append(location.getLng());
+            return sb.toString();
+        } else {
+            return location.getLocationString();
+        }
     }
 
     /**

@@ -1,6 +1,7 @@
 package mapUtils;
 
 import helpers.Helper;
+import models.places.Location;
 
 /**
  * Figures out total price (gas + hotel) and duration (driving plus sleep) of a
@@ -53,6 +54,11 @@ public final class DrivingCalculator {
     public DrivingCalculator(double miles, double hours) {
         this.miles = miles;
         this.hours = hours;
+    }
+    
+    private static final RoadDistance rd = new RoadDistance();
+    public DrivingCalculator(Location originLocation, Location destinationLocation) {
+        
     }
 
     /* -- calculate the cost and duration ------------------- */
