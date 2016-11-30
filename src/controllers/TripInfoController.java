@@ -64,6 +64,8 @@ public final class TripInfoController {
     private void loadDefaultValues() {
         startLocationInput.setText(mainModel.getStartLocation().toString());
         destinationLocationInput.setText(mainModel.getDestinationLocation().toString());
+        startDateInput.setValue(mainModel.getStartDate());
+        endDateInput.setValue(mainModel.getEndDate());
         isRoundTripInput.setSelected(mainModel.getIsRoundTrip());
         maxBudgetInput.setText(String.valueOf(mainModel.getMaxBudget()));
         timeWeightInput.setValue(mainModel.getTimeWeight());
@@ -72,20 +74,24 @@ public final class TripInfoController {
     private void setUpAutoSave() {
         startLocationInput.focusedProperty().addListener((observable, oldValue, newValue) -> {
             mainModel.setStartLocation(startLocationInput.getText().toString());
-            mainModel.calculateDrive();
+//            mainModel.calculateDrive();
+//            mainModel.calculateFlight();
         });
 
         destinationLocationInput.focusedProperty().addListener((observable, oldValue, newValue) -> {
             mainModel.setDestinationLocation(destinationLocationInput.getText().toString());
-            mainModel.calculateDrive();
+//            mainModel.calculateDrive();
+//            mainModel.calculateFlight();
         });
 
         startDateInput.valueProperty().addListener((observable, oldValue, newValue) -> {
             mainModel.setStartDate(newValue);
+//            mainModel.calculateFlight();
         });
 
         endDateInput.valueProperty().addListener((observable, oldValue, newValue) -> {
             mainModel.setEndDate(newValue);
+//            mainModel.calculateFlight();
         });
 
         isRoundTripInput.selectedProperty().addListener((observable, oldValue, newValue) -> { {

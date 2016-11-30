@@ -26,6 +26,14 @@ public class Location {
     public boolean hasBeenGeocoded() { return hasBeenGeoCoded; }
     public boolean hasNotBeenGeocoded() { return !hasBeenGeoCoded; }
     
+    /**
+     * TODO: make this real
+     * @return eg "MSY"
+     */
+    public String getNearestAirportCode() {
+        return locationString;
+    }
+    
     public Location geocode() {
         geocode(false);
         return this;

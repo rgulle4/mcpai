@@ -8,7 +8,6 @@ import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
-import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.Property;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -39,16 +38,16 @@ public final class MainController {
     @FXML Tab resultsTab;
 
     @FXML JFXButton testButton;
-    @FXML Label driveTimeLabel;
-    @FXML Label driveDistanceLabel;
+    @FXML JFXButton calcButton;
+    
+    @FXML HBox drivingBox;
     @FXML Label drivePriceLabel;
     @FXML Label driveDurationLabel;
+
+    @FXML HBox flyingBox;
+    @FXML Label flyPriceLabel;
+    @FXML Label flyDurationLabel;
     
-    @FXML HBox infosBox;
-
-    public DoubleProperty totalDriveTimeDoubleProperty;
-    public DoubleProperty totalDriveDistanceDoubleProperty;
-
     private String testString;
 
     /**
@@ -126,22 +125,32 @@ public final class MainController {
               (DefaultFlowContainer) context.getRegisteredObject("defaultFlowContainer"));
 
         testButton.setOnAction(e -> {testButtonAction();});
+        calcButton.setOnAction(e -> {
+            mainModel.calculateDrive();
+            mainModel.calculateFlight();
+            double flyPrice = mainModel.flightPrice;
+            double flyDuration = mainModel.flightDuration;
+            Helper.printDebug("flyPrice = " + flyPrice);
+            Helper.printDebug("flyDuration = " + flyDuration);
+        });
 
         setupTabs();
         setUpObservables();
     }
     
     private void setUpObservables() {
-//        setupObservable(mainModel.totalDriveTimeProperty,
-//              driveTimeLabel, "(%.2f hrs)");
-//        setupObservable(mainModel.totalDriveDistanceProperty,
-//              driveDistanceLabel, "(%.0f miles)");
+        setupObservable(mainModel.flightPriceProperty,
+              flyPriceLabel,
+              "($%.2f)");
+        setupObservable(mainModel.flightDurationProperty,
+              flyDurationLabel,
+              "(%.2f hrs)");
         setupObservable(mainModel.drivePriceProperty,
               drivePriceLabel,
               "($%.2f)");
         setupObservable(mainModel.driveDurationProperty,
               driveDurationLabel,
-              "(%.1f hrs)");
+              "(%.2f hrs)");
     }
     
     private void setupObservable(Property<Number> prop, Label lbl) {
@@ -151,6 +160,18 @@ public final class MainController {
     private void setupObservable(Property<Number> prop, Label lbl, String fmt) {
         prop.addListener((obs, oldVal, newVal) -> {
             setLbl(lbl, newVal, fmt);
+            flyingBox.getStyleClass().remove(flyingBox.getStyleClass().size() - 1);
+            drivingBox.getStyleClass().remove(drivingBox.getStyleClass().size() - 1);
+            if (mainModel.flightPrice < mainModel.drivePrice) {
+                flyingBox.getStyleClass().add("better-of-the-two");
+                drivingBox.getStyleClass().add("worse-of-the-two");
+            } else if (mainModel.flightPrice > mainModel.drivePrice) {
+                flyingBox.getStyleClass().add("worse-of-the-two");
+                drivingBox.getStyleClass().add("better-of-the-two");
+            } else {
+                flyingBox.getStyleClass().add("worse-of-the-two");
+                drivingBox.getStyleClass().add("worse-of-the-two");
+            }
         });
         lbl.textProperty().setValue(String.format(
               fmt, prop.getValue()

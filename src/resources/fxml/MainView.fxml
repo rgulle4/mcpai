@@ -33,14 +33,24 @@
             </center>
             <bottom>
                 <JFXToolbar>
+                    <left>
+                        <HBox spacing="5" fx:id="flyingBox" styleClass="worse-of-the-two">
+                            <Label styleClass="input-label">FLY: </Label>
+                            <Label fx:id="flyPriceLabel" styleClass="info-label-a">111</Label>
+                            <Label fx:id="flyDurationLabel" styleClass="info-label-b">2222</Label>
+                        </HBox>
+                    </left>
+                    <center>
+                        <HBox>
+                            <JFXButton fx:id="testButton" text="[println]"/>
+                            <JFXButton fx:id="calcButton" text="[Calculate]"/>
+                        </HBox>
+                    </center>
                     <right>
-                        <HBox spacing="5" fx:id="infosBox" style="-fx-background-color:  derive(#8888cc,-10%);">
-                            <Label styleClass="input-label">DRIVING: </Label>
-                            <!--<Label fx:id="driveTimeLabel" styleClass="info-label-a">1111</Label>-->
-                            <!--<Label fx:id="driveDistanceLabel" styleClass="info-label-a">2222</Label>-->
-                            <Label fx:id="drivePriceLabel" styleClass="info-label-b">2222</Label>
+                        <HBox spacing="5" fx:id="drivingBox" styleClass="worse-of-the-two">
+                            <Label styleClass="input-label">DRIVE: </Label>
+                            <Label fx:id="drivePriceLabel" styleClass="info-label-a">2222</Label>
                             <Label fx:id="driveDurationLabel" styleClass="info-label-b">2222</Label>
-                            <JFXButton fx:id="testButton" text="println"/>
                         </HBox>
                     </right>
                 </JFXToolbar>

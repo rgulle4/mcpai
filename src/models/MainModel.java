@@ -1,41 +1,55 @@
 package models;
 
+import helpers.Helper;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import mapUtils.DrivingCalculator;
+import mapUtils.Flight;
+import mapUtils.FlightFinder;
 import mapUtils.RoadDistance;
 import models.places.Location;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public final class MainModel {
 
     private String testString;
 
-    private Location startLocation = new Location("Hammond, LA");
-    private Location destinationLocation = new Location("Vallejo, CA");
+    private Location startLocation = new Location("MSY");
+    private Location destinationLocation = new Location("SFO");
     public Double totalDriveTime;
     public Double totalDriveDistance;
-    public Double drivePrice;
+    public double drivePrice;
     public Double driveDuration;
+    public double flightPrice;
+    public Double flightDuration;
     
     public DoubleProperty totalDriveTimeProperty = new SimpleDoubleProperty();
     public DoubleProperty totalDriveDistanceProperty = new SimpleDoubleProperty();
     public DoubleProperty drivePriceProperty = new SimpleDoubleProperty();
     public DoubleProperty driveDurationProperty = new SimpleDoubleProperty();
-    
+    public DoubleProperty flightPriceProperty = new SimpleDoubleProperty();
+    public DoubleProperty flightDurationProperty = new SimpleDoubleProperty();
+          
     private final RoadDistance RD = new RoadDistance();
     private final DrivingCalculator DC = new DrivingCalculator();
-
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private Flight bestFlight;
+    private final FlightFinder FF = new FlightFinder();
+    
+    public static final DateTimeFormatter formatter
+          = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private LocalDate startDate = LocalDate.of(2016, 12, 25);
+    private LocalDate endDate = LocalDate.of(2017, 1, 12);
 
     private boolean isRoundTrip = false;
     private int maxBudget = 700;
     private double timeWeight = 100;
 
     public MainModel() {
-        calculateDrive();
+//        calculateDrive();
+//        calculateFlight();
     }
 
     public MainModel(String testString) {
@@ -60,8 +74,51 @@ public final class MainModel {
         
         driveDuration = DC.getTripDuration(a, b);
         driveDurationProperty.set(driveDuration);
-        
+    
+        checkIfFlyingIsBetter();
         return this;
+    }
+    
+    public MainModel calculateFlight() {
+        Location a = this.startLocation;
+        Location b = this.destinationLocation;
+        
+        FF.setOrigin(a.getNearestAirportCode());
+        FF.setDestination(b.getNearestAirportCode());
+        FF.setDate(startDate.format(formatter));
+        bestFlight = FF.getBestFlight();
+    
+        if (bestFlight == null) {
+            flightPrice = 0.0;
+            flightDuration = 0.0;
+        } else {
+            flightPrice = bestFlight.getPrice();
+            flightDuration = bestFlight.getDuration();
+        }
+        
+        flightPriceProperty.set(flightPrice);
+        flightDurationProperty.set(flightDuration);
+        Helper.printDebug("startDate = \"" + startDate.format(formatter) + "\"");
+        Helper.printDebug("flightPrice = " + flightPrice);
+        Helper.printDebug("flightDuration = " + flightDuration);
+        checkIfFlyingIsBetter();
+        return this;
+    }
+    
+    public Boolean flyingIsBetter = false;
+    public BooleanProperty flyingIsBetterProperty;
+    
+    public boolean checkIfFlyingIsBetter() {
+//        if (flightPrice == null || drivePriceProperty == null) {
+//            flyingIsBetter = false;
+//            return flyingIsBetter;
+//        }
+//        if (flightPrice <= drivePrice)
+//            flyingIsBetter = true;
+//        else
+//            flyingIsBetter = false;
+//        flyingIsBetterProperty.set(flyingIsBetter);
+        return flyingIsBetter;
     }
 
     public String getTestString() { return testString; }

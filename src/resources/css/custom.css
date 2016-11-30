@@ -8,6 +8,14 @@
 *                                                                              *
 *******************************************************************************/
 
+.worse-of-the-two {
+    -fx-background-color: derive(#8888cc,-10%);
+}
+
+.better-of-the-two {
+    -fx-background-color: derive(#7cbb39,-10%);
+}
+
 .title-label {
     -fx-font-size: 16.0px;
     -fx-padding	: 14.0px;
@@ -29,6 +37,8 @@
     /*-fx-font-size: 16.0px;*/
     /*-fx-padding	: 14.0px;*/
     -fx-text: derive(#aaffaa,-20%);
+    -fx-text-fill: derive(#aaffaa,-20%);
+    -fx-color: derive(#aaffaa,-20%);
 }
 
 .info-label-b {
@@ -36,6 +46,8 @@
     -fx-font-size: 1em;
     /*-fx-font-size: 16.0px;*/
     /*-fx-padding	: 14.0px;*/
+    -fx-text: derive(#aaffaa,-20%);
+    -fx-text-fill: derive(#aaffaa,-20%);
     -fx-color: derive(#aaffaa,-20%);
 }
 
