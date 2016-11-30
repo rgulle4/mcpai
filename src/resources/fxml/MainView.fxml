@@ -34,10 +34,12 @@
             <bottom>
                 <JFXToolbar>
                     <right>
-                        <HBox spacing="5" style="-fx-background-color:  derive(#8888cc,-10%);">
+                        <HBox spacing="5" fx:id="infosBox" style="-fx-background-color:  derive(#8888cc,-10%);">
                             <Label styleClass="input-label">DRIVING: </Label>
-                            <Label fx:id="driveTimeLabel" styleClass="input-label">1111</Label>
-                            <Label fx:id="driveDistanceLabel" styleClass="input-label">2222</Label>
+                            <!--<Label fx:id="driveTimeLabel" styleClass="info-label-a">1111</Label>-->
+                            <!--<Label fx:id="driveDistanceLabel" styleClass="info-label-a">2222</Label>-->
+                            <Label fx:id="drivePriceLabel" styleClass="info-label-b">2222</Label>
+                            <Label fx:id="driveDurationLabel" styleClass="info-label-b">2222</Label>
                             <JFXButton fx:id="testButton" text="println"/>
                         </HBox>
                     </right>

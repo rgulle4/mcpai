@@ -217,8 +217,18 @@ public final class DrivingCalculator {
         return tripPrice;
     }
     
+    public double getTripPrice(Location a, Location b) {
+        calc(a, b);
+        return tripPrice;
+    }
+    
     public double getTripDuration() {
         calc();
+        return tripDuration;
+    }
+    
+    public double getTripDuration(Location a, Location b) {
+        calc(a, b);
         return tripDuration;
     }
     

@@ -2,6 +2,7 @@ package models;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import mapUtils.DrivingCalculator;
 import mapUtils.RoadDistance;
 import models.places.Location;
 
@@ -15,9 +16,16 @@ public final class MainModel {
     private Location destinationLocation = new Location("Vallejo, CA");
     public Double totalDriveTime;
     public Double totalDriveDistance;
+    public Double drivePrice;
+    public Double driveDuration;
+    
     public DoubleProperty totalDriveTimeProperty = new SimpleDoubleProperty();
     public DoubleProperty totalDriveDistanceProperty = new SimpleDoubleProperty();
+    public DoubleProperty drivePriceProperty = new SimpleDoubleProperty();
+    public DoubleProperty driveDurationProperty = new SimpleDoubleProperty();
+    
     private final RoadDistance RD = new RoadDistance();
+    private final DrivingCalculator DC = new DrivingCalculator();
 
     private LocalDate startDate;
     private LocalDate endDate;
@@ -38,15 +46,21 @@ public final class MainModel {
     private String searchStrings;
 
     public MainModel calculateDrive() {
-        totalDriveTime = RD.getRoadTime(
-              startLocation.getLocationString(),
-              getDestinationLocation().getLocationString());
+        Location a = this.startLocation;
+        Location b = this.destinationLocation;
+        
+        totalDriveTime = RD.getRoadTime(a, b);
         totalDriveTimeProperty.set(totalDriveTime);
 
-        totalDriveDistance = RD.getRoadDistance(
-              startLocation.getLocationString(),
-              getDestinationLocation().getLocationString());
+        totalDriveDistance = RD.getRoadDistance(a, b);
         totalDriveDistanceProperty.set(totalDriveDistance);
+        
+        drivePrice = DC.getTripPrice(a, b);
+        drivePriceProperty.set(drivePrice);
+        
+        driveDuration = DC.getTripDuration(a, b);
+        driveDurationProperty.set(driveDuration);
+        
         return this;
     }
 

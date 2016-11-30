@@ -9,11 +9,12 @@ import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.Property;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.HBox;
 import models.MainModel;
 
 import javax.annotation.PostConstruct;
@@ -40,12 +41,13 @@ public final class MainController {
     @FXML JFXButton testButton;
     @FXML Label driveTimeLabel;
     @FXML Label driveDistanceLabel;
+    @FXML Label drivePriceLabel;
+    @FXML Label driveDurationLabel;
+    
+    @FXML HBox infosBox;
 
     public DoubleProperty totalDriveTimeDoubleProperty;
-    public StringProperty totalDriveTimeStringProperty;
-
     public DoubleProperty totalDriveDistanceDoubleProperty;
-    public StringProperty totalDriveDistanceStringProperty;
 
     private String testString;
 
@@ -126,18 +128,37 @@ public final class MainController {
         testButton.setOnAction(e -> {testButtonAction();});
 
         setupTabs();
-
-        mainModel.totalDriveTimeProperty.addListener((obs, oldVal, newVal) -> {
-                  driveTimeLabel.setText(String.format("%.1f hrs", newVal));
-              });
-        mainModel.totalDriveDistanceProperty.addListener((obs, oldVal, newVal) -> {
-            driveDistanceLabel.setText(String.format("%.0f miles", newVal));
+        setUpObservables();
+    }
+    
+    private void setUpObservables() {
+//        setupObservable(mainModel.totalDriveTimeProperty,
+//              driveTimeLabel, "(%.2f hrs)");
+//        setupObservable(mainModel.totalDriveDistanceProperty,
+//              driveDistanceLabel, "(%.0f miles)");
+        setupObservable(mainModel.drivePriceProperty,
+              drivePriceLabel,
+              "($%.2f)");
+        setupObservable(mainModel.driveDurationProperty,
+              driveDurationLabel,
+              "(%.1f hrs)");
+    }
+    
+    private void setupObservable(Property<Number> prop, Label lbl) {
+        setupObservable(prop, lbl, "%.2f");
+    }
+    
+    private void setupObservable(Property<Number> prop, Label lbl, String fmt) {
+        prop.addListener((obs, oldVal, newVal) -> {
+            setLbl(lbl, newVal, fmt);
         });
-
-        driveTimeLabel.textProperty().setValue(
-              String.format("%.2f hrs...", mainModel.totalDriveTime));
-        driveDistanceLabel.textProperty().setValue(
-              String.format("%.0f miles...", mainModel.totalDriveDistance));
+        lbl.textProperty().setValue(String.format(
+              fmt, prop.getValue()
+        ));
+    }
+    
+    private void setLbl(Label lbl, Number val, String fmt) {
+        lbl.setText(String.format(fmt, val));
     }
 
     public MainController setTripInfoTabContents(Node node) {

@@ -22,6 +22,23 @@
     -fx-text-fill: derive(#5264AE,-20%);
 }
 
+.info-label-a {
+    /*-fx-font-weight: BOLD;*/
+    -fx-font-style: italic;
+    -fx-font-size: 1em;
+    /*-fx-font-size: 16.0px;*/
+    /*-fx-padding	: 14.0px;*/
+    -fx-text: derive(#aaffaa,-20%);
+}
+
+.info-label-b {
+    -fx-font-style: oblique;
+    -fx-font-size: 1em;
+    /*-fx-font-size: 16.0px;*/
+    /*-fx-padding	: 14.0px;*/
+    -fx-color: derive(#aaffaa,-20%);
+}
+
 /*******************************************************************************
 *                                                                              *
 * JFX Textfield                                                                *
