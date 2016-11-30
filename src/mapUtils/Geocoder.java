@@ -9,7 +9,7 @@ import helpers.Helper;
 import models.places.Location;
 
 /**
- * TODO: get coordinates, formatted address, and maybe other info from Google
+ * Get coordinates, formatted address, and maybe other info from Google
  *    In the response, we probably just want - results[i].formatted_address
  *                                           - results[i].geometry.location
  *     Pls change the places.Location class as necessary also.

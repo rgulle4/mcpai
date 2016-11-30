@@ -12,7 +12,6 @@ public final class StraightLineDistance
     private static final double R = 6372.8;
     private static final double KM_PER_MILE = 1.60934;
 
-    // TODO: look into other signatures that might be useful (eg (mapnode, mapnode))
     /**
      * Returns straight line distance between two points on Earth.
      * @param lat1 Latitude of point1.
