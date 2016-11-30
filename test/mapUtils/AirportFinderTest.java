@@ -4,6 +4,8 @@ import helpers.Helper;
 import models.places.Location;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 
 /**
@@ -16,6 +18,8 @@ public class AirportFinderTest {
         Location location = new Location("Baton Rouge");
         List<Location> results = AirportFinder.getNearbyAirports(location);
         System.out.println(Helper.GSON_PP.toJson(results));
+        assertNotNull(results);
+        assertTrue(results.size() > 0);
     }
 
 }

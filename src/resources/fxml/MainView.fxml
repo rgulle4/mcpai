@@ -8,7 +8,6 @@
 <StackPane fx:id="root"
            xmlns="http://javafx.com/javafx/8.0.65"
            xmlns:fx="http://javafx.com/fxml/1">
-    <!-- fx:controller="controllers.MainController" -->
     <children>
         <BorderPane minHeight="400.0" minWidth="400.0">
             <top>
@@ -36,6 +35,7 @@
                 <JFXToolbar>
                     <right>
                         <HBox spacing="5" style="-fx-background-color:  derive(#8888cc,-10%);">
+                            <Label styleClass="input-label">DRIVING: </Label>
                             <Label fx:id="driveTimeLabel" styleClass="input-label">1111</Label>
                             <Label fx:id="driveDistanceLabel" styleClass="input-label">2222</Label>
                             <JFXButton fx:id="testButton" text="println"/>

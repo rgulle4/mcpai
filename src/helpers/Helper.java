@@ -6,6 +6,8 @@ import com.google.maps.GeoApiContext;
 
 public final class Helper {
 
+    public static final boolean DEBUG_MODE = true;
+
     public static final String GOOGLE_API_KEY = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
 //          = System.getenv("MCPAIGOOGLEAPIKEY");
 
@@ -33,5 +35,25 @@ public final class Helper {
 
     public static String toJsonPretty(Object o) {
         return GSON_PP.toJson(o);
+    }
+
+    public static void printlnDebug(Object o) {
+        if (DEBUG_MODE) System.out.println(o);
+    }
+
+    public static void printDebug(Object o) {
+        if (DEBUG_MODE) System.out.print(o);
+    }
+
+    public static void println(Object o) {
+        System.out.println(o);
+    }
+
+    public static void println() {
+        System.out.println();
+    }
+
+    public static void print(Object o) {
+        System.out.print(o);
     }
 }

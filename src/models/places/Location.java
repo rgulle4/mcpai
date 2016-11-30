@@ -12,7 +12,34 @@ public class Location {
     private String formattedAddress;
     private Double lat;
     private Double lng;
+    private LatLng latlng;
+    private boolean hasBeenGeoCoded = false;
     private boolean isAirport = false;
+    
+    public boolean hasNoLatLng() {
+        return (lat == null || lng == null);
+    }
+    
+    public boolean hasLatLng() {
+        return (lat != null || lng != null);
+    }
+    
+    public boolean hasBeenGeocoded() { return hasBeenGeoCoded; }
+    public boolean hasNotBeenGeocoded() { return !hasBeenGeoCoded; }
+    
+    public Location geoCode() {
+        geoCode(false);
+        return this;
+    }
+    
+    public Location geoCode(boolean force) {
+        if (!force && hasBeenGeoCoded)
+            return this;
+        Geocoder.geoCode(this);
+        this.latlng = new LatLng(lat, lng);
+        hasBeenGeoCoded = true;
+        return this;
+    }
 
     public Location() {
     }
@@ -39,7 +66,6 @@ public class Location {
         if (locationString.equals(this.locationString))
             return this;
         this.locationString = locationString;
-        Geocoder.geoCode(this);
         return this;
     }
 
@@ -49,24 +75,40 @@ public class Location {
         return this;
     }
 
-    public Double getLat() { return lat; }
+    public Double getLat() {
+        if (hasNoLatLng())
+            geoCode();
+        return lat;
+    }
     public Location setLat(Double val) {
         this.lat = val;
         return this;
     }
 
-    public Double getLng() { return lng; }
+    public Double getLng() {
+        if (hasNoLatLng())
+            geoCode();
+        return lng;
+    }
     public Location setLng(Double val) {
         this.lng = val;
         return this;
     }
 
     public Double[] getLatLngPair() {
+        if (hasNoLatLng())
+            geoCode();
         return new Double[] { lat, lng };
     }
-
+    
+    /**
+     * Gives this object's {@link LatLng}  object.
+     * @return A {@link LatLng} object.
+     */
     public LatLng getLatLng() {
-        return new LatLng(lat, lng);
+        if (hasNoLatLng())
+            geoCode();
+        return latlng;
     }
 
     @Override

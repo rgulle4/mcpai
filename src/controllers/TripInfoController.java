@@ -18,7 +18,7 @@ import models.MainModel;
 import javax.annotation.PostConstruct;
 
 @FXMLController(value = "/resources/fxml/TripInfo.fxml", title = "mcpai")
-public class TripInfoController {
+public final class TripInfoController {
 
     @FXMLViewFlowContext
     private ViewFlowContext context;
@@ -49,16 +49,13 @@ public class TripInfoController {
     /**
      * Constructor then initialize then init
      */
-    private void initialize() {
-        tripInfoTestButton.setOnAction((e) -> { printTest(); });
-    }
+    private void initialize() { }
 
     @PostConstruct
     /**
      * Constructor then initialize then init
      */
     public void init() throws FlowException, VetoException {
-//        Helper.printObject(mainModel, "mainModel");
         setMainModel((MainModel) context.getRegisteredObject("mainModel"));
         loadDefaultValues();
         setUpAutoSave();
