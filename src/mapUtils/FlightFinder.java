@@ -15,8 +15,8 @@ import java.util.List;
  */
 public final class FlightFinder {
     private static final String GOOGLE_API_KEY
-//          = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
-          = "AIzaSyCxC53nAkMaeEDWFCmCT8JXOA8Qcv8ej0g";
+          = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
+//          = "AIzaSyCxC53nAkMaeEDWFCmCT8JXOA8Qcv8ej0g";
 //          = Helper.GOOGLE_API_KEY;
     private static final Gson GSON = new Gson();
 

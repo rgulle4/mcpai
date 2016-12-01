@@ -3,10 +3,16 @@ package mapUtils;
 import com.google.gson.Gson;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
+import com.google.maps.model.AddressType;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 import helpers.Helper;
+import mapUtils.ap.Airports;
 import models.places.Location;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Get coordinates, formatted address, and maybe other info from Google
@@ -46,9 +52,18 @@ public final class Geocoder {
     public static Location geocode(Location location) {
         GeocodingResult[] results = geocode(location.getLocationString());
         GeocodingResult r = results[0];
-        location.setFormattedAddress(r.formattedAddress);
+        
         location.setLatLng(r.geometry.location.lat, r.geometry.location.lng);
+        setStuff(location, r);
         return location;
+    }
+    
+    private static void setStuff(Location location, GeocodingResult r) {
+        location.setFormattedAddress(r.formattedAddress);
+        location.setPlaceId(r.placeId);
+        location.setIsAirport(resultIsAirport(r));
+        if (resultIsAirport(r))
+            location.setAirportCodeFromLatlng();
     }
     
     /**
@@ -64,7 +79,7 @@ public final class Geocoder {
         }
         GeocodingResult[] results = reverseGeocode(location.getLatLng());
         GeocodingResult r = results[0];
-        location.setFormattedAddress(r.formattedAddress);
+        setStuff(location, r);
         return location;
     }
     
@@ -89,5 +104,13 @@ public final class Geocoder {
                   .awaitIgnoreError();
         } catch (Exception e) { /* idc */ }
         return results;
+    }
+    
+    private static boolean resultIsAirport(GeocodingResult r) {
+        for (AddressType type : r.types) {
+            if (type == AddressType.AIRPORT)
+                return true;
+        }
+        return false;
     }
 }

@@ -3,6 +3,7 @@ package mapUtils.ap;
 import com.google.maps.model.LatLng;
 import helpers.Helper;
 import mapUtils.StraightLineDistance;
+import models.places.Location;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -206,5 +207,44 @@ public final class Airports {
                 results.put(distance, code);
         }
         return results;
+    }
+    
+    /**
+     * Dict of distance : airportCode, sorted by distance; for hammond, 150...
+     *   {
+     *     "37.31": "MSY",
+     *     "41.04": "BTR",
+     *     "83.13": "GPT",
+     *     "93.35": "LFT",
+     *     "94.15": "PIB",
+     *     "126.94": "JAN",
+     *     "132.59": "MOB",
+     *     "136.2": "AEX"
+     *   }
+     * @param latlng eg new LatLng(30.5043, -90.4611).
+     * @param radius 150 miles or something.
+     * @return Map of distance -> code (37.31 -> "MSY").
+     */
+    public static TreeMap<Double, String> getAirportsWithinRadius(
+                                                LatLng latlng,
+                                                double radius)
+    {
+        return getAirportsWithinRadius(latlng.lat, latlng.lng, radius);
+    }
+    
+    /**
+     * Assuming your latlng is an airport, return its airport code
+     * @param latlng
+     * @return
+     */
+    public static String getAirportCodeOfLatlng(LatLng latlng)
+    {
+        Map.Entry<Double, String> entry
+              = getAirportsWithinRadius(latlng, 50).firstEntry();
+        double distance = entry.getKey();
+        String code = entry.getValue();
+        Helper.printDebug(
+              "Code = " + code + ", Distance = " + distance);
+        return code;
     }
 }

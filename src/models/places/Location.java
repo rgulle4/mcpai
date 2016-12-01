@@ -12,11 +12,30 @@ import java.util.TreeMap;
  * TODO: see 00notes/location-etc/
  */
 public class Location {
+    public String getAirportCode() {
+        return airportCode.toUpperCase();
+    }
+    
+    public Location setAirportCode(String airportCode) {
+        this.airportCode = airportCode.toUpperCase();
+        return this;
+    }
+    
+    public Location setAirportCodeFromLatlng() {
+        String code = Airports.getAirportCodeOfLatlng(this.getLatLng());
+        this.setAirportCode(code);
+        return this;
+    }
     
     /* --------------------------------------------------------- */
     
     private String locationString;
     private String formattedAddress;
+    private String placeId;
+    
+    private boolean isAirport = false;
+    private String airportCode;
+    
     private Double lat;
     private Double lng;
     private LatLng latlng;
@@ -77,8 +96,16 @@ public class Location {
     public boolean hasNotBeenReverseGeocoded() {
         return !hasBeenReverseGeocoded;
     }
+
+    /* --------------------------------------------------------- */
+
+    public boolean isAirport() { return isAirport; }
+    public Location setIsAirport(boolean airport) {
+        isAirport = airport;
+        return this;
+    }
     
-     /* --------------------------------------------------------- */
+    /* --------------------------------------------------------- */
      
     /**
      * TODO: make this real
@@ -169,6 +196,12 @@ public class Location {
     public String getFormattedAddress() { return formattedAddress; }
     public Location setFormattedAddress(String val) {
         formattedAddress = val;
+        return this;
+    }
+    
+    public String getPlaceId() { return placeId; }
+    public Location setPlaceId(String placeId) {
+        this.placeId = placeId;
         return this;
     }
     

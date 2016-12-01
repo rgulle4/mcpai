@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 public class GeocoderTest {
     @Test
     public void geocode() throws Exception {
+        /* -------------------------------------------- */
         Location msy = new Location("msy");
         
         // msy shouldn't have a latlng yet...
@@ -28,6 +29,17 @@ public class GeocoderTest {
         double expectedLng = -90.25901119999999;
         assertEquals(expectedLat, msy.getLat(), 0.01);
         assertEquals(expectedLng, msy.getLng(), 0.01);
+        
+        // msy should be an airport
+        assertTrue(msy.isAirport());
+        
+        /* -------------------------------------------- */
+        Location brAirport = new Location("Baton Rouge Metro Airport");
+        brAirport.geocode();
+
+        // brAirport's code should be BTR
+        assertEquals("BTR", brAirport.getAirportCode());
+        
     }
     
 }
