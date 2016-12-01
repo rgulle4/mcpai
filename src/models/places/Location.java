@@ -1,10 +1,12 @@
 package models.places;
 
 import com.google.maps.model.LatLng;
+import mapUtils.ap.Airports;
 import mapUtils.Geocoder;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * TODO: see 00notes/location-etc/
@@ -18,11 +20,12 @@ public class Location {
     private Double lat;
     private Double lng;
     private LatLng latlng;
-    private boolean hasBeenGeoCoded = false;
-    private boolean isAirport = false;
+    private boolean hasBeenGeocoded = false;
+    private boolean hasBeenReverseGeocoded = false;
     
     /**
-     * Nearest airports, ordered by distance, kv pairs are like so:
+     * Nearest airports, ordered by distance, converse of distancesAirportCodes;
+     * kv pairs are like so:
      *   {
      *       "MSY" -> 37.31
      *       "BTR" -> 41.04
@@ -33,7 +36,8 @@ public class Location {
     private Map<String, Double> airportCodesDistances = new LinkedHashMap<>();
     
     /**
-     * Nearest airports, ordered by distance, kv pairs are like so:
+     * Nearest airports, ordered by distance, converse of airportCodesDistances;
+     * kv pairs are like so:
      *   {
      *       37.31 -> "MSY"
      *       41.04 -> "BTR"
@@ -41,7 +45,18 @@ public class Location {
      *       93.35 -> "LFT"
      *   }
      */
-    private Map<String, Double> distancesAirportCodes = new LinkedHashMap<>();
+    private Map<Double, String> distancesAirportCodes = new LinkedHashMap<>();
+    
+    /**
+     * The result from Airports.getAirportsWithinRadius()
+     *   {
+     *       37.31 -> "MSY"
+     *       41.04 -> "BTR"
+     *       83.13 -> "GPT"
+     *       93.35 -> "LFT"
+     *   }
+     */
+    private TreeMap<Double, String> airportsWithinRadius = new TreeMap<>();
     
     /* --------------------------------------------------------- */
     
@@ -50,11 +65,18 @@ public class Location {
     }
     
     public boolean hasLatLng() {
-        return (lat != null || lng != null);
+        return (lat != null && lng != null);
     }
     
-    public boolean hasBeenGeocoded() { return hasBeenGeoCoded; }
-    public boolean hasNotBeenGeocoded() { return !hasBeenGeoCoded; }
+    public boolean hasBeenGeocoded() { return hasBeenGeocoded; }
+    public boolean hasNotBeenGeocoded() { return !hasBeenGeocoded; }
+    
+    public boolean hasBeenReverseGeocoded() {
+        return hasBeenReverseGeocoded;
+    }
+    public boolean hasNotBeenReverseGeocoded() {
+        return !hasBeenReverseGeocoded;
+    }
     
      /* --------------------------------------------------------- */
      
@@ -66,23 +88,60 @@ public class Location {
         return locationString;
     }
     
-    private void getAirportsWithinRadius(double radius) {
+    public Map<String, Double> getApDist(double radius) {
+        acquireAirportsWithinRadius(radius);
+        return airportCodesDistances;
+    }
+    
+    public Map<Double, String> getDistAp(double radius) {
+        acquireAirportsWithinRadius(radius);
+        return distancesAirportCodes;
+    }
+    
+    private void acquireAirportsWithinRadius(double radius) {
+        // grab results, alias it to 'r'
+        TreeMap<Double, String> r = airportsWithinRadius;
+        r = Airports.getAirportsWithinRadius(this.lat, this.lng, radius);
+    
+        // alias our two mutually converse dictionaries
+        Map<String, Double> apDist = airportCodesDistances;
+        Map<Double, String> distAp = distancesAirportCodes;
         
+        // put the results into our dictionaries, ordered by distance
+        for (Double distance : r.keySet()) {
+            String airportCode = r.get(distance);
+            
+            apDist.put(airportCode, distance);
+            distAp.put(distance, airportCode);
+        }
     }
     
     /* --------------------------------------------------------- */
     
     public Location geocode() {
         geocode(false);
+        hasBeenGeocoded = true;
         return this;
     }
     
     public Location geocode(boolean force) {
-        if (!force && hasBeenGeoCoded)
+        if (!force && hasBeenGeocoded)
             return this;
         Geocoder.geocode(this);
         this.latlng = new LatLng(lat, lng);
-        hasBeenGeoCoded = true;
+        hasBeenGeocoded = true;
+        return this;
+    }
+    
+    public Location reverseGeocode() {
+        reverseGeocode(false);
+        return this;
+    }
+    
+    public Location reverseGeocode(boolean force) {
+        if (!force && hasBeenReverseGeocoded)
+            return this;
+        Geocoder.reverseGeocode(this);
         return this;
     }
     
@@ -95,20 +154,9 @@ public class Location {
         this();
         setLocationString(locationString);
     }
-
-    public Location(String locationString, boolean isAirport) {
-        this();
-        setLocationString(locationString);
-        setIsAirport(isAirport);
-    }
     
     /* --------------------------------------------------------- */
-    
-    public boolean getIsAirport() { return isAirport; }
-    public Location setIsAirport(boolean val) {
-        isAirport = val;
-        return this;
-    }
+
 
     public String getLocationString() { return locationString; }
     public Location setLocationString(String locationString) {
@@ -125,33 +173,11 @@ public class Location {
     }
     
     /* --------------------------------------------------------- */
-
-    public Double getLat() {
-        if (lat == null)
-            geocode(true);
-        return lat;
-    }
-    public Location setLat(Double val) {
-        this.lat = val;
-        resetLatLng();
-        return this;
-    }
     
-    private void resetLatLng() {
-        if (lat != null && lng != null)
-            this.latlng = new LatLng(this.lat, this.lng);
-    }
-
-    public Double getLng() {
-        if (lng == null)
-            geocode(true);
-        return lng;
-    }
-
-  
-    public Location setLng(Double val) {
-        this.lng = val;
-        resetLatLng();
+    public Location setLatLng(Double lat, Double lng) {
+        this.latlng = new LatLng(lat, lng);
+        this.lat = lat;
+        this.lng = lng;
         return this;
     }
     
@@ -159,34 +185,19 @@ public class Location {
         this.latlng = latlng;
         this.lat = latlng.lat;
         this.lng = latlng.lng;
-        this.geocode(true);
         return this;
     }
     
-    public Location setLatLng(Double lat, Double lng) {
-        this.latlng = new LatLng(lat, lng);
-        this.lat = latlng.lat;
-        this.lng = latlng.lng;
-        this.geocode(true);
-        return this;
-    }
-    
-    public Location setLatLng(Double[] latlngPair) {
-        if (latlngPair.length != 2)
-            return this;
-        this.lat = latlngPair[0];
-        this.lng = latlngPair[1];
-        this.latlng = new LatLng(lat, lng);
-        this.geocode(true);
-        return this;
-    }
-    
-    /* --------------------------------------------------------- */
-    
-    public Double[] getLatLngPair() {
+    public Double getLat() {
         if (hasNoLatLng())
-            geocode();
-        return new Double[] { lat, lng };
+            geocode(true);
+        return lat;
+    }
+    
+    public Double getLng() {
+        if (hasNoLatLng())
+            geocode(true);
+        return lng;
     }
     
     /**

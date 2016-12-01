@@ -1,12 +1,10 @@
 package mapUtils;
 
 import com.google.maps.model.LatLng;
-import helpers.Helper;
+import mapUtils.ap.Airports;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 
 import static org.junit.Assert.*;
@@ -38,7 +36,7 @@ public class AirportsTest {
         double myLng = -90.461;
         double radius = 150; // miles
         TreeMap<Double, String> result
-              = Airports.getAirPortsWithinRadius(myLat, myLng, radius);
+              = Airports.getAirportsWithinRadius(myLat, myLng, radius);
         assertEquals(8, result.size());
         assertTrue(result.containsValue("MSY"));
         assertTrue(result.containsValue("BTR"));
@@ -58,7 +56,7 @@ public class AirportsTest {
         
         ArrayList<String> airportCodes = new ArrayList<>();
         ArrayList<Double> distances = new ArrayList<>();
-        Airports.getAirPortsWithinRadius(
+        Airports.getAirportsWithinRadius(
               myLat, myLng, radius,
               airportCodes, distances);
 

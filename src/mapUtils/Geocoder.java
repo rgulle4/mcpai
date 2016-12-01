@@ -30,23 +30,41 @@ public final class Geocoder {
     private static final GeoApiContext
           geoApiContext = Helper.GEO_API_CONTEXT;
     
-    /**
+    /*
      * Geocodes a location; if latlng exists, reverseGeocode using latlng (latlng will
      * be unchanged, but all other fields will potentially change), next try
      * geocoding using locationString.
      * @param location A Location object.
      * @return The same Location object, after it's been fully geocoded.
      */
+    
+    /**
+     * Geocodes a location, ie finds its latlng.
+     * @param location A Location object.
+     * @return The same Location object, after it's been fully geocoded.
+     */
     public static Location geocode(Location location) {
-        GeocodingResult[] results;
-        if (location.hasLatLng())
-            results = reverseGeocode(location.getLatLng());
-        else
-            results = geocode(location.getLocationString());
+        GeocodingResult[] results = geocode(location.getLocationString());
         GeocodingResult r = results[0];
         location.setFormattedAddress(r.formattedAddress);
-        location.setLat(r.geometry.location.lat);
-        location.setLng(r.geometry.location.lng);
+        location.setLatLng(r.geometry.location.lat, r.geometry.location.lng);
+        return location;
+    }
+    
+    /**
+     * Sets a location's name, address, etc using its latlng.
+     * @param location A location with a latlng.
+     * @return The same location, with data filled in.
+     */
+    public static Location reverseGeocode(Location location) {
+        if (location.hasNoLatLng()) {
+            System.err.print("ERROR: can't reverse geocode, bc no latlng " +
+                  "for location " + location + "");
+            return null;
+        }
+        GeocodingResult[] results = reverseGeocode(location.getLatLng());
+        GeocodingResult r = results[0];
+        location.setFormattedAddress(r.formattedAddress);
         return location;
     }
     
@@ -65,7 +83,8 @@ public final class Geocoder {
     
     private static GeocodingResult[] geocode(String locationString) {
         GeocodingResult[] results = new GeocodingResult[0];
-        try { results = GeocodingApi
+        try {
+            results = GeocodingApi
                   .geocode(geoApiContext, locationString)
                   .awaitIgnoreError();
         } catch (Exception e) { /* idc */ }

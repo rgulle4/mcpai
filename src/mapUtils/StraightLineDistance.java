@@ -1,5 +1,6 @@
 package mapUtils;
 
+import com.google.maps.model.LatLng;
 import models.places.Location;
 
 /**
@@ -14,33 +15,54 @@ public final class StraightLineDistance
 
     /**
      * Returns straight line distance between two points on Earth.
-     * @param lat1 Latitude of point1.
-     * @param lon1 Longitude of point1.
-     * @param lat2 Latitude of point2.
-     * @param lon2 Longitude of point2.
+     * @param latA Latitude of pointA.
+     * @param lngA Longitude of pointA.
+     * @param latB Latitude of pintB.
+     * @param lngB Longitude of pintB.
+     * @return Straight line distance in miles.
+     */
+    public static double slDistance(double latA, double lngA,
+                                    double latB, double lngB)
+    {
+        return haversine(latA, lngA, latB, lngB);
+    }
+    
+    /**
+     * Returns straight line distance between two points on Earth.
+     * @param latlngA LatLng of pointA.
+     * @param latlngB LatLng of pointB.
+     * @return Straight line distance in miles.
+     */
+    public static double slDistance(LatLng latlngA, LatLng latlngB) {
+        return slDistance(
+              latlngA.lat, latlngA.lng,
+              latlngB.lat, latlngB.lng);
+    }
+    
+    /**
+     * Returns straight line distance between two points on Earth.
+     * @param a A valid Location object that has a coordinate.
+     * @param b A valid Location object that has a coordinate.
      * @return distance in miles.
      */
-    public static double slDistance(double lat1, double lon1,
-                                    double lat2, double lon2) {
-        return haversine(lat1, lon1, lat2, lon2);
-    }
-
-    public static double slDistance(Location a, Location b) {
+    public static double slDistance(Location a, Location b)
+    {
         return slDistance(a.getLat(), a.getLng(), b.getLat(), b.getLng());
     }
 
     /**
      * SAUCE: https://rosettacode.org/wiki/Haversine_formula#Java
-     * @return distance in miles.
+     * @return Straight line distance in miles.
      */
-    private static double haversine(double lat1, double lon1,
-                                    double lat2, double lon2) {
-        double dLat = Math.toRadians(lat2 - lat1);
-        double dLon = Math.toRadians(lon2 - lon1);
-        lat1 = Math.toRadians(lat1);
-        lat2 = Math.toRadians(lat2);
+    private static double haversine(double latA, double lngA,
+                                    double latB, double lngB)
+    {
+        double dLat = Math.toRadians(latB - latA);
+        double dLng = Math.toRadians(lngB - lngA);
+        latA = Math.toRadians(latA);
+        latB = Math.toRadians(latB);
 
-        double a = Math.pow(Math.sin(dLat / 2),2) + Math.pow(Math.sin(dLon / 2),2) * Math.cos(lat1) * Math.cos(lat2);
+        double a = Math.pow(Math.sin(dLat / 2),2) + Math.pow(Math.sin(dLng / 2),2) * Math.cos(latA) * Math.cos(latB);
         double c = 2 * Math.asin(Math.sqrt(a));
         return R * c / KM_PER_MILE;
     }

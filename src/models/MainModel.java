@@ -48,9 +48,7 @@ public final class MainModel {
     private int maxBudget = 700;
     private double timeWeight = 100;
     
-    public static final Map<String, LatLng> AIRPORTS_DICT = Airports.AIRPORTS_DICT;
-    
-    public MainModel() {
+        public MainModel() {
 //        calculateDrive();
 //        calculateFlight();
     }

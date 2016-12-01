@@ -22,7 +22,7 @@ public class GeocoderTest {
         msy.geocode();
         Helper.printObject(msy);
         assertTrue(msy.hasLatLng());
-        
+
         // msy should have these exact latlng values...
         double expectedLat = 29.9922012;
         double expectedLng = -90.25901119999999;
