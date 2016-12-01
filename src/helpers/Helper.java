@@ -15,7 +15,7 @@ public final class Helper {
 
     /* ---------------------------------------------------- */
     
-    public static String GOOGLE_API_KEY;
+    private static String GOOGLE_API_KEY;
     
     private static final String CREDENTIALS_PATH
           = "config/credentials/";
@@ -65,7 +65,7 @@ public final class Helper {
     /* ---------------------------------------------------- */
 
     public static final GeoApiContext GEO_API_CONTEXT
-          = new GeoApiContext().setApiKey(GOOGLE_API_KEY);
+          = new GeoApiContext().setApiKey(getApiKey());
     public static final Gson GSON_PP
           = new GsonBuilder().setPrettyPrinting().create();
     public static final Gson GSON

@@ -14,11 +14,8 @@ import java.util.List;
  * Finds flights; getBestFlight()
  */
 public final class FlightFinder {
-    private static final String GOOGLE_API_KEY
-          = "AIzaSyCVcA7zkndeuPwvejRsbtngKfC-H40Gq8Y";
-//          = "AIzaSyCxC53nAkMaeEDWFCmCT8JXOA8Qcv8ej0g";
-//          = Helper.GOOGLE_API_KEY;
-    private static final Gson GSON = new Gson();
+    private static String GOOGLE_API_KEY = Helper.getApiKey();
+    private static final Gson GSON = Helper.GSON;
 
     public int numResults;
 

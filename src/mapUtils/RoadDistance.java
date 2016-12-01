@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public final class RoadDistance {
 
-    private static final String GOOGLE_API_KEY = Helper.GOOGLE_API_KEY;
+    private static String GOOGLE_API_KEY = Helper.getApiKey();
     private static final Gson GSON = new Gson();
     private static final String BASE_URL = "https://maps.googleapis.com/" +
           "maps/api/distancematrix/json?" +
@@ -57,19 +57,19 @@ public final class RoadDistance {
         double distance = response.rows[0].elements[0].distance.getMiles();
         return distance;
     }
-    
+
     public double getRoadDistance(Location origin, Location destination) {
         String originString = parseLocationString(origin);
         String destinationString = parseLocationString(destination);
         return getRoadDistance(originString, destinationString);
     }
-    
+
     public double getRoadTime(Location origin, Location destination) {
         String originString = parseLocationString(origin);
         String destinationString = parseLocationString(destination);
         return getRoadTime(originString, destinationString);
     }
-    
+
     private String parseLocationString(Location location) {
         if (location.hasLatLng()) {
             StringBuilder sb = new StringBuilder();

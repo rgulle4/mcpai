@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
  * Created by royg59 on 11/29/16.
  */
 public class GeocoderTest {
+    
     @Test
     public void geocode() throws Exception {
         /* -------------------------------------------- */
