@@ -37,14 +37,6 @@ public final class Geocoder {
         
     }
     
-    /*
-     * Geocodes a location; if latlng exists, reverseGeocode using latlng (latlng will
-     * be unchanged, but all other fields will potentially change), next try
-     * geocoding using locationString.
-     * @param location A Location object.
-     * @return The same Location object, after it's been fully geocoded.
-     */
-    
     /**
      * Geocodes a location, ie finds its latlng.
      * @param location A Location object.
