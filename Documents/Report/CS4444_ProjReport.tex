@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+
+\usepackage{scalefnt}
+\usepackage{lmodern} 
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+
+\title{Project Report}
+\author{ {\bf Group 2:} \\
+Alex Dunkel,
+Roy Gullem,
+Keith Houpy, \\
+Emily Ribando-Gros, and
+Vincent Rodomista}
+
+\begin{document}
+\maketitle
+
+Requirements for Report:
+"The written report should provide a clear documentation about the project's motivation, the problem addressed by the project, the main technical (AI-related) ideas/concepts behind the project, and the software system design and implementation. 
+The report should describe the experiments performed in the project, and discussions should be included to explain the results of the experiments."
+
+\section{Motivation}
+
+Travel plans can be extremely complicated. As a college student, when planning a trip you can sift through numerous flights looking for deals and also weigh the cost of driving based on gas prices and car mileage. While a business person may do the same sort of sifting to find the fastest, most direct flights and available private transportation in order to get to their destination as fast as possible without considering the price. We are given many options when considering travel plans and planning could end up in a series of calculations based on time, price of travel, or both. 
+
+\section{Problem}
+
+\subsection{Problem Formulation}
+\begin{enumerate}
+\item \textbf{Initial State}: The traveller's starting point
+\item \textbf{State Space}: All possible contact points
+\item	 \textbf{Actions}: The modes of transportation used between two contact points, either drive or fly
+\item \textbf{Transition Model}: An action updates the state to a new contact point
+\item \textbf{Goal State}: The traveller's destination point
+\item \textbf{Paths}: A sequence of actions from the initial state to the goal state
+\item \textbf{Path Costs}: The edge cost from one contact point to another based on the action and a heuristic component
+\item \textbf{Solution}: The path from an initial state to the goal state
+\item \textbf{Search Costs}: Time and storage requirements for finding a solution
+\end{enumerate}
+
+
+\section{AI Concepts : Graph Search}
+
+
+\subsubsection{Constraints}
+When constructing our graph, given the number of airports and and cities in the US, our branching factor could be very large. Because of this, some constraints must be considered. \\
+Can use a very specific example, like Roy traveling from BR to SF? Where we give it the specific cities airports etc.
+
+\subsection{Cost Functions and Heuristics?}
+Dijkstra's Algorithm or A*?
+
+%\subsection{IBM Bluemix}
+
+%\subsection{Software System Design and Implementation}
+
+\section{Experimentation}
+
+%\subsection{Heuristics}
+
+%\subsection{Conclusions}
+
+				
+
+%\section{Experimentation}
+%\indent Customers may choose to minimize different factors based on their needs. A businessman may not worry as much about the cost of transportation but would like to minimize time where as a family might want to save money for a vacation. This allows for us to find different paths based on which factor is being minimized. We can also use different search algorithms to see which ones are the most efficient for our problem. 
+
+\end{document}

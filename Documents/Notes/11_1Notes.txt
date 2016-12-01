@@ -1,0 +1,27 @@
+Meeting 11/1 : Game Plan
+
+Step 1 : Environment Setup
+
+A basic environment consists of 
+ - contact points (vertices from which different methods of transportation will go between)
+ - roads (edges how buses travel)
+ - atmosphere (2D or 3D space how a plane travels)
+
+Additional environmental conditions we can add later on
+ - Bike lanes, water, bridges, traffic conditions, elevation, weather related obstacles
+
+Major Goal
+ - GUI of environment
+
+
+Step 2 : Add Agents to the Environment
+
+Our basic agents 
+ - bus 
+ - plane
+
+Other possible agents can be 
+ - bike, boat, train (dependent on environment)
+
+The different modes of transportation are agents because of the specific way each interacts with their environment. Additionally, they each have different actions and rules associated with them.
+Each will also have a specific performance measure which will consider time or ticket price. We will use this performance measure when using A* search in order to find paths.

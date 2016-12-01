@@ -1,0 +1,60 @@
+In order to make sense of our project, I've come up with the following rough problem formulation. It includes an outer search problem, one which chooses a path for a traveller who can use different modes of transportation. In addition there is also an internal search problem, where the plane finds paths that it can take. 
+
+OUTER SEARCH PROBLEM
+PEAS
+Performance Measure
+- fast
+- price efficient
+Environment
+- roads
+- contact points
+- atmosphere
+Actuators (Output)
+- Questions for the traveler
+Sensors (Input)
+- Traveler's goal
+- starting and final contact points
+
+Search Problem Formulation :
+1. Initial State
+Traveler is at the starting contact point.
+2. States 
+Traveler at any one of the contact points.
+3. Actions
+Move between contact points via different modes of transportation.
+4. Goal
+Reach final contact point in either least amount of time or money.
+5. Solution
+A sequence of contact points given mode of transportation for each.
+
+Given only the bus method of transportation, via roads, the above formulation is enough. When adding the plane, the plane itself must make decisions about which way to travel. 
+
+
+INNER SEARCH PROBLEM
+To make the plane as an agent more interesting, consider certain barriers for the plane such as snow storms or no-fly zones. In this case, a straight line path to a contact point cannot be achieved. This is similar to an agent for the wumpus world.
+It uses a propositional knowledge base to infer the state of the world, and a combination of problem-solving search and domain-specific code
+to decide what path sequence to take. It will finally report back to the external search problem the associated cost with flying.
+
+Plane as Agent
+Performance Measure
+- distance to final contact point
+
+Input: 
+	a list from radar that tells about barriers(weather, no fly)
+Persistent: 
+	KB, knowledge base
+	t, a counter
+	plan, an action sequence
+
+Problem for plane
+1. Initial State
+Plane at starting contact point
+2. States
+Plane in any part of the x,y grid that is not a no-fly or bad weather
+3. Actions
+Move N,E,W,S,NE,SE,SW,NW
+
+
+
+
+

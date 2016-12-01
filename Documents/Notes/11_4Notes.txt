@@ -1,0 +1,12 @@
+Possible Heuristics
+
+- Straight Line Distance and Time
+When calculating the time heuristic need to choose between flying and driving speeds. We'll choose flying because it is more optimistic.
+
+- Cost
+If you exceed available funds at a leaf node, terminate the search starting at that node.
+Sometimes a plane could be cheaper than driving if there is a special.
+Price per gallon for driving and plane ticket for flying
+
+- Stops along path?
+Will just be a search to the stop then a search to the goal

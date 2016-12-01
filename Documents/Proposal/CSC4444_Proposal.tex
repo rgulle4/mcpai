@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+
+\usepackage{scalefnt}
+\usepackage{lmodern} 
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+
+\title{Project Proposal : Minimal Cost Paths}
+\author{ {\bf Group 2:} \\
+Alex Dunkel,
+Roy Gullem,
+Keith Houpy, \\
+Emily Ribando-Gros, and
+Vincent Rodomista}
+
+\begin{document}
+\maketitle
+				
+\section{Description of the Topic}
+
+\indent The following minimum time problem was considered when observing a Corgi, Elvis, fetch a ball that was thrown into the water from the shore of a lake. Elvis runs a certain distance on the land, then chooses a point on the shore at which he begins to swim. It turns out that the point at which he starts swimming minimizes the amount of time to get to the ball. This point can be found using the location of the starting and ending points as well as the velocities Elvis can travel on the land and in the water. The path taken by Elvis is not a straight path but is optimal with respect to time.
+\\
+\indent This problem can be stated in many ways, one of which is through transportation. Maybe customers can choose to travel by car, plane, or boat, travelling different speeds depending on which they choose and what path they take. While this can be stated as a minimal time problem, the customer may choose to minimize the cost of the tickets required for each leg of their trip or minimize the distance travelled. Then given a departure and arrival point and using certain contact points where after the customer's speed may vary, use an informed search algorithm to find a minimal path for their trip.
+\\
+
+\section{Experimentation}
+
+\indent Customers may choose to minimize different factors based on their needs. A businessman may not worry as much about the cost of transportation but would like to minimize time where as a family might want to save money for a vacation. This allows for us to find different paths based on which factor is being minimized. We can also use different search algorithms to see which ones are the most efficient for our problem. 
+
+\subsection{IBM Bluemix}
+
+As a part of the project, we are looking into utilizing one or more of the following Bluemix services.
+
+\begin{enumerate}
+	\item Geospatial Analytics
+	\item Context Mapping
+	\item Tradeoff Analytics
+	\item Retrieve and Rank
+\end{enumerate}
+
+\end{document}
