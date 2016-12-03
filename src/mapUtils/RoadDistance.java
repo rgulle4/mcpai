@@ -2,6 +2,8 @@ package mapUtils;
 
 import com.google.gson.Gson;
 import helpers.Helper;
+import helpers.Minify;
+import mapUtils.cache.SqliteCache;
 import models.places.Location;
 
 import java.io.BufferedReader;
@@ -16,8 +18,14 @@ import java.util.Map;
  * Gives simple distance, and driving time between two places (no driving
  * directions though); a place can be coordinates, a zip, an address, or any
  * string that would turn up a result in Google Maps. Uses Google Maps
- * Distance Matrix API.
- *
+ * Distance Matrix API. Main methods are:  * <br>
+ * <br>
+ *   - {@link RoadDistance#getRoadDistance(String, String)} <br>
+ *   - {@link RoadDistance#getRoadTime(String, String)} <br>
+ * <br>
+ *   - {@link RoadDistance#getRoadDistance(Location, Location)} <br>
+ *   - {@link RoadDistance#getRoadTime(Location, Location)} <br>
+ * <br>
  * TODO: persist the RESPONSE_CACHE, make it better
  */
 public final class RoadDistance {
@@ -38,20 +46,66 @@ public final class RoadDistance {
           = "&origins=";
     private static final String SEPARATOR
           = "|";
-
-    private static final Map<String, Response> RESPONSE_CACHE
-          = new HashMap<String, Response>();
     
     /* -- TODO: cache these objects ---------------------------- */
     
+    private static final SqliteCache RESPONSE_CACHE
+          = SqliteCache.getInstance();
+    
+    // inputs
+    private String combinedInputString;
     private String originString;
     private String destinationString;
-    private String combinedInputString;
+    
+    // results
+    private double roadDistance;
+    private double roadTime;
+    
+    // api results
     private Response response;
     private String responseJson;
-    public static int apiRequestsCounter = 0;
+    public int apiRequestsCounter = 0;
+    public int cacheHits = 0;
     
-    /* -- the main method -------------------------------------- */
+    // metadata
+    
+    /* -- constructors and cache setup ------------------------- */
+    
+    public RoadDistance() {
+        
+    }
+    
+    /** this is called in getResponseFromAPI() when it's finished */
+    private void updatePersistentCache() {
+        // TODO: persist the inputs, result, counter, and whatever else
+    }
+    
+    private Response getResponseFromCache() {
+//        String newCombinedInputString
+//              = buildCombinedInput(originString, destinationString);
+//        if (response != null) {
+//            if (areEqual(newCombinedInputString, combinedInputString)) {
+//                cacheHits++;
+//                return response;
+//            }
+//        }
+    
+//        combinedInputString = newCombinedInputString;
+        String cachedResponseJson = RESPONSE_CACHE.get(originString, destinationString);
+        
+        if (cachedResponseJson != null) {
+            cacheHits++;
+            response = GSON.fromJson(cachedResponseJson, Response.class);
+            return response;
+        }
+        Response actualResponse = getResponseFromAPI();
+        response = actualResponse;
+        RESPONSE_CACHE.put(originString, destinationString, responseJson);
+//        RESPONSE_CACHE.put(originString, destinationString, response);
+        return actualResponse;
+    }
+    
+    /* -- the good stuff  -------------------------------------- */
     
     /**
      * Returns car distance in miles between two places as given by Google Maps.
@@ -61,8 +115,8 @@ public final class RoadDistance {
      */
     public double getRoadDistance(String origin, String destination) {
         response = getResponse(origin, destination);
-        double distance = response.rows[0].elements[0].distance.getMiles();
-        return distance;
+        roadDistance = response.rows[0].elements[0].distance.getMiles();
+        return roadDistance;
     }
     
     /**
@@ -85,7 +139,7 @@ public final class RoadDistance {
      */
     public double getRoadTime(String origin, String destination) {
         response = getResponse(origin, destination);
-        double roadTime = response.rows[0].elements[0].duration.getDuration();
+        roadTime = response.rows[0].elements[0].duration.getDuration();
         return roadTime;
     }
     
@@ -100,6 +154,8 @@ public final class RoadDistance {
         String destinationString = parseLocationString(destination);
         return getRoadTime(originString, destinationString);
     }
+    
+    /* -- deal with the api ------------------------------------ */
 
     private String parseLocationString(Location location) {
         if (location.hasLatLng()) {
@@ -126,14 +182,8 @@ public final class RoadDistance {
     }
     
     private Response getResponse(String origin, String destination) {
-        String newCombinedInputString = buildCombinedInput(origin, destination);
-        if (response != null)
-            if (areEqual(newCombinedInputString, combinedInputString))
-                return response;
-        
         originString = origin;
         destinationString = destination;
-        combinedInputString = newCombinedInputString;
         return getResponseFromCache();
     }
     
@@ -143,19 +193,14 @@ public final class RoadDistance {
               .append(destination.trim()).toString();
     }
     
-    private Response getResponseFromCache() {
-        Response cachedResponse = RESPONSE_CACHE.get(combinedInputString);
-        if (cachedResponse != null)
-            return cachedResponse;
-        Response actualResponse = getResponseFromAPI();
-        RESPONSE_CACHE.put(combinedInputString, actualResponse);
-        return actualResponse;
-    }
-    
-    /** this is called in getResponseFromAPI() when it's finished */
-    private void updatePersistentCache() {
-        // TODO: persist the inputs, result, counter, and whatever else
-    }
+//    private Response getResponseFromCache() {
+//        Response cachedResponse = RESPONSE_CACHE.get(combinedInputString);
+//        if (cachedResponse != null)
+//            return cachedResponse;
+//        Response actualResponse = getResponseFromAPI();
+//        RESPONSE_CACHE.put(combinedInputString, actualResponse);
+//        return actualResponse;
+//    }
     
     private Response getResponseFromAPI() {
         String urlString = buildUrl(originString, destinationString);
@@ -175,7 +220,7 @@ public final class RoadDistance {
             conn.disconnect();
             
             this.apiRequestsCounter++;
-            this.responseJson = sbResponse.toString();
+            this.responseJson = (new Minify()).minify(sbResponse.toString());
             this.response = GSON.fromJson(responseJson, Response.class);
             this.updatePersistentCache();
             
@@ -198,7 +243,7 @@ public final class RoadDistance {
     /**
      * https://developers.google.com/maps/documentation/distance-matrix/intro
      */
-    private class Response
+    public class Response
     {
         String status;  // "OK"
         String[] destination_addresses; // [ "Baton Rouge, LA 70803, USA" ]

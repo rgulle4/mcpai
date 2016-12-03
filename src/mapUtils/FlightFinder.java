@@ -14,34 +14,92 @@ import java.util.List;
 
 /**
  * Finds flights. See {@link FlightFinder#getBestFlight(String, String, String)}
+ * and {@link FlightFinder#getFlights()}.
  */
 public final class FlightFinder {
     private static String GOOGLE_API_KEY = Helper.getApiKey();
     private static final Gson GSON = Helper.GSON;
-
+    
+    /* -- TODO: cache these objects ---------------------------- */
+    
+    // required inputs
+    private String combinedInputs;
+    private String origin = "BTR";
+    private String destination = "SFO";
+    private String date = "2016-12-25";
+    
+    // optional inputs
+    private String maxPrice = "USD700";
+    private String earliestTime = "";
+    private String latestTime = "";
+    private int solutions = 10;
+    
+    // results
+    private Flight bestFlight;
+    private List<Flight> flights;
     public int numResults;
-
-    String origin = "BTR";
-    String destination = "SFO";
-    String date = "2016-12-25";
-    String maxPrice = "USD700";
-    String earliestTime = "";
-    String latestTime = "";
-    int solutions = 10;
-
+    
+    // api results
+    public int requestCounter = 0;
+    
+    
+    
+    /* -- constructors  ---------------------------------------- */
+    
+    /**
+     * Empty constructor, but there's three required options before the query:
+     *   1. {@link FlightFinder#origin} -- best to use IATA codes
+     *      like "BTR", "MSY", etc;
+     *   2. {@link FlightFinder#destination} -- same;
+     *   3. {@link FlightFinder#date} -- like "2016-12-25".
+     */
+    public FlightFinder() { /* noop */ }
+    
+    /**
+     * Construct a FlightFinder with the required options: origin, destination,
+     * and date.
+     * @param origin best to use IATA codes like "BTR", "MSY", etc.
+     * @param destination best to use IATA codes like "BTR", "MSY", etc.
+     * @param date like "2016-12-25".
+     */
+    public FlightFinder(String origin, String destination, String date) {
+        this.origin = origin;
+        this.destination = destination;
+        this.date = date;
+    }
+    
+    /* -- required options ------------------------------------- */
+    
+    /**
+     * REQUIRED; best to use IATA codes ("BTR", "MSY", etc).
+     * @param val best to use IATA codes ("BTR", "MSY", etc)
+     */
     public FlightFinder setOrigin(String val) {
         origin = val;
         return this;
     }
-
+    
+    /**
+     * Required; best to use IATA codes ("BTR", "MSY", etc).
+     * @param val best to use IATA codes ("BTR", "MSY", etc)
+     */
     public FlightFinder setDestination(String val) {
         destination = val;
         return this;
     }
+    
+    /**
+     * REQUIRED; like "2016-12-25".
+     * @param val like "2016-12-25".
+     * @return
+     */
     public FlightFinder setDate(String val) {
         date = val;
         return this;
     }
+    
+    /* -- optional options ------------------------------------- */
+
     public FlightFinder setMaxPrice(String val) {
         maxPrice = val;
         return this;
@@ -59,8 +117,10 @@ public final class FlightFinder {
         return this;
     }
     
+    /* -- the good stuff  -------------------------------------- */
+
     /**
-     * Gets the best flight
+     * Gets the best flight.
      * @param origin eg "btr" (String)
      * @param destination eg "sfo" (String)
      * @param date eg "2016-12-25" (String)
@@ -117,22 +177,20 @@ public final class FlightFinder {
         return flights;
     }
     
+    private static boolean isNotThere(String s) {  return Helper.isNotThere(s); }
+    
     private boolean inputsAreInvalid() {
-        if (origin == null || origin.isEmpty())
-            return true;
-        if (destination == null || destination.isEmpty())
-            return true;
-        if (date == null || date.isEmpty())
-            return true;
-        return false;
+        return isNotThere(origin)
+              || isNotThere(destination)
+              || isNotThere(date);
     }
-
-    public static int requestCounter = 0;
+    
+    /* -- deal with the api ------------------------------------ */
+    
 
     private QpxResponse getResponse() {
         if (inputsAreInvalid())
             return null;
-        requestCounter++;
         String urlString = buildUrl();
         System.out.println(urlString);
         String postParams = buildPostParams();
@@ -168,6 +226,8 @@ public final class FlightFinder {
             String responseString = sb.toString();
             QpxResponse qpxResponse
                   = GSON.fromJson(responseString, QpxResponse.class);
+    
+            requestCounter++;
             return qpxResponse;
         } catch (IOException e) {
             e.printStackTrace();

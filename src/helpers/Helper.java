@@ -7,6 +7,7 @@ import mapUtils.StraightLineDistance;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public final class Helper {
@@ -126,5 +127,13 @@ public final class Helper {
     
     public static boolean areEqual(String s1, String s2) {
         return s1.equalsIgnoreCase(s2);
+    }
+    
+    public static boolean isThere(String s) {
+        return !(isNotThere(s));
+    }
+    
+    public static boolean isNotThere(String s) {
+        return (s == null || s.isEmpty() || s.trim().isEmpty());
     }
 }

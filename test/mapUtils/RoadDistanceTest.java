@@ -31,8 +31,25 @@ public class RoadDistanceTest {
         double delta = 0.01 * expectedDistance;
         assertEquals(expectedDistance, distance, delta);
     
-        System.out.println("RoadDistance.apiRequestsCounter = "
-                    + RoadDistance.apiRequestsCounter);
+        System.out.println("RD.cacheMisses = " + RD.apiRequestsCounter);
+        System.out.println("RD.cacheHits = " + RD.cacheHits);
+    
+        for (int i = 0; i < 5; i++)
+            RD.getRoadDistance(msy, iah);
+        assertTrue(RD.cacheHits >= 5);
+        System.out.println("-----");
+        System.out.println("RD.cacheMisses = " + RD.apiRequestsCounter);
+        System.out.println("RD.cacheHits = " + RD.cacheHits);
+    }
+    
+    @Test
+    public void testCache() throws Exception {
+        for (int i = 0; i < 5; i++)
+            RD.getRoadDistance(msy, iah);
+        assertTrue(RD.cacheHits >= 5);
+        System.out.println("-----");
+        System.out.println("RD.cacheMisses = " + RD.apiRequestsCounter);
+        System.out.println("RD.cacheHits = " + RD.cacheHits);
     }
 
     @Test
@@ -47,6 +64,6 @@ public class RoadDistanceTest {
         assertEquals(expectedDuration, duration, delta);
     
         System.out.println("RoadDistance.apiRequestsCounter = "
-              + RoadDistance.apiRequestsCounter);
+              + RD.apiRequestsCounter);
     }
 }
