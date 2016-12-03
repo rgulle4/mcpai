@@ -123,4 +123,8 @@ public final class Helper {
     public static void printError(Object o) {
         System.err.println(o);
     }
+    
+    public static boolean areEqual(String s1, String s2) {
+        return s1.equalsIgnoreCase(s2);
+    }
 }

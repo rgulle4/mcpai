@@ -5,7 +5,7 @@ import models.places.Location;
 /**
  * A flight object with a price, duration, origin, destination.
  */
-public final class Flight {
+public final class Flight implements Comparable<Flight> {
     
     /** price in USD */
     private double price; // USD
@@ -13,11 +13,18 @@ public final class Flight {
     /** duration in hours */
     private double duration;
     
-    /** origin as Location object */
+    /** actual origin as Location object */
     private Location origin;
     
-    /** destination as Location object */
+    /** actual destination as Location object */
     private Location destination;
+    
+    /** intended origin as Location object */
+    private Location intendedOrigin;
+    
+    /** intended destination as Location object */
+    private Location intendedDestination;
+    
     
     /**
      * price in USD
@@ -31,7 +38,8 @@ public final class Flight {
         this.price = price;
         return this;
     }
-
+    
+    /** price in USD */
     public Flight setPrice(String price) {
         this.price = Double.parseDouble(price.substring(3));
         return this;
@@ -48,25 +56,52 @@ public final class Flight {
         return this;
     }
 
-    /** origin as Location object */
+    /** actual origin as Location object */
     public Location getOrigin() {
         return origin;
     }
 
-    /** origin as Location object */
+    /** actual origin as Location object */
     public Flight setOrigin(Location origin) {
         this.origin = origin;
         return this;
     }
 
-    /** destination as Location object */
+    /** actual destination as Location object */
     public Location getDestination() {
         return destination;
     }
 
-    /** destination as Location object */
+    /** actual destination as Location object */
     public Flight setDestination(Location destination) {
         this.destination = destination;
         return this;
+    }
+    
+    /** intended origin as Location object */
+    public Location getIntendedOrigin() {
+        return intendedOrigin;
+    }
+    
+    /** intended origin as Location object */
+    public Flight setIntendedOrigin(Location intendedOrigin) {
+        this.intendedOrigin = intendedOrigin;
+        return this;
+    }
+    
+    /** intended destination as Location object */
+    public Location getIntendedDestination() {
+        return intendedDestination;
+    }
+    
+    /** intended destination as Location object */
+    public Flight setIntendedDestination(Location intendedDestination) {
+        this.intendedDestination = intendedDestination;
+        return this;
+    }
+    
+    @Override
+    public int compareTo(Flight o) {
+        return (int) (price - o.price);
     }
 }

@@ -3,7 +3,19 @@
 Minimum cost path, with multiple "superimposed" graphs. Probably
 A-star.
 
-## APIs, Dependencies
+## Dev notes
+
+Some dev notes follow
+
+### Tests
+
+Pls run the tests in the [test/](test/) directory. Also, update them
+tests as necessary.
+
+Easiest way to run the tests is probably in an IDE. Right click on
+the "test" directory, and run all the tests.
+
+### APIs, Dependencies
 
 Some dependencies just work -- the included jars and the Maven
 stuff.

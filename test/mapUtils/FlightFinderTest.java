@@ -23,6 +23,8 @@ public class FlightFinderTest {
     
     @Before
     public void setup() {
+        if (hasBeenSetup)
+            return;
         Helper.DEBUG_MODE = true;
         finder.setDate(DATE_STRING);
         finder.setMaxPrice("USD31337");
@@ -36,13 +38,14 @@ public class FlightFinderTest {
     
     @Test
     public void getFlightsANDgetBestFlight() throws Exception {
-        
         // testing getFlights() -----------------------
-        
         assertEquals(8, flights.size());
+    }
     
+    @Test
+    public void getBestFlight() throws Exception {
         // testing getBestFlight() --------------------
-        
+    
         Flight bestFlight = finder.getBestFlight();
         Flight worstFlight = flights.get(flights.size() - 1);
         Helper.printObject(bestFlight, "bestFlight");
@@ -50,7 +53,7 @@ public class FlightFinderTest {
         assertTrue(bestFlight.getPrice() <= worstFlight.getPrice());
     
         // testing getBestFlight() --------------------
-        
+    
         Flight anotherBestFlight = finder.getBestFlight(
               ORIGIN_AIRPORT, DESTINATION_AIRPORT,  DATE_STRING);
         assertEquals(bestFlight.getPrice(), anotherBestFlight.getPrice(), 1);

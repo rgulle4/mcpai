@@ -8,10 +8,12 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
- * Finds flights; getBestFlight()
+ * Finds flights. See {@link FlightFinder#getBestFlight(String, String, String)}
  */
 public final class FlightFinder {
     private static String GOOGLE_API_KEY = Helper.getApiKey();
@@ -77,30 +79,59 @@ public final class FlightFinder {
             return flights.get(0);
         return flights.get(0);
     }
-
+    
+    /**
+     * List of Flights, sorted by price
+     * @return List of Flights, sorted by price
+     */
     public List<Flight> getFlights() {
         List<Flight> flights = new ArrayList<Flight>();
         QpxResponse response = getResponse();
         QpxResponse.Trip.TripOption[] tripOptions
               = response.trips.tripOption;
         numResults = tripOptions.length;
+        List<QpxResponse.Trip.TripOption> tripOpts
+              = new ArrayList<QpxResponse.Trip.TripOption>(
+              Arrays.asList(response.trips.tripOption));
         Flight f;
         for (int i = 0; i < numResults; i++) {
+            QpxResponse.Trip.TripOption tripOption = tripOptions[i];
+            QpxResponse.Trip.TripOption.Slice firstSlice = tripOption.getFirstSlice();
+    
             f = new Flight();
-            f.setPrice(tripOptions[i].saleTotal);
-            f.setDuration(tripOptions[i].slice[0].duration / 60.0);
+            f.setPrice(tripOption.saleTotal);
+            f.setDuration(firstSlice.duration / 60.0);
             f.setOrigin(new Location(origin));
-            f.setDestination(new Location(tripOptions[i].
-                        pricing[0].fare[tripOptions[i].
-                        pricing[0].fare.length - 1].destination));
+            f.setOrigin(new Location(firstSlice
+                  .getFirstSegment().getFirstLeg().origin));
+            f.setDestination(new Location(firstSlice
+                  .getLastSegment().getLastLeg().destination));
             flights.add(f);
         }
+        flights.sort(new Comparator<Flight>() {
+            @Override
+            public int compare(Flight o1, Flight o2) {
+                return (int) (o1.getPrice() - o2.getPrice());
+            }
+        });
         return flights;
+    }
+    
+    private boolean inputsAreInvalid() {
+        if (origin == null || origin.isEmpty())
+            return true;
+        if (destination == null || destination.isEmpty())
+            return true;
+        if (date == null || date.isEmpty())
+            return true;
+        return false;
     }
 
     public static int requestCounter = 0;
 
     private QpxResponse getResponse() {
+        if (inputsAreInvalid())
+            return null;
         requestCounter++;
         String urlString = buildUrl();
         System.out.println(urlString);
@@ -188,6 +219,7 @@ public final class FlightFinder {
 
             class Passengers {
                 int adultCount = 1;
+                int childCount = 0;
             }
         }
         PostParams setMaxPrice(String val) {
@@ -280,7 +312,21 @@ public final class FlightFinder {
                 Pricing[] pricing;
                 String saleTotal;
                 Slice[] slice;
-
+                
+                Slice getLastSlice() {
+                    int len = slice.length;
+                    if (slice == null || len < 1)
+                        return null;
+                    return slice[len - 1];
+                }
+    
+                public Slice getFirstSlice() {
+                    int len = slice.length;
+                    if (slice == null || len < 1)
+                        return null;
+                    return slice[0];
+                }
+    
                 class Pricing {
                     String baseFareTotal;
                     String saleFareTotal;
@@ -302,7 +348,22 @@ public final class FlightFinder {
                     int duration;
                     String kind;
                     Segment[] segment;
-
+                    private Segment lastSegment;
+    
+                    public Segment getFirstSegment() {
+                        int len = segment.length;
+                        if (segment == null || len < 1)
+                            return null;
+                        return segment[0];
+                    }
+    
+                    public Segment getLastSegment() {
+                        int len = segment.length;
+                        if (segment == null || len < 1)
+                            return null;
+                        return segment[len - 1];
+                    }
+    
                     class Segment {
                         String bookingCode;
                         int bookingCodeCount;
@@ -313,7 +374,21 @@ public final class FlightFinder {
                         String id;
                         String kind;
                         Leg[] leg;
-
+    
+                        public Leg getFirstLeg() {
+                            int len = leg.length;
+                            if (leg == null || len < 1)
+                                return null;
+                            return leg[0];
+                        }
+    
+                        public Leg getLastLeg() {
+                            int len = leg.length;
+                            if (leg == null || len < 1)
+                                return null;
+                            return leg[len - 1];
+                        }
+    
                         class Flight {
                             String carrier;
                             String number;
