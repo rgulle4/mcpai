@@ -42,28 +42,53 @@ We want to find the path from one point to another by minimizing time by either 
 \item \textbf{Transition Model}: Given a state and action moves the traveller to the new contact point
 \item \textbf{Goal State}: The traveller's destination point
 \item \textbf{Path}: A sequence of actions from the initial state to the goal state
-\item \textbf{Path Costs}: The sum of all the edge costs from one contact point to another based on the action% and a heuristic component
+\item \textbf{Path Costs}: The time it takes to get from one contact point to another % and a heuristic component
 \item \textbf{Solution}: The path from the initial state to the goal state that does not exceed the price limit
-\FIXME{Does this go in the problem formulation?
-\item \textbf{Search Costs}: Time and storage requirements for finding a solution}
 \end{enumerate}
 
 
-\section{AI Concepts : Graph Search}
+\section{AI Concept : Searching for Solutions}
 
+\subsection{Search Tree}
+
+\subsubsection{Node} A Node in the search tree represents a contact point along the path. Node attributes include
+\begin{itemize}
+\item State : Information about the contact point such as a name and latitude longitude coordinates
+\item Parent : The node in the search tree which generated this node
+\item Action: The action (fly or drive) applied to the parent to generate this node
+\item Path costs in time and price : the time and price needed to travel from the initial node to the current node
+\end{itemize}
+
+\subsubsection{Frontier}
+
+After expanding a leaf node in our search tree, the general search tree algorithm collects the next set of available leaf nodes for expansion in the frontier. But before searching can continue, our algorithm must check whether any of the frontier nodes will result in a path cost price which exceeds the user's price limit. In other words, if the price of a path exceeds the given price limit we do not add the next node to the frontier. This way we can ensure that we never find a path with a price that is above the limit.
+
+\subsubsection{Search Strategy}
+To find the optimal solution we are using the A* algorithm.
+\FIXME{Or just Dijkstra's/Uniform-cost-search?} 
 
 \subsection{Constraints}
-When constructing our graph, given the number of airports and and cities in the US, our branching factor could be very large. Because of this, some constraints must be considered. Let $A$ be the initial starting point and let $B$ be the destination point. We limit the number of airports around $A$, say $\{ A_i \}_{i=1}^n$, and the number of airports around the destination point, say $\{ B_j \}_{j=1}^m$. The agent can then drive from $A$ to on of the airports in $\{ A_i \}_{i=1}^n$ or drive directly to $B$. If the agent is at one of the airports in $\{ A_i \}_{i=1}^n$, the only option for the agent is to fly to one of the airports in $\{ B_j \}_{j=1}^m$. If the agent is at an airport around $B$, then the only possible action is to drive to the destination $B$.
-\FIXME{Can use a very specific example, like Roy traveling from BR to SF? Where we give it the specific cities airports etc.}
+When searching for a path, given the number of airports and cities in the US, our branching factor could be very large. Because of this, some constraints must be considered. Let $A$ be the initial starting point and let $B$ be the destination point. We limit the number of airports around $A$, say $\{ A_i \}_{i=1}^n$, and the number of airports around the destination point, say $\{ B_j \}_{j=1}^m$. The agent can then drive from $A$ to one of the airports in $\{ A_i \}_{i=1}^n$ or drive directly to $B$. If the agent is at one of the airports in $\{ A_i \}_{i=1}^n$, the only option for the agent is to fly to one of the airports in $\{ B_j \}_{j=1}^m$. If the agent is at an airport around $B$, then the only possible action is to drive to the destination $B$.
 
-\subsection{Cost Functions and Heuristics?}
-To find the optimal solution we are using the A* algorithm.
-\FIXME{Or just Dijkstra's/Uniform-cost-search?}  Each edge has two values. One is the time that is needed and the other is the price that is needed to travel between the points. The time value is used as the path cost. The price value is used when we add a node to the frontier. If the price of that path exceeds the given price limit we do not add the node to the frontier. This way we can ensure that we never find a path with a price that is above the limit.
-
-%\subsection{IBM Bluemix}
-
-\subsection{Software System Design and Implementation}
+\section{Software System Design and Implementation}
 To compute the time and price of each edge we are using the Google Maps API and QPX Express API, respectively. \FIXME{Is that true?} 
+
+\subsection{Object Oriented Design using Java}
+
+\FIXME{UML Diagrams}
+
+\subsection{APIs}
+
+\begin{itemize}
+\item QPX Express Airfare API
+\item Google Maps Distance Matrix API
+\item Google Maps Geocoding API
+\item Google Maps Geolocation API
+\item Google Maps Directions API
+\item Google Places API Web Service
+\end{itemize}
+
+\subsection{Caching with Bluemix}
 
 \section{Experimentation}
 
@@ -72,10 +97,9 @@ To compute the time and price of each edge we are using the Google Maps API and 
 %\subsection{Conclusions}
 
 \section{Future Work}
-This application is restricted to traveling within the USA. Other countries could be included to give the user the option to travel internationally. The only modes of transportation that are used are driving and flying. To give the user a more flexibility when traveling, other modes of transportation could be incorporated into this application such as walking, bicycling, taking the train or metro, and taking a ferry.
-				
+This application is restricted to traveling within the US. Other countries could be included to give the user the option to travel internationally. The only modes of transportation that are used are driving and flying. To give the user a more flexibility when traveling, other modes of transportation could be incorporated into this application such as walking, bicycling, taking the train or metro, and taking a ferry.
 
-%\section{Experimentation}
-%\indent Customers may choose to minimize different factors based on their needs. A businessman may not worry as much about the cost of transportation but would like to minimize time where as a family might want to save money for a vacation. This allows for us to find different paths based on which factor is being minimized. We can also use different search algorithms to see which ones are the most efficient for our problem. 
+Additionally, after caching of a large amount of data our application could make certain predictions which improve our search algorithm.  For example, instead of choosing the $n$ nearest airports to add to our search tree, Watson Analytics predict feature could also choose an airport which may be slightly farther away but which may frequently have deals on flights.
+				
 
 \end{document}
