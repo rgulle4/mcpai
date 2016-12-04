@@ -4,9 +4,13 @@
 \usepackage{lmodern} 
 \usepackage{amsfonts}
 \usepackage{graphicx}
-\usepackage{geometry}
+\usepackage[letterpaper, margin=1in]{geometry}
 
-\title{Project Report}
+\usepackage{color}
+\newcommand{\FIXME}[1]{ \ \\ \hspace* {-1.5 cm}
+  \textcolor{red}{\texttt{FIXME:}#1} \medskip\par}
+
+\title{Minimal Cost Paths\\Project Report}
 \author{ {\bf Group 2:} \\
 Alex Dunkel,
 Roy Gullem,
@@ -17,43 +21,49 @@ Vincent Rodomista}
 \begin{document}
 \maketitle
 
-Requirements for Report:
+\FIXME{Requirements for Report:
 "The written report should provide a clear documentation about the project's motivation, the problem addressed by the project, the main technical (AI-related) ideas/concepts behind the project, and the software system design and implementation. 
-The report should describe the experiments performed in the project, and discussions should be included to explain the results of the experiments."
+The report should describe the experiments performed in the project, and discussions should be included to explain the results of the experiments."}
 
 \section{Motivation}
 
-Travel plans can be extremely complicated. As a college student, when planning a trip you can sift through numerous flights looking for deals and also weigh the cost of driving based on gas prices and car mileage. While a business person may do the same sort of sifting to find the fastest, most direct flights and available private transportation in order to get to their destination as fast as possible without considering the price. We are given many options when considering travel plans and planning could end up in a series of calculations based on time, price of travel, or both. 
+Travel plans can be extremely complicated. As a college student, when planning a trip, you can sift through numerous flights looking for deals and also weigh the cost of driving based on gas prices and car mileage. On the other hand, a business person may do the same sort of sifting to find the fastest, most direct flights and available private transportation in order to get to their destination as fast as possible without considering the price. We are given many options when considering travel plans, and planning could end up in a series of calculations based on time, price of travel, or both. 
 
 \section{Problem}
+We want to find the path from one point to another by minimizing time by either driving, flying, or a combination of both. To ensure that the price of this path is not too high, we can specify a price limit so that we find the fastest path under that price limit.
 
 \subsection{Problem Formulation}
 \begin{enumerate}
 \item \textbf{Initial State}: The traveller's starting point
-\item \textbf{State Space}: All possible contact points
-\item	 \textbf{Actions}: The modes of transportation used between two contact points, either drive or fly
-\item \textbf{Transition Model}: An action updates the state to a new contact point
+\item \textbf{States}: Traveller at one of the contact points
+%\item \textbf{State Space}: All possible contact points
+\item	 \textbf{Actions}: Either fly or drive to a destination. For example, Drive(\emph{destination}) or Fly(\emph{destination})
+%\item	 \textbf{Actions}: The modes of transportation used between two contact points, either drive or fly
+\item \textbf{Transition Model}: Given a state and action moves the traveller to the new contact point
 \item \textbf{Goal State}: The traveller's destination point
-\item \textbf{Paths}: A sequence of actions from the initial state to the goal state
-\item \textbf{Path Costs}: The edge cost from one contact point to another based on the action and a heuristic component
-\item \textbf{Solution}: The path from an initial state to the goal state
-\item \textbf{Search Costs}: Time and storage requirements for finding a solution
+\item \textbf{Path}: A sequence of actions from the initial state to the goal state
+\item \textbf{Path Costs}: The sum of all the edge costs from one contact point to another based on the action% and a heuristic component
+\item \textbf{Solution}: The path from the initial state to the goal state that does not exceed the price limit
+\FIXME{Does this go in the problem formulation?
+\item \textbf{Search Costs}: Time and storage requirements for finding a solution}
 \end{enumerate}
 
 
 \section{AI Concepts : Graph Search}
 
 
-\subsubsection{Constraints}
-When constructing our graph, given the number of airports and and cities in the US, our branching factor could be very large. Because of this, some constraints must be considered. \\
-Can use a very specific example, like Roy traveling from BR to SF? Where we give it the specific cities airports etc.
+\subsection{Constraints}
+When constructing our graph, given the number of airports and and cities in the US, our branching factor could be very large. Because of this, some constraints must be considered. Let $A$ be the initial starting point and let $B$ be the destination point. We limit the number of airports around $A$, say $\{ A_i \}_{i=1}^n$, and the number of airports around the destination point, say $\{ B_j \}_{j=1}^m$. The agent can then drive from $A$ to on of the airports in $\{ A_i \}_{i=1}^n$ or drive directly to $B$. If the agent is at one of the airports in $\{ A_i \}_{i=1}^n$, the only option for the agent is to fly to one of the airports in $\{ B_j \}_{j=1}^m$. If the agent is at an airport around $B$, then the only possible action is to drive to the destination $B$.
+\FIXME{Can use a very specific example, like Roy traveling from BR to SF? Where we give it the specific cities airports etc.}
 
 \subsection{Cost Functions and Heuristics?}
-Dijkstra's Algorithm or A*?
+To find the optimal solution we are using the A* algorithm.
+\FIXME{Or just Dijkstra's/Uniform-cost-search?}  Each edge has two values. One is the time that is needed and the other is the price that is needed to travel between the points. The time value is used as the path cost. The price value is used when we add a node to the frontier. If the price of that path exceeds the given price limit we do not add the node to the frontier. This way we can ensure that we never find a path with a price that is above the limit.
 
 %\subsection{IBM Bluemix}
 
-%\subsection{Software System Design and Implementation}
+\subsection{Software System Design and Implementation}
+To compute the time and price of each edge we are using the Google Maps API and QPX Express API, respectively. \FIXME{Is that true?} 
 
 \section{Experimentation}
 
@@ -61,6 +71,8 @@ Dijkstra's Algorithm or A*?
 
 %\subsection{Conclusions}
 
+\section{Future Work}
+This application is restricted to traveling within the USA. Other countries could be included to give the user the option to travel internationally. The only modes of transportation that are used are driving and flying. To give the user a more flexibility when traveling, other modes of transportation could be incorporated into this application such as walking, bicycling, taking the train or metro, and taking a ferry.
 				
 
 %\section{Experimentation}
