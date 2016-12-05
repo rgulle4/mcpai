@@ -3,7 +3,7 @@ package mapUtils;
 import com.google.gson.Gson;
 import helpers.Helper;
 import helpers.Minify;
-import mapUtils.cache.SqliteCache;
+import mapUtils.cache.RoadDistanceCache;
 import models.places.Location;
 
 import java.io.BufferedReader;
@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Gives simple distance, and driving time between two places (no driving
@@ -49,8 +47,8 @@ public final class RoadDistance {
     
     /* -- TODO: cache these objects ---------------------------- */
     
-    private static final SqliteCache RESPONSE_CACHE
-          = SqliteCache.getInstance();
+    private static final RoadDistanceCache RESPONSE_CACHE
+          = RoadDistanceCache.getInstance();
     
     // inputs
     private String combinedInputString;

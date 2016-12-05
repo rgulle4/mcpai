@@ -2,8 +2,8 @@ package mapUtils.cache;
 
 import java.sql.*;
 
-public final class SqliteCache {
-    private static SqliteCache instance = null;
+public final class RoadDistanceCache {
+    private static RoadDistanceCache instance = null;
     public static final String DB_FILE_NAME = "apicache.db";
     
     public static String dbFileName;
@@ -11,17 +11,17 @@ public final class SqliteCache {
     private static Statement stmt;
     private static ResultSet rs;
     
-    public static SqliteCache getInstance() {
+    public static RoadDistanceCache getInstance() {
         if (instance == null)
-           instance = new SqliteCache(DB_FILE_NAME);
+           instance = new RoadDistanceCache(DB_FILE_NAME);
         return instance;
     }
     
-    private SqliteCache() {
+    private RoadDistanceCache() {
         this(DB_FILE_NAME);
     }
     
-    private SqliteCache(String dbFileName) {
+    private RoadDistanceCache(String dbFileName) {
         this.dbFileName = dbFileName;
         try {
             conn = DriverManager.getConnection(
