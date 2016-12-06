@@ -15,7 +15,8 @@ class Search {
     Airport[] goalAirports = new Airport[num];
     boolean found;
 
-    public Search(double startLa, double startLo, double goalLa, double goalLo, double limit){
+    public Search(double startLa, double startLo,
+                  double goalLa, double goalLo, double limit){
         p = new Problem(startLa,startLo,goalLa,goalLo,limit);
         getAirports();
         uniform_search();
