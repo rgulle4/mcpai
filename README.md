@@ -3,6 +3,20 @@
 Minimum cost path, with multiple "superimposed" graphs. Probably
 A-star.
 
+## What we can get from the APIs
+
+Given any place in the United States, we can get 
+
+- a list of nearby airports, sorted by distance...
+- the **driving distance, driving time, and driving cost
+  to any other place**.
+- The straight line distance to any other location
+
+Given [any major airport](python/major-airports-only.xlsx) in the 
+United States, we can get the above, plus:
+
+- The cheapest flight(s) to any other major airport (with $ cost, and duration)
+
 ## Dev notes
 
 Some dev notes follow
