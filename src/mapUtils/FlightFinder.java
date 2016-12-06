@@ -237,7 +237,7 @@ public final class FlightFinder {
 
     private String buildUrl() {
         StringBuilder sb = new StringBuilder();
-        sb.append("https://www.googleapis.com/qpxExpress/v1/trips/Search?key=");
+        sb.append("https://www.googleapis.com/qpxExpress/v1/trips/search?key=");
         sb.append(GOOGLE_API_KEY);
         return sb.toString();
     }
