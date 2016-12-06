@@ -81,7 +81,7 @@ public final class RoadDistanceCache {
     
         try {
             stmt = conn.createStatement();
-            stmt.executeQuery(sqlString);
+            stmt.executeUpdate(sqlString);
         } catch (SQLException e) {
             e.printStackTrace();
         }
