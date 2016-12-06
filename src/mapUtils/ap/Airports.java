@@ -109,8 +109,8 @@ public final class Airports {
     }
     
     /**
-     * Returns sld between your LatLng to an airport.
-     * @param airportCode The airport code you're trying to get to.
+     * Returns sld between your LatLng to an Airport.
+     * @param airportCode The Airport code you're trying to get to.
      * @param yourLatlng Your latlng.
      * @return Straight line distance in miles.
      */
@@ -120,8 +120,8 @@ public final class Airports {
     }
     
     /**
-     * Returns sld between your LatLng to an airport.
-     * @param airportCode The airport code you're trying to get to.
+     * Returns sld between your LatLng to an Airport.
+     * @param airportCode The Airport code you're trying to get to.
      * @param yourLat Your lat.
      * @param yourLng Your lng.
      * @return Straight line distance in miles.
@@ -233,7 +233,7 @@ public final class Airports {
     }
     
     /**
-     * Assuming your latlng is an airport, return its airport code
+     * Assuming your latlng is an Airport, return its Airport code
      * @param latlng
      * @return
      */
