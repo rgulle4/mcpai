@@ -138,6 +138,8 @@ public final class MainController {
         testButton.setOnAction(e -> {
             printlnButtonAction();});
         calcButton.setOnAction(e -> {
+            mainModel.calculateDrive();
+            mainModel.calculateFlight();
             mainModel.search();
         });
 

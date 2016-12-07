@@ -19,7 +19,7 @@ import java.util.List;
 public final class FlightFinder {
     private static String GOOGLE_API_KEY = Helper.getApiKey();
     private static final Gson GSON = Helper.GSON;
-    private static final long SLEEP_TIME = 4100;
+    private static final long SLEEP_TIME = 1000;
     
     /* -- TODO: cache these objects ---------------------------- */
     
