@@ -4,6 +4,7 @@ import com.google.maps.model.LatLng;
 import mapUtils.ap.Airports;
 import mapUtils.Geocoder;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -108,11 +109,25 @@ public class Location {
     /* --------------------------------------------------------- */
      
     /**
-     * TODO: make this real
      * @return eg "MSY"
      */
     public String getNearestAirportCode() {
-        return locationString;
+        return Airports.getNearbyAirports(this)
+              .get(0).getAirportCode();
+    }
+    
+    private ArrayList<Location> nearbyAirports;
+    
+    public ArrayList<Location> getNearbyAirports() {
+        nearbyAirports
+              = Airports.getNearbyAirports(this);
+        return nearbyAirports;
+    }
+    
+    public ArrayList<Location> getNearbyAirports(double radius) {
+        nearbyAirports
+              = Airports.getNearbyAirports(this, radius);
+        return nearbyAirports;
     }
     
     public Map<String, Double> getApDist(double radius) {
@@ -146,6 +161,8 @@ public class Location {
     /* --------------------------------------------------------- */
     
     public Location geocode() {
+        if (hasLatLng())
+            return this;
         geocode(false);
         hasBeenGeocoded = true;
         return this;
@@ -175,6 +192,16 @@ public class Location {
     /* --------------------------------------------------------- */
     
     public Location() {
+    }
+    
+    public Location(double lat, double lng) {
+        this();
+        setLatLng(new LatLng(lat, lng));
+        reverseGeocode(true);
+    }
+    
+    public Location(LatLng latlng) {
+        this(latlng.lat, latlng.lng);
     }
 
     public Location(String locationString) {

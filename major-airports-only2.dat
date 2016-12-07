@@ -1,0 +1,187 @@
+ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;Lng
+76;;;Durango;;;DRO;;;DRO;;;KDRO;;;Durango-La Plata County Airport;;;P-N;;;192797;;;COLORADO;;;37.151516;;;-107.75377
+336;;;Charlottesville;;;CHO;;;CHO;;;KCHO;;;Charlottesville–Albemarle Airport;;;P-N;;;197776;;;VIRGINIA;;;38.138639;;;-78.452861
+210;;;Kalispell;;;GPI;;;FCA;;;KGPI;;;Glacier Park International Airport;;;P-N;;;199701;;;MONTANA;;;48.310472;;;-114.256
+301;;;Bristol / Johnson City /Kingsport;;;TRI;;;TRI;;;KTRI;;;Tri-Cities Regional Airport (Tri-Cities Regional TN/VA);;;P-N;;;202114;;;TENNESSEE;;;36.4752222;;;-82.4074167
+58;;;Monterey;;;MRY;;;MRY;;;KMRY;;;Monterey Regional Airport (was Monterey Peninsula Airport);;;P-N;;;205838;;;CALIFORNIA;;;36.587;;;-121.842944
+73;;;Aspen;;;ASE;;;ASE;;;KASE;;;Aspen-Pitkin County Airport (Sardy Field);;;P-N;;;208682;;;COLORADO;;;39.2232;;;-106.869
+78;;;Grand Junction;;;GJT;;;GJT;;;KGJT;;;Grand Junction Regional Airport (Walker Field);;;P-N;;;211270;;;COLORADO;;;39.122413;;;-108.526735
+90;;;Melbourne;;;MLB;;;MLB;;;KMLB;;;Melbourne International Airport;;;P-N;;;211702;;;FLORIDA;;;28.102753;;;-80.645258
+125;;;Bloomington / Normal;;;BMI;;;BMI;;;KBMI;;;Central Illinois Regional Airport at Bloomington-Normal;;;P-N;;;211957;;;ILLINOIS;;;40.477111;;;-88.915917
+286;;;Wilkes-Barre /Scranton;;;AVP;;;AVP;;;KAVP;;;Wilkes-Barre/Scranton International Airport;;;P-N;;;216536;;;PENNSYLVANIA;;;41.338478;;;-75.723403
+181;;;Lansing;;;LAN;;;LAN;;;KLAN;;;Capital Region International Airport (was Lansing Capital City);;;P-N;;;216925;;;MICHIGAN;;;42.7787;;;-84.587357
+260;;;Minot;;;MOT;;;MOT;;;KMOT;;;Minot International Airport;;;P-N;;;220787;;;NORTH DAKOTA;;;48.259378;;;-101.280333
+154;;;Lafayette;;;LFT;;;LFT;;;KLFT;;;Lafayette Regional Airport;;;P-N;;;233498;;;LOUISIANA;;;30.205278;;;-91.987611
+278;;;Redmond;;;RDM;;;RDM;;;KRDM;;;Redmond Municipal Airport (Roberts Field);;;P-N;;;236303;;;OREGON;;;44.254066;;;-121.149964
+256;;;Bismarck;;;BIS;;;BIS;;;KBIS;;;Bismarck Municipal Airport;;;P-N;;;238929;;;NORTH DAKOTA;;;46.775842;;;-100.757931
+317;;;Fort Hood / Killeen /Temple;;;GRK;;;GRK;;;KGRK;;;Killeen-Fort Hood Regional Airport / Robert Gray Army Airfield;;;P-N;;;243861;;;TEXAS;;;31.06725;;;-97.828917
+249;;;Fayetteville;;;FAY;;;FAY;;;KFAY;;;Fayetteville Regional Airport (Grannis Field);;;P-N;;;244345;;;NORTH CAROLINA;;;34.9912;;;-78.8803
+361;;;Appleton;;;ATW;;;ATW;;;KATW;;;Appleton International Airport;;;P-N;;;249656;;;WISCONSIN;;;44.257526;;;-88.507576
+106;;;Augusta;;;AGS;;;AGS;;;KAGS;;;Augusta Regional Airport (Bush Field);;;P-N;;;261079;;;GEORGIA;;;33.369944;;;-81.9645
+159;;;Bangor;;;BGR;;;BGR;;;KBGR;;;Bangor International Airport;;;P-N;;;265245;;;MAINE;;;44.807444;;;-68.828139
+356;;;Charleston;;;CRW;;;CRW;;;KCRW;;;Yeager Airport;;;P-N;;;272901;;;WEST VIRGINIA;;;38.373147;;;-81.593189
+373;;;Jackson;;;JAC;;;JAC;;;KJAC;;;Jackson Hole Airport;;;P-N;;;274343;;;WYOMING;;;43.607333333;;;-110.73775
+158;;;Shreveport;;;SHV;;;SHV;;;KSHV;;;Shreveport Regional Airport;;;P-N;;;279897;;;LOUISIANA;;;32.446629;;;-93.8256
+299;;;Rapid City;;;RAP;;;RAP;;;KRAP;;;Rapid City Regional Airport;;;P-N;;;284126;;;SOUTH DAKOTA;;;44.045278;;;-103.057222
+302;;;Chattanooga;;;CHA;;;CHA;;;KCHA;;;Chattanooga Metropolitan Airport (Lovell Field);;;P-N;;;292830;;;TENNESSEE;;;35.035278;;;-85.203808
+136;;;Fort Wayne;;;FWA;;;FWA;;;KFWA;;;Fort Wayne International Airport;;;P-N;;;294968;;;INDIANA;;;40.978472;;;-85.195139
+211;;;Missoula;;;MSO;;;MSO;;;KMSO;;;Missoula International Airport;;;P-N;;;298253;;;MONTANA;;;46.916306;;;-114.090556
+279;;;Allentown;;;ABE;;;ABE;;;KABE;;;Lehigh Valley International Airport (was Allentown–Bethlehem–Easton International Airport);;;P-N;;;301969;;;PENNSYLVANIA;;;40.652083;;;-75.440806
+363;;;Green Bay;;;GRB;;;GRB;;;KGRB;;;Green Bay-Austin Straubel International Airport;;;P-N;;;302568;;;WISCONSIN;;;44.485072;;;-88.129589
+275;;;Medford;;;MFR;;;MFR;;;KMFR;;;Rogue Valley International-Medford Airport;;;P-N;;;306450;;;OREGON;;;42.374228;;;-122.8735
+347;;;Pasco;;;PSC;;;PSC;;;KPSC;;;Tri-Cities Airport;;;P-N;;;312915;;;WASHINGTON;;;46.2647;;;-119.119
+341;;;Roanoke;;;ROA;;;ROA;;;KROA;;;Roanoke Regional Airport (Woodrum Field);;;P-N;;;316478;;;VIRGINIA;;;37.325472;;;-79.975417
+19;;;Juneau;;;JNU;;;JNU;;;PAJN;;;Juneau International Airport;;;P-N;;;321573;;;ALASKA;;;58.354972;;;-134.576278
+138;;;South Bend;;;SBN;;;SBN;;;KSBN;;;South Bend International Airport (was South Bend Regional);;;P-N;;;329403;;;INDIANA;;;41.708661;;;-86.31725
+312;;;Corpus Christi /Kingsville;;;CRP;;;CRP;;;KCRP;;;Corpus Christi International Airport;;;P-S;;;339193;;;TEXAS;;;27.770361;;;-97.501222
+247;;;Asheville;;;AVL;;;AVL;;;KAVL;;;Asheville Regional Airport;;;P-N;;;342731;;;NORTH CAROLINA;;;35.436194;;;-82.541806
+324;;;McAllen;;;MFE;;;MFE;;;KMFE;;;McAllen-Miller International Airport (McAllen Miller International);;;P-S;;;344302;;;TEXAS;;;26.175833;;;-98.238611
+100;;;Tallahassee;;;TLH;;;TLH;;;KTLH;;;Tallahassee International Airport;;;P-N;;;346926;;;FLORIDA;;;30.396528;;;-84.350333
+102;;;Valparaiso;;;VPS;;;VPS;;;KVPS;;;Destin–Fort Walton Beach Airport / Eglin Air Force Base;;;P-N;;;353953;;;FLORIDA;;;30.48325;;;-86.5254
+300;;;Sioux Falls;;;FSD;;;FSD;;;KFSD;;;Sioux Falls Regional Airport (Joe Foss Field);;;P-N;;;355939;;;SOUTH DAKOTA;;;43.582014;;;-96.741914
+69;;;Santa Barbara;;;SBA;;;SBA;;;KSBA;;;Santa Barbara Municipal Airport (Santa Barbara Airport);;;P-N;;;365036;;;CALIFORNIA;;;34.426211;;;-119.840372
+203;;;Springfield;;;SGF;;;SGF;;;KSGF;;;Springfield-Branson National Airport;;;P-N;;;368752;;;MISSOURI;;;37.245667;;;-93.388639
+197;;;Gulfport / Biloxi;;;GPT;;;GPT;;;KGPT;;;Gulfport–Biloxi International Airport;;;P-N;;;369597;;;MISSISSIPPI;;;30.407278;;;-89.070111
+318;;;Harlingen;;;HRL;;;HRL;;;KHRL;;;Valley International Airport;;;P-S;;;373438;;;TEXAS;;;26.2285;;;-97.654389
+130;;;Moline;;;MLI;;;MLI;;;KMLI;;;Quad City International Airport;;;P-N;;;384198;;;ILLINOIS;;;41.448528;;;-90.507539
+205;;;Billings;;;BIL;;;BIL;;;KBIL;;;Billings Logan International Airport;;;P-S;;;387368;;;MONTANA;;;45.80921;;;-108.537654
+94;;;Panama City Beach;;;ECP;;;ECP;;;KECP;;;Northwest Florida Beaches International Airport [nb 5];;;P-S;;;391893;;;FLORIDA;;;30.3417;;;-85.7973
+307;;;Amarillo;;;AMA;;;AMA;;;KAMA;;;Rick Husband Amarillo International Airport;;;P-S;;;394593;;;TEXAS;;;35.219369;;;-101.705931
+255;;;Wilmington;;;ILM;;;ILM;;;KILM;;;Wilmington International Airport;;;P-S;;;397737;;;NORTH CAROLINA;;;34.270615;;;-77.902569
+176;;;Flint;;;FNT;;;FNT;;;KFNT;;;Bishop International Airport;;;P-S;;;398132;;;MICHIGAN;;;42.965424;;;-83.743629
+345;;;Bellingham;;;BLI;;;BLI;;;KBLI;;;Bellingham International Airport;;;P-N;;;398368;;;WASHINGTON;;;48.792694;;;-122.537528
+153;;;Baton Rouge;;;BTR;;;BTR;;;KBTR;;;Baton Rouge Metropolitan Airport (Ryan Field);;;P-S;;;401035;;;LOUISIANA;;;30.533167;;;-91.149639
+89;;;Key West;;;EYW;;;EYW;;;KEYW;;;Key West International Airport;;;P-S;;;403021;;;FLORIDA;;;24.556111;;;-81.759556
+258;;;Fargo;;;FAR;;;FAR;;;KFAR;;;Hector International Airport;;;P-S;;;403786;;;NORTH DAKOTA;;;46.92065;;;-96.8157639
+87;;;Gainesville;;;GNV;;;GNV;;;KGNV;;;Gainesville Regional Airport;;;P-N;;;413520;;;FLORIDA;;;29.690056;;;-82.271778
+273;;;Eugene;;;EUG;;;EUG;;;KEUG;;;Eugene Airport (Mahlon Sweet Field);;;P-S;;;434095;;;OREGON;;;44.124583;;;-123.211972
+206;;;Bozeman;;;BZN;;;BZN;;;KBZN;;;Bozeman Yellowstone International Airport(was Gallatin Field Airport);;;P-S;;;442788;;;MONTANA;;;45.777643;;;-111.160151
+325;;;Midland;;;MAF;;;MAF;;;KMAF;;;Midland International Airport;;;P-S;;;445043;;;TEXAS;;;31.942528;;;-102.201914
+13;;;Fairbanks;;;FAI;;;FAI;;;PAFA;;;Fairbanks International Airport;;;P-S;;;457372;;;ALASKA;;;64.815114;;;-147.856267
+131;;;Peoria;;;PIA;;;PIA;;;KPIA;;;General Wayne A. Downing Peoria International Airport;;;P-M;;;491000;;;ILLINOIS;;;40.664203;;;-89.693258
+323;;;Lubbock;;;LBB;;;LBB;;;KLBB;;;Lubbock Preston Smith International Airport;;;P-S;;;508858;;;TEXAS;;;33.663639;;;-101.822778
+338;;;Newport News;;;PHF;;;PHF;;;KPHF;;;Newport News/Williamsburg International Airport (Patrick Henry Field);;;P-S;;;519906;;;VIRGINIA;;;37.131894;;;-76.492989
+139;;;Cedar Rapids;;;CID;;;CID;;;KCID;;;The Eastern Iowa Airport;;;P-S;;;520360;;;IOWA;;;41.884694;;;-91.710806
+292;;;Columbia;;;CAE;;;CAE;;;KCAE;;;Columbia Metropolitan Airport;;;P-S;;;533575;;;SOUTH CAROLINA;;;33.938833;;;-81.119528
+224;;;Atlantic City;;;ACY;;;ACY;;;KACY;;;Atlantic City International Airport;;;P-S;;;534204;;;NEW JERSEY;;;39.457583;;;-74.577167
+43;;;Fayetteville;;;XNA;;;XNA;;;KXNA;;;Northwest Arkansas Regional Airport;;;P-S;;;558218;;;ARKANSAS;;;36.2818694;;;-94.3068111
+97;;;Sarasota / Bradenton;;;SRQ;;;SRQ;;;KSRQ;;;Sarasota–Bradenton International Airport;;;P-S;;;595423;;;FLORIDA;;;27.395444;;;-82.554389
+199;;;Jackson;;;JAN;;;JAN;;;KJAN;;;Jackson–Evers International Airport;;;P-S;;;596045;;;MISSISSIPPI;;;32.311167;;;-90.075889
+148;;;Lexington;;;LEX;;;LEX;;;KLEX;;;Blue Grass Airport;;;P-S;;;604091;;;KENTUCKY;;;38.0365;;;-84.605889
+84;;;Daytona Beach;;;DAB;;;DAB;;;KDAB;;;Daytona Beach International Airport;;;P-N;;;627917;;;FLORIDA;;;29.179917;;;-81.058056
+111;;;Hilo, Hawaii;;;ITO;;;ITO;;;PHTO;;;Hilo International Airport;;;P-S;;;640411;;;HAWAII;;;19.721375;;;-155.048469
+335;;;Burlington;;;BTV;;;BTV;;;KBTV;;;Burlington International Airport;;;P-S;;;640790;;;VERMONT;;;44.471861;;;-73.153278
+281;;;Harrisburg /Middletown;;;MDT;;;MDT;;;KMDT;;;Harrisburg International Airport;;;P-S;;;657650;;;PENNSYLVANIA;;;40.193494;;;-76.763403
+74;;;Colorado Springs;;;COS;;;COS;;;KCOS;;;City of Colorado Springs Municipal Airport;;;P-S;;;658318;;;COLORADO;;;38.805805;;;-104.700778
+236;;;Islip;;;ISP;;;ISP;;;KISP;;;Long Island MacArthur Airport;;;P-S;;;662612;;;NEW YORK;;;40.79525;;;-73.100222
+53;;;Fresno;;;FAT;;;FAT;;;KFAT;;;Fresno Yosemite International Airport;;;P-S;;;684849;;;CALIFORNIA;;;36.776194;;;-119.71814
+146;;;Wichita;;;ICT;;;ICT;;;KICT;;;Wichita Dwight D. Eisenhower National Airport(formerly Wichita Mid-Continent Airport);;;P-S;;;736220;;;KANSAS;;;37.649944;;;-97.433056
+95;;;Pensacola;;;PNS;;;PNS;;;KPNS;;;Pensacola International Airport (Pensacola Gulf Coast Regional Airport);;;P-S;;;744259;;;FLORIDA;;;30.473425;;;-87.186611
+246;;;White Plains;;;HPN;;;HPN;;;KHPN;;;Westchester County Airport;;;P-S;;;770550;;;NEW YORK;;;41.066959;;;-73.707575
+109;;;Savannah;;;SAV;;;SAV;;;KSAV;;;Savannah/Hilton Head International Airport;;;P-S;;;798970;;;GEORGIA;;;32.127583;;;-81.202139
+303;;;Knoxville;;;TYS;;;TYS;;;KTYS;;;McGhee Tyson Airport;;;P-S;;;804917;;;TENNESSEE;;;35.810972;;;-83.994028
+93;;;Orlando/Sanford;;;SFB;;;SFB;;;KSFB;;;Orlando Sanford International Airport;;;P-S;;;805661;;;FLORIDA;;;28.777639;;;-81.237489
+99;;;St. Petersburg/Clearwater;;;PIE;;;PIE;;;KPIE;;;St. Pete–Clearwater International Airport;;;P-S;;;814595;;;FLORIDA;;;27.910167;;;-82.687389
+365;;;Madison;;;MSN;;;MSN;;;KMSN;;;Dane County Regional Airport (Truax Field);;;P-S;;;833634;;;WISCONSIN;;;43.139858;;;-89.337514
+161;;;Portland;;;PWM;;;PWM;;;KPWM;;;Portland International Jetport;;;P-S;;;837335;;;MAINE;;;43.646161;;;-70.309281
+262;;;Akron / Canton;;;CAK;;;CAK;;;KCAK;;;Akron-Canton Regional Airport;;;P-S;;;852332;;;OHIO;;;40.9160833;;;-81.4421944
+250;;;Greensboro;;;GSO;;;GSO;;;KGSO;;;Piedmont Triad International Airport;;;P-S;;;860124;;;NORTH CAROLINA;;;36.09775;;;-79.937306
+61;;;Palm Springs;;;PSP;;;PSP;;;KPSP;;;Palm Springs International Airport;;;P-S;;;876428;;;CALIFORNIA;;;33.829667;;;-116.506694
+296;;;Myrtle Beach;;;MYR;;;MYR;;;KMYR;;;Myrtle Beach International Airport;;;P-S;;;899859;;;SOUTH CAROLINA;;;33.67975;;;-78.928333
+294;;;Greer;;;GSP;;;GSP;;;KGSP;;;Greenville-Spartanburg International Airport(Roger Milliken Field);;;P-S;;;955097;;;SOUTH CAROLINA;;;34.895556;;;-82.218889
+244;;;Syracuse;;;SYR;;;SYR;;;KSYR;;;Syracuse Hancock International Airport;;;P-S;;;991663;;;NEW YORK;;;43.111187;;;-76.106311
+45;;;Little Rock;;;LIT;;;LIT;;;KLIT;;;Bill and Hillary Clinton National Airport (Adams Field) (was Little Rock National);;;P-S;;;1055608;;;ARKANSAS;;;34.729444;;;-92.224306
+140;;;Des Moines;;;DSM;;;DSM;;;KDSM;;;Des Moines International Airport;;;P-S;;;1079189;;;IOWA;;;41.533972;;;-93.663083
+177;;;Grand Rapids;;;GRR;;;GRR;;;KGRR;;;Gerald R. Ford International Airport;;;P-S;;;1123257;;;MICHIGAN;;;42.880833;;;-85.522806
+222;;;Manchester;;;MHT;;;MHT;;;KMHT;;;Manchester–Boston Regional Airport;;;P-S;;;1190082;;;NEW HAMPSHIRE;;;42.932556;;;-71.435667
+232;;;Albany;;;ALB;;;ALB;;;KALB;;;Albany International Airport;;;P-S;;;1196753;;;NEW YORK;;;42.748267;;;-73.801692
+243;;;Rochester;;;ROC;;;ROC;;;KROC;;;Greater Rochester International Airport;;;P-S;;;1209532;;;NEW YORK;;;43.118866;;;-77.672389
+267;;;Dayton;;;DAY;;;DAY;;;KDAY;;;James M. Cox Dayton International Airport;;;P-S;;;1244841;;;OHIO;;;39.902375;;;-84.219375
+118;;;Boise;;;BOI;;;BOI;;;KBOI;;;Boise Airport (Boise Air Terminal) (Gowen Field);;;P-S;;;1313741;;;IDAHO;;;43.564361;;;-116.222861
+117;;;Lihue, Kauai;;;LIH;;;LIH;;;PHLI;;;Lihue Airport;;;P-S;;;1315141;;;HAWAII;;;21.975983;;;-159.338958
+272;;;Tulsa;;;TUL;;;TUL;;;KTUL;;;Tulsa International Airport;;;P-S;;;1323943;;;OKLAHOMA;;;36.198389;;;-95.888111
+114;;;Kailua-Kona, Hawaii;;;KOA;;;KOA;;;PHKO;;;Kona International Airport at Keahole;;;P-S;;;1376641;;;HAWAII;;;19.738767;;;-156.045631
+54;;;Long Beach;;;LGB;;;LGB;;;KLGB;;;Long Beach Airport (Daugherty Field);;;P-S;;;1438948;;;CALIFORNIA;;;33.817722;;;-118.151611
+316;;;El Paso;;;ELP;;;ELP;;;KELP;;;El Paso International Airport;;;P-S;;;1509093;;;TEXAS;;;31.80725;;;-106.377583
+352;;;Spokane;;;GEG;;;GEG;;;KGEG;;;Spokane International Airport (Geiger Field);;;P-S;;;1545115;;;WASHINGTON;;;47.619861;;;-117.533833
+340;;;Richmond;;;RIC;;;RIC;;;KRIC;;;Richmond International Airport (Byrd Field);;;P-S;;;1651131;;;VIRGINIA;;;37.505167;;;-77.319667
+339;;;Norfolk;;;ORF;;;ORF;;;KORF;;;Norfolk International Airport;;;P-S;;;1663294;;;VIRGINIA;;;36.894611;;;-76.201222
+149;;;Louisville;;;SDF;;;SDF;;;KSDF;;;Louisville International Airport (Standiford Field);;;P-S;;;1669470;;;KENTUCKY;;;38.1740858;;;-85.7364989
+291;;;Charleston;;;CHS;;;CHS;;;KCHS;;;Charleston International Airport / Charleston AFB;;;P-S;;;1669988;;;SOUTH CAROLINA;;;32.898647;;;-80.040528
+220;;;Reno;;;RNO;;;RNO;;;KRNO;;;Reno/Tahoe International Airport;;;P-S;;;1672139;;;NEVADA;;;39.499108;;;-119.768108
+289;;;Providence / Warwick;;;PVD;;;PVD;;;KPVD;;;Theodore Francis Green State Airport;;;P-S;;;1764828;;;RHODE ISLAND;;;41.732581;;;-71.420383
+271;;;Oklahoma City;;;OKC;;;OKC;;;KOKC;;;Will Rogers World Airport;;;P-S;;;1790407;;;OKLAHOMA;;;35.393089;;;-97.600733
+49;;;Burbank;;;BUR;;;BUR;;;KBUR;;;Bob Hope Airport (Hollywood Burbank Airport);;;P-M;;;1919005;;;CALIFORNIA;;;34.200667;;;-118.358667
+60;;;Ontario;;;ONT;;;ONT;;;KONT;;;Ontario International Airport;;;P-M;;;1970538;;;CALIFORNIA;;;34.056;;;-117.601194
+215;;;Omaha;;;OMA;;;OMA;;;KOMA;;;Eppley Airfield;;;P-M;;;1977480;;;NEBRASKA;;;41.303167;;;-95.894069
+6;;;Anchorage;;;ANC;;;ANC;;;PANC;;;Ted Stevens Anchorage International Airport;;;P-M;;;2325030;;;ALASKA;;;61.174361;;;-149.996361
+227;;;Albuquerque;;;ABQ;;;ABQ;;;KABQ;;;Albuquerque International Sunport;;;P-M;;;2477960;;;NEW MEXICO;;;35.0402222;;;-106.6091944
+88;;;Jacksonville;;;JAX;;;JAX;;;KJAX;;;Jacksonville International Airport;;;P-M;;;2549712;;;FLORIDA;;;30.494056;;;-81.687861
+234;;;Buffalo;;;BUF;;;BUF;;;KBUF;;;Buffalo Niagara International Airport;;;P-M;;;2568018;;;NEW YORK;;;42.940525;;;-78.732167
+82;;;Hartford;;;BDL;;;BDL;;;KBDL;;;Bradley International Airport;;;P-M;;;2681718;;;CONNECTICUT;;;41.938889;;;-72.683222
+147;;;Cincinnati/Covington;;;CVG;;;CVG;;;KCVG;;;Cincinnati/Northern Kentucky International Airport;;;P-M;;;2776377;;;KENTUCKY;;;39.048836;;;-84.667822
+103;;;West Palm Beach;;;PBI;;;PBI;;;KPBI;;;Palm Beach International Airport;;;P-M;;;2848901;;;FLORIDA;;;26.683161;;;-80.095589
+113;;;Kahului, Maui;;;OGG;;;OGG;;;PHOG;;;Kahului Airport;;;P-M;;;2955304;;;HAWAII;;;20.89865;;;-156.430458
+265;;;Columbus;;;CMH;;;CMH;;;KCMH;;;Port Columbus International Airport;;;P-M;;;3065569;;;OHIO;;;39.997972;;;-82.891889
+366;;;Milwaukee;;;MKE;;;MKE;;;KMKE;;;General Mitchell International Airport;;;P-M;;;3228607;;;WISCONSIN;;;42.947222;;;-87.896583
+137;;;Indianapolis;;;IND;;;IND;;;KIND;;;Indianapolis International Airport;;;P-M;;;3535579;;;INDIANA;;;39.717331;;;-86.294383
+313;;;Dallas;;;DAL;;;DAL;;;KDAL;;;Dallas Love Field;;;P-M;;;3783407;;;TEXAS;;;32.847111;;;-96.851778
+284;;;Pittsburgh;;;PIT;;;PIT;;;KPIT;;;Pittsburgh International Airport;;;P-M;;;3813007;;;PENNSYLVANIA;;;40.491467;;;-80.232872
+327;;;San Antonio;;;SAT;;;SAT;;;KSAT;;;San Antonio International Airport;;;P-M;;;3916320;;;TEXAS;;;29.533694;;;-98.469778
+308;;;Austin;;;AUS;;;AUS;;;KAUS;;;Austin-Bergstrom International Airport;;;P-M;;;4201136;;;TEXAS;;;30.194528;;;-97.669889
+63;;;Sacramento;;;SMF;;;SMF;;;KSMF;;;Sacramento International Airport;;;P-M;;;4255145;;;CALIFORNIA;;;38.695417;;;-121.590778
+66;;;San Jose;;;SJC;;;SJC;;;KSJC;;;Norman Y. Mineta San José International Airport;;;P-M;;;4317896;;;CALIFORNIA;;;37.3626;;;-121.929022
+320;;;Houston;;;HOU;;;HOU;;;KHOU;;;William P. Hobby Airport;;;P-M;;;4357835;;;TEXAS;;;29.645419;;;-95.278889
+264;;;Cleveland;;;CLE;;;CLE;;;KCLE;;;Cleveland-Hopkins International Airport;;;P-M;;;4375822;;;OHIO;;;41.411689;;;-81.849794
+305;;;Nashville;;;BNA;;;BNA;;;KBNA;;;Nashville International Airport (Berry Field);;;P-M;;;4432527;;;TENNESSEE;;;36.124472;;;-86.678194
+254;;;Raleigh;;;RDU;;;RDU;;;KRDU;;;Raleigh-Durham International Airport;;;P-M;;;4482973;;;NORTH CAROLINA;;;35.877639;;;-78.787472
+68;;;Santa Ana;;;SNA;;;SNA;;;KSNA;;;John Wayne Airport (was Orange County Airport);;;P-M;;;4542376;;;CALIFORNIA;;;33.675667;;;-117.868222
+157;;;New Orleans;;;MSY;;;MSY;;;KMSY;;;Louis Armstrong New Orleans International Airport;;;P-M;;;4577498;;;LOUISIANA;;;29.993389;;;-90.258028
+59;;;Oakland;;;OAK;;;OAK;;;KOAK;;;Oakland International Airport;;;P-M;;;4771830;;;CALIFORNIA;;;37.721278;;;-122.220722
+202;;;Kansas City;;;MCI;;;MCI;;;KMCI;;;Kansas City International Airport (originally Mid-Contintent International Airport);;;P-M;;;4836221;;;MISSOURI;;;39.297606;;;-94.713905
+304;;;Memphis;;;MEM;;;MEM;;;KMEM;;;Memphis International Airport;;;P-M;;;4930935;;;TENNESSEE;;;35.042417;;;-89.976667
+204;;;St. Louis;;;STL;;;STL;;;KSTL;;;Lambert-St. Louis International Airport;;;P-M;;;6213972;;;MISSOURI;;;38.748697;;;-90.370028
+86;;;Fort Myers;;;RSW;;;RSW;;;KRSW;;;Southwest Florida International Airport;;;P-M;;;7205205;;;FLORIDA;;;26.536167;;;-81.755167
+277;;;Portland;;;PDX;;;PDX;;;KPDX;;;Portland International Airport;;;P-L;;;7453098;;;OREGON;;;45.588722;;;-122.5975
+343;;;Washington, D.C. /Arlington County;;;DCA;;;DCA;;;KDCA;;;Ronald Reagan Washington National Airport;;;P-L;;;8736804;;;VIRGINIA;;;38.852083;;;-77.037722
+64;;;San Diego;;;SAN;;;SAN;;;KSAN;;;San Diego International Airport (Lindbergh Field);;;P-L;;;8876777;;;CALIFORNIA;;;32.733556;;;-117.189667
+112;;;Honolulu, Oahu;;;HNL;;;HNL;;;PHNL;;;Honolulu International Airport;;;P-L;;;9466995;;;HAWAII;;;21.318681;;;-157.922428
+332;;;Salt Lake City;;;SLC;;;SLC;;;KSLC;;;Salt Lake City International Airport;;;P-L;;;9910493;;;UTAH;;;40.788389;;;-111.977772
+128;;;Chicago;;;MDW;;;MDW;;;KMDW;;;Chicago Midway International Airport;;;P-L;;;9919985;;;ILLINOIS;;;41.785972;;;-87.752417
+85;;;Fort Lauderdale;;;FLL;;;FLL;;;KFLL;;;Fort Lauderdale–Hollywood International Airport;;;P-L;;;11079402;;;FLORIDA;;;26.072583;;;-80.15275
+164;;;Baltimore / Glen Burnie;;;BWI;;;BWI;;;KBWI;;;Baltimore/Washington International Thurgood Marshall Airport;;;P-L;;;11134130;;;MARYLAND;;;39.175361;;;-76.668333
+344;;;Washington, D.C. /Dulles / Chantilly;;;IAD;;;IAD;;;KIAD;;;Washington Dulles International Airport;;;P-L;;;11276481;;;VIRGINIA;;;38.944533;;;-77.455811
+101;;;Tampa;;;TPA;;;TPA;;;KTPA;;;Tampa International Airport;;;P-L;;;13306354;;;FLORIDA;;;27.975472;;;-82.53325
+239;;;New York;;;LGA;;;LGA;;;KLGA;;;LaGuardia Airport (and Marine Air Terminal);;;P-L;;;13353365;;;NEW YORK;;;40.777245;;;-73.872608
+283;;;Philadelphia;;;PHL;;;PHL;;;KPHL;;;Philadelphia International Airport;;;P-L;;;14705014;;;PENNSYLVANIA;;;39.871944;;;-75.241139
+351;;;Seattle / Tacoma(SeaTac);;;SEA;;;SEA;;;KSEA;;;Seattle–Tacoma International Airport;;;P-L;;;15406243;;;WASHINGTON;;;47.449;;;-122.309306
+167;;;Boston;;;BOS;;;BOS;;;KBOS;;;Gen. Edward Lawrence Logan International Airport;;;P-L;;;15425869;;;MASSACHUSETTS;;;42.364347;;;-71.005181
+174;;;Detroit / Romulus;;;DTW;;;DTW;;;KDTW;;;Detroit Metropolitan Wayne County Airport;;;P-L;;;15683787;;;MICHIGAN;;;42.212444;;;-83.353389
+91;;;Miami;;;MIA;;;MIA;;;KMIA;;;Miami International Airport;;;P-L;;;16194277;;;FLORIDA;;;25.79325;;;-80.290556
+193;;;Minneapolis;;;MSP;;;MSP;;;KMSP;;;Minneapolis–St. Paul International Airport(Wold–Chamberlain Field);;;P-L;;;16282038;;;MINNESOTA;;;44.881956;;;-93.221767
+226;;;Newark;;;EWR;;;EWR;;;KEWR;;;Newark Liberty International Airport;;;P-L;;;17514139;;;NEW JERSEY;;;40.6925;;;-74.168667
+92;;;Orlando;;;MCO;;;MCO;;;KMCO;;;Orlando International Airport;;;P-L;;;17614745;;;FLORIDA;;;28.429394;;;-81.308994
+319;;;Houston;;;IAH;;;IAH;;;KIAH;;;George Bush Intercontinental Airport;;;P-L;;;19528631;;;TEXAS;;;29.984433;;;-95.341442
+219;;;Las Vegas;;;LAS;;;LAS;;;KLAS;;;McCarran International Airport;;;P-L;;;19923594;;;NEVADA;;;36.080056;;;-115.15225
+248;;;Charlotte;;;CLT;;;CLT;;;KCLT;;;Charlotte/Douglas International Airport;;;P-L;;;21347428;;;NORTH CAROLINA;;;35.214;;;-80.943139
+65;;;San Francisco;;;SFO;;;SFO;;;KSFO;;;San Francisco International Airport;;;P-L;;;21706567;;;CALIFORNIA;;;37.618972;;;-122.374889
+238;;;New York;;;JFK;;;JFK;;;KJFK;;;John F. Kennedy International Airport (was New York International Airport);;;P-L;;;25036855;;;NEW YORK;;;40.639751;;;-73.778925
+75;;;Denver;;;DEN;;;DEN;;;KDEN;;;Denver International Airport;;;P-L;;;25497348;;;COLORADO;;;39.861656;;;-104.673178
+314;;;Dallas-Fort Worth;;;DFW;;;DFW;;;KDFW;;;Dallas/Fort Worth International Airport;;;P-L;;;27100656;;;TEXAS;;;32.896828;;;-97.037997
+127;;;Chicago;;;ORD;;;ORD;;;KORD;;;Chicago O'Hare International Airport;;;P-L;;;32278906;;;ILLINOIS;;;41.978603;;;-87.904842
+55;;;Los Angeles;;;LAX;;;LAX;;;KLAX;;;Los Angeles International Airport;;;P-L;;;32427115;;;CALIFORNIA;;;33.942536;;;-118.408075
+105;;;Atlanta;;;ATL;;;ATL;;;KATL;;;Hartsfield-Jackson Atlanta International Airport;;;P-L;;;45308685;;;GEORGIA;;;33.636719;;;-84.428067
+3;;;Huntsville;;;HSV;;;HSV;;;KHSV;;;Huntsville International Airport (Carl T. Jones Field);;;P-S;;;1036620;;;ALABAMA;;;34.6371944;;;-86.7750556
+37;;;Mesa;;;IWA;;;AZA;;;KIWA;;;Phoenix–Mesa Gateway Airport;;;P-S;;;1242237;;;ARIZONA;;;33.307833;;;-111.655
+36;;;Grand Canyon /Tusayan;;;GCN;;;GCN;;;KGCN;;;Grand Canyon National Park Airport;;;P-N;;;126364;;;ARIZONA;;;35.9523611;;;-112.1469722
+34;;;Bullhead City;;;IFP;;;IFP;;;KIFP;;;Laughlin/Bullhead International Airport;;;P-N;;;132520;;;ARIZONA;;;35.1574;;;-114.56
+38;;;Page;;;PGA;;;PGA;;;KPGA;;;Page Municipal Airport;;;P-N;;;18790;;;ARIZONA;;;36.9261;;;-111.4483
+1;;;Birmingham;;;BHM;;;BHM;;;KBHM;;;Birmingham–Shuttlesworth International Airport;;;P-S;;;2646000;;;ALABAMA;;;33.562942;;;-86.75355
+41;;;Tucson;;;TUS;;;TUS;;;KTUS;;;Tucson International Airport;;;P-S;;;2760660;;;ARIZONA;;;32.116083;;;-110.941028
+5;;;Montgomery;;;MGM;;;MGM;;;KMGM;;;Montgomery Regional Airport (Dannelly Field);;;P-N;;;347640;;;ALABAMA;;;32.3006389;;;-86.3939722
+40;;;Phoenix;;;PHX;;;PHX;;;KPHX;;;Phoenix Sky Harbor International Airport;;;P-L;;;44006205;;;ARIZONA;;;33.434278;;;-112.011583
+2;;;Dothan;;;DHN;;;DHN;;;KDHN;;;Dothan Regional Airport;;;P-N;;;48423;;;ALABAMA;;;31.321339;;;-85.449628
+4;;;Mobile;;;MOB;;;MOB;;;KMOB;;;Mobile Regional Airport;;;P-N;;;559330;;;ALABAMA;;;30.691231;;;-88.242814
+35;;;Flagstaff;;;FLG;;;FLG;;;KFLG;;;Flagstaff Pulliam Airport;;;P-N;;;58323;;;ARIZONA;;;35.140318;;;-111.6692392
+39;;;Peach Springs;;;1G4;;;GCW;;;Grand Canyon West Airport;;;P-N;;;59846;;;ARIZONA;;;35.5925;;;-113.4859
+42;;;Yuma;;;NYL;;;YUM;;;KNYL;;;Yuma International Airport / MCAS Yuma;;;P-N;;;78395;;;ARIZONA;;;32.656578;;;-114.60598

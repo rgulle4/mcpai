@@ -1,10 +1,13 @@
 package mapUtils;
 
 import com.google.maps.model.LatLng;
+import helpers.Helper;
 import mapUtils.ap.Airports;
+import models.places.Location;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeMap;
 
 import static org.junit.Assert.*;
@@ -37,14 +40,25 @@ public class AirportsTest {
         double radius = 150; // miles
         TreeMap<Double, String> result
               = Airports.getAirportsWithinRadius(myLat, myLng, radius);
-        assertEquals(8, result.size());
+        assertEquals(4, result.size());
         assertTrue(result.containsValue("MSY"));
         assertTrue(result.containsValue("BTR"));
         assertTrue(result.containsValue("GPT"));
         assertFalse(result.containsValue("SFO"));
     
         assertTrue(result.firstEntry().getValue().equals("MSY"));
-        assertTrue(result.lastEntry().getValue().equals("AEX"));
+    }
+    
+    @Test
+    public void getNearbyAirports() throws Exception {
+        Location loc = new Location("Berkeley, CA");
+        ArrayList<Location> nearbyAirports
+              = Airports.getNearbyAirports(loc);
+        Helper.printObject(nearbyAirports);
+        System.out.println("size: " + nearbyAirports.size());
+        assertTrue(nearbyAirports.size() > 1);
+        assertTrue(nearbyAirports.size()
+              <= Airports.MAX_NUMBER_OF_NEARBY_AIRPORTS);
     }
     
     @Test
@@ -65,8 +79,5 @@ public class AirportsTest {
 
         assertTrue(airportCodes.get(1).equals("BTR"));
         assertEquals(41.04, distances.get(1), 1.5);
-
-        assertTrue(airportCodes.get(3).equals("LFT"));
-        assertEquals(93.35, distances.get(3), 1.5);
     }
 }

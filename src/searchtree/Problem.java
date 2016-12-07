@@ -1,32 +1,42 @@
 package searchtree;
 
-class Problem {
-    private double startLo, startLa, goalLo, goalLa, limit;
-    public Problem(double _startLa, double _startLo, double _goalLa, double _goalLo, double _limit){
-        startLo = _startLo;
-        startLa = _startLa;
-        goalLo = _goalLo;
-        goalLa = _goalLa;
+public class Problem {
+    private double originLat, originLng, goalLat, goalLng, limit;
+    
+    public Problem(double _originLat, double _originLng,
+                   double _goalLat, double _goalLng)
+    {
+        this(_originLat, _originLng, _goalLat, _goalLng, Double.MAX_VALUE);
+    }
+    public Problem(double _originLat, double _originLng,
+                   double _goalLat, double _goalLng, double _limit)
+    {
+        originLng = _originLng;
+        originLat = _originLat;
+        goalLng = _goalLng;
+        goalLat = _goalLat;
         limit = _limit;
     }
-    public boolean goalTest(Node node){
-        if ((node.getLa() == goalLa) && (node.getLo() == goalLo)){
+    
+    public boolean goalTest(Node node) {
+        if ((node.getLat() == goalLat) && (node.getLng() == goalLng)){
             return true;
         } else {
             return false;
         }
     }
-    public double getStartLo(){
-        return startLo;
+    
+    public double getOriginLng(){
+        return originLng;
     }
-    public double getStartLa(){
-        return startLa;
+    public double getOriginLat(){
+        return originLat;
     }
-    public double getGoalLa(){
-        return goalLa;
+    public double getGoalLat(){
+        return goalLat;
     }
-    public double getGoalLo(){
-        return goalLo;
+    public double getGoalLng(){
+        return goalLng;
     }
     public double getLimit(){
         return limit;

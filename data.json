@@ -2,36 +2,39 @@
   "name": "Amite",
   "children": [
     {
-      "name": "BTR1",
-      "value": 1.0,
+      "name": "BTR",
+      "value": 4.20,
       "children": [
         {
-          "name": "SFO4",
-          "value": 12.7,
+          "name": "SFO",
+          "value": 418.00,
           "children": [
             {
               "name": "Stockton",
-              "value": 1.4
+              "isgoal": true,
+              "value": 5.00
             }
           ]
         },
         {
-          "name": "LAX1",
-          "value": 6.8,
+          "name": "LAX",
+          "value": 394.00,
           "children": [
             {
               "name": "Stockton",
-              "value": 5.2
+              "isgoal": true,
+              "value": 21.00
             }
           ]
         },
         {
-          "name": "OAK1",
-          "value": 13.1,
+          "name": "OAK",
+          "value": 524.00,
           "children": [
             {
               "name": "Stockton",
-              "value": 1.1
+              "isgoal": true,
+              "value": 4
             }
           ]
         }
@@ -39,35 +42,38 @@
     },
     {
       "name": "MSY",
-      "value": 1.2,
+      "value": 3.95,
       "children": [
         {
-          "name": "SFO4",
-          "value": 12.7,
+          "name": "SFO",
+          "value": 400.00,
           "children": [
             {
               "name": "Stockton",
-              "value": 1.4
+              "isgoal": true,
+              "value": 5.00
             }
           ]
         },
         {
-          "name": "LAX1",
-          "value":4.4,
+          "name": "LAX",
+          "value": 172,
           "children": [
             {
               "name": "Stockton",
-              "value": 5.2
+              "isgoal": true,
+              "value": 21.00
             }
           ]
         },
         {
-          "name": "OAK1",
-          "value": 13.4,
+          "name": "OAK",
+          "value": 500,
           "children": [
             {
               "name": "Stockton",
-              "value": 1.1
+              "isgoal": true,
+              "value": 4
             }
           ]
         }
@@ -75,44 +81,47 @@
     },
     {
       "name": "IAH",
-      "value": 5.0,
+      "value": 22,
       "children": [
         {
-          "name": "SFO4",
-          "value": 8.0,
+          "name": "SFO",
+          "value": 340.00,
           "children": [
             {
               "name": "Stockton",
-              "value": 1.4
+              "isgoal": true,
+              "value": 5.00
             }
           ]
         },
         {
-          "name": "LAX1",
-          "value": 3.7,
+          "name": "LAX",
+          "value": 187,
           "children": [
             {
               "name": "Stockton",
-              "value": 5.2
+              "isgoal": true,
+              "value": 21.00
             }
           ]
         },
         {
-          "name": "OAK1",
-          "value": 6.5,
+          "name": "OAK",
+          "value": 230.00,
           "children": [
             {
               "name": "Stockton",
-              "value": 1.1
+              "isgoal": true,
+              "value": 4
             }
           ]
         }
       ]
     },
     {
-      "name": "StocktonDrive",
-      "value": 47.0
+      "name": "Stockton",
+      "isgoal": true,
+      "value": 286.00
     }
   ]
 }
-

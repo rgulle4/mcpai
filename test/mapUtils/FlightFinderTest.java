@@ -16,7 +16,7 @@ public class FlightFinderTest {
     private static final String ORIGIN_AIRPORT = "BTR";
     private static final String DESTINATION_AIRPORT = "SFO";
     private static final String DATE_STRING = "2016-12-25";
-    private static final int NUM_SOLUTIONS = 15;
+    private static final int NUM_SOLUTIONS = 3;
     
     FlightFinder finder = new FlightFinder();
     List<Flight> flights;

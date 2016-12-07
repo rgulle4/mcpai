@@ -44,13 +44,13 @@ class FindAirports {
 
         for (int j = 0; j<1459; j++){
             //get coordinates of current Airport
-            currx = airports[j].getLo();
-            curry = airports[j].getLa();
+            currx = airports[j].getLng();
+            curry = airports[j].getLat();
 
             //get coordinates of min airports
             for (int k = 0; k<n; k++){
-                x[k] = airports[min[k]].getLo();
-                y[k] = airports[min[k]].getLa();
+                x[k] = airports[min[k]].getLng();
+                y[k] = airports[min[k]].getLat();
             }
 
             //check if closer than mins

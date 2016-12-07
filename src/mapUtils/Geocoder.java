@@ -39,6 +39,8 @@ public final class Geocoder {
     }
     
     private static void setStuff(Location location, GeocodingResult r) {
+        if (location.getLocationString() == null)
+            location.setLocationString(r.formattedAddress);
         location.setFormattedAddress(r.formattedAddress);
         location.setPlaceId(r.placeId);
         location.setIsAirport(resultIsAirport(r));

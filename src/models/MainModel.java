@@ -8,6 +8,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import mapUtils.*;
 import models.places.Location;
+import searchtree.Search;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -59,6 +60,15 @@ public final class MainModel {
     }
 
     private String searchStrings;
+    
+    public MainModel search() {
+        Location a = this.startLocation.geocode();
+        Location b = this.destinationLocation.geocode();
+        
+        Search s = new Search(a, b, Double.MAX_VALUE);
+        
+        return this;
+    }
 
     public MainModel calculateDrive() {
         Location a = this.startLocation;

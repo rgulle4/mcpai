@@ -224,7 +224,7 @@ public final class RoadDistance {
             
             return this.response;
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return null;
     }

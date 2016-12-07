@@ -1,13 +1,19 @@
 package searchtree;
 
+import models.places.Location;
+
 public class Test {
     public static void main(String[] args){
-        double myLo = -91.1403;
-        double myLa = 30.4583;
-        double goalLo = -84.3880;
-        double goalLa = 33.7490;
-        double limit = 60;
-
-        Search s = new Search(myLa,myLo,goalLa,goalLo,limit);
+        Search s2 = new Search(new Location("Amite, LA"),
+                       new Location("Hayward, CA"));
+        // =>
+        // ----------------------
+        // Time: 9.223611111111111
+        // Price: 370.0789399026043
+        // Hayward, CA
+        // SJC
+        // GPT
+        // Amite, LA
+        // ----------------------
     }
 }

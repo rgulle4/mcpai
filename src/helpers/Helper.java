@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public final class Helper {
 
-    public static boolean DEBUG_MODE = true;
+    public static boolean DEBUG_MODE = false;
 
     /* ---------------------------------------------------- */
     

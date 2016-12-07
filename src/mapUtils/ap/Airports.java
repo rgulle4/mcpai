@@ -16,9 +16,13 @@ public final class Airports {
     
     /* --------------------------------------------------------- */
     
+    public static final double DEFAULT_RADIUS = 400.0;
+    public static final int MAX_NUMBER_OF_NEARBY_AIRPORTS = 3;
+    public static final int MINIMUM_AIRPORT_SIZE = 300000;
+    
     private static final Map<String, LatLng> AIRPORTS_DICT = new HashMap<>();
     
-    private static final String DAT_FILE_NAME = "major-airports-only.dat";
+    private static final String DAT_FILE_NAME = "major-airports-only3.dat";
     private static final StraightLineDistance SLD = Helper.SLD;
     
     public static boolean EMPTY = true;
@@ -71,7 +75,9 @@ public final class Airports {
                     String state = s.next();        // LOUISIANA
                     double lat = s.nextDouble();    // 29.993389
                     double lng = s.nextDouble();    // -90.258028
-                    put(iata, lat, lng);
+                    
+                    if (Integer.parseInt(enplanements) >= MINIMUM_AIRPORT_SIZE)
+                        put(iata, lat, lng);
                 }
             }
             EMPTY = false;
@@ -170,6 +176,35 @@ public final class Airports {
         }
     }
     
+    public static ArrayList<Location> getNearbyAirports(Location location) {
+        return getNearbyAirports(location, DEFAULT_RADIUS);
+    }
+    
+    public static ArrayList<Location> getNearbyAirports(Location location,
+                                                   double radius)
+    {
+        location.geocode();
+        ArrayList<Location> nearbyAirports = new ArrayList<>();
+        TreeMap<Double, String> r
+              = getAirportsWithinRadius(location.getLat(),
+                                        location.getLng(),
+                                        radius);
+        for (Double d : r.keySet()) {
+            String code = r.get(d);
+            LatLng latlng = AIRPORTS_DICT.get(code);
+            Location airport = (new Location())
+                  .setLatLng(latlng)
+//                  .reverseGeocode()
+                  .setIsAirport(true)
+                  .setAirportCode(code)
+                  .setLocationString(code);
+            nearbyAirports.add(airport);
+            if (nearbyAirports.size() >= MAX_NUMBER_OF_NEARBY_AIRPORTS)
+                return nearbyAirports;
+        }
+        return nearbyAirports;
+    }
+    
     /* --------------------------------------------------------- */
 
     /**
@@ -230,6 +265,30 @@ public final class Airports {
                                                 double radius)
     {
         return getAirportsWithinRadius(latlng.lat, latlng.lng, radius);
+    }
+    
+    public static ArrayList<String> getAirportsListWithinRadius(
+                                         Location location, double radius)
+    {
+        location.geocode();
+        return getAirportsListWithinRadius(
+              location.getLat(), location.getLng(), radius);
+    }
+    
+    public static ArrayList<String> getAirportsListWithinRadius(
+                                        LatLng latlng, double radius)
+    {
+        return getAirportsListWithinRadius(latlng.lat, latlng.lng, radius);
+    }
+    
+    public static ArrayList<String> getAirportsListWithinRadius(
+                                        double lat, double lng, double radius)
+    {
+        ArrayList<String> airportsList = new ArrayList<String>();
+        TreeMap<Double, String> r = getAirportsWithinRadius(lat, lng, radius);
+        for (Double d : r.keySet())
+            airportsList.add(r.get(d));
+        return airportsList;
     }
     
     /**

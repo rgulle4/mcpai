@@ -19,6 +19,7 @@ import java.util.List;
 public final class FlightFinder {
     private static String GOOGLE_API_KEY = Helper.getApiKey();
     private static final Gson GSON = Helper.GSON;
+    private static final long SLEEP_TIME = 4100;
     
     /* -- TODO: cache these objects ---------------------------- */
     
@@ -29,10 +30,10 @@ public final class FlightFinder {
     private String date = "2016-12-25";
     
     // optional inputs
-    private String maxPrice = "USD700";
+    private String maxPrice = "USD1000";
     private String earliestTime = "";
     private String latestTime = "";
-    private int solutions = 10;
+    private int solutions = 4;
     
     // results
     private Flight bestFlight;
@@ -135,8 +136,8 @@ public final class FlightFinder {
     
     public Flight getBestFlight() {
         List<Flight> flights = getFlights();
-        if (flights != null)
-            return flights.get(0);
+        if (flights == null)
+            return null;
         return flights.get(0);
     }
     
@@ -149,7 +150,11 @@ public final class FlightFinder {
         QpxResponse response = getResponse();
         QpxResponse.Trip.TripOption[] tripOptions
               = response.trips.tripOption;
+        if (tripOptions == null)
+            return null;
         numResults = tripOptions.length;
+        if (numResults == 0)
+            return null;
         List<QpxResponse.Trip.TripOption> tripOpts
               = new ArrayList<QpxResponse.Trip.TripOption>(
               Arrays.asList(response.trips.tripOption));
@@ -189,6 +194,11 @@ public final class FlightFinder {
     
 
     private QpxResponse getResponse() {
+        try {
+            Thread.sleep(SLEEP_TIME);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (inputsAreInvalid())
             return null;
         String urlString = buildUrl();

@@ -65,7 +65,7 @@ public final class RoadDistanceCache {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(responseJson);
+//        System.out.println(responseJson);
         return responseJson;
     }
 

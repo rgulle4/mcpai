@@ -138,12 +138,7 @@ public final class MainController {
         testButton.setOnAction(e -> {
             printlnButtonAction();});
         calcButton.setOnAction(e -> {
-            mainModel.calculateDrive();
-            mainModel.calculateFlight();
-            double flyPrice = mainModel.flightPrice;
-            double flyDuration = mainModel.flightDuration;
-            Helper.printDebug("flyPrice = " + flyPrice);
-            Helper.printDebug("flyDuration = " + flyDuration);
+            mainModel.search();
         });
 
         setupTabs();
@@ -213,5 +208,14 @@ public final class MainController {
 
     }
 
+    /* -- graveyard -------------------------------------------- */
+    private final void oldCalculateHander() {
+        mainModel.calculateDrive();
+        mainModel.calculateFlight();
+        double flyPrice = mainModel.flightPrice;
+        double flyDuration = mainModel.flightDuration;
+        Helper.printDebug("flyPrice = " + flyPrice);
+        Helper.printDebug("flyDuration = " + flyDuration);
+    }
 
 }

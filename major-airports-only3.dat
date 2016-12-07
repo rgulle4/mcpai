@@ -1,9 +1,6 @@
 ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;Lng
-1;;;Birmingham;;;BHM;;;BHM;;;KBHM;;;Birmingham-Shuttlesworth International Airport;;;P-S;;;2,646,000 (2015);;;ALABAMA;;;33.562942;;;-86.75355
-2;;;Dothan;;;DHN;;;DHN;;;KDHN;;;Dothan Regional Airport;;;P-N;;;48,423 (2013 Enplanements);;;ALABAMA;;;31.321339;;;-85.449628
-3;;;Huntsville;;;HSV;;;HSV;;;KHSV;;;Huntsville International Airport (Carl T. Jones Field);;;P-S;;;1,036,620 (2015;;;ALABAMA;;;34.6371944;;;-86.7750556
-4;;;Mobile;;;MOB;;;MOB;;;KMOB;;;Mobile Regional Airport;;;P-N;;;559,330 (2015);;;ALABAMA;;;30.691231;;;-88.242814
-5;;;Montgomery;;;MGM;;;MGM;;;KMGM;;;Montgomery Regional Airport (Dannelly Field);;;P-N;;;347,640 (2015);;;ALABAMA;;;32.3006389;;;-86.3939722
+1;;;Birmingham;;;BHM;;;BHM;;;KBHM;;;Birmingham-Shuttlesworth International Airport;;;P-S;;;2646000;;;ALABAMA;;;33.562942;;;-86.75355
+3;;;Huntsville;;;HSV;;;HSV;;;KHSV;;;Huntsville International Airport (Carl T. Jones Field);;;P-S;;;1036620;;;ALABAMA;;;34.6371944;;;-86.7750556
 6;;;Anchorage;;;ANC;;;ANC;;;PANC;;;Ted Stevens Anchorage International Airport;;;P-M;;;2325030;;;ALASKA;;;61.174361;;;-149.996361
 7;;;Aniak;;;ANI;;;ANI;;;PANI;;;Aniak Airport;;;P-N;;;14334;;;ALASKA;;;61.5816;;;-159.543
 8;;;Barrow;;;BRW;;;BRW;;;PABR;;;Wiley Post-Will Rogers Memorial Airport;;;P-N;;;51568;;;ALASKA;;;71.285446;;;-156.766003
@@ -32,45 +29,32 @@ ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;L
 31;;;Valdez;;;VDZ;;;VDZ;;;PAVD;;;Valdez Airport (Pioneer Field);;;P-N;;;13318;;;ALASKA;;;61.133949;;;-146.248342
 32;;;Wrangell;;;WRG;;;WRG;;;PAWG;;;Wrangell Airport (also see Wrangell Seaplane Base);;;P-N;;;11807;;;ALASKA;;;56.4843;;;-132.37
 33;;;Yakutat;;;YAK;;;YAK;;;PAYA;;;Yakutat Airport (also see Yakutat Seaplane Base);;;P-N;;;10135;;;ALASKA;;;59.3012;;;-139.3937
-34;;;Bullhead City;;;IFP;;;IFP;;;KIFP;;;Laughlin/Bullhead International Airport;;;P-N;;;132,520 (2015);;;ARIZONA;;;35.1574;;;-114.56
-35;;;Flagstaff;;;FLG;;;FLG;;;KFLG;;;Flagstaff Pulliam Airport;;;P-N;;;58,323 (2013);;;ARIZONA;;;35.140318;;;-111.6692392
-36;;;Grand Canyon /Tusayan;;;GCN;;;GCN;;;KGCN;;;Grand Canyon National Park Airport;;;P-N;;;126,364 (2013);;;ARIZONA;;;35.9523611;;;-112.1469722
-37;;;Mesa;;;IWA;;;AZA;;;KIWA;;;Phoenix-Mesa Gateway Airport;;;P-S;;;1,242,237 (2014);;;ARIZONA;;;33.307833;;;-111.655
-38;;;Page;;;PGA;;;PGA;;;KPGA;;;Page Municipal Airport;;;P-N;;;18,790 (2015);;;ARIZONA;;;36.9261;;;-111.4483
-39;;;Peach Springs;;;1G4;;;GCW;;;;;;Grand Canyon West Airport;;;P-N;;;59,846 (2013);;;ARIZONA;;;35.5925;;;-113.4859
-40;;;Phoenix;;;PHX;;;PHX;;;KPHX;;;Phoenix Sky Harbor International Airport;;;P-L;;;44,006,205 (2015);;;ARIZONA;;;33.434278;;;-112.011583
-41;;;Tucson;;;TUS;;;TUS;;;KTUS;;;Tucson International Airport;;;P-S;;;2,760,660 (2014);;;ARIZONA;;;32.116083;;;-110.941028
-42;;;Yuma;;;NYL;;;YUM;;;KNYL;;;Yuma International Airport / MCAS Yuma;;;P-N;;;78,395 (2013);;;ARIZONA;;;32.656578;;;-114.60598
+34;;;Bullhead City;;;IFP;;;IFP;;;KIFP;;;Laughlin/Bullhead International Airport;;;P-N;;;132520;;;ARIZONA;;;35.1574;;;-114.56
+35;;;Flagstaff;;;FLG;;;FLG;;;KFLG;;;Flagstaff Pulliam Airport;;;P-N;;;58323;;;ARIZONA;;;35.140318;;;-111.6692392
+36;;;Grand Canyon /Tusayan;;;GCN;;;GCN;;;KGCN;;;Grand Canyon National Park Airport;;;P-N;;;126364;;;ARIZONA;;;35.9523611;;;-112.1469722
+37;;;Mesa;;;IWA;;;AZA;;;KIWA;;;Phoenix-Mesa Gateway Airport;;;P-S;;;1242237;;;ARIZONA;;;33.307833;;;-111.655
+38;;;Page;;;PGA;;;PGA;;;KPGA;;;Page Municipal Airport;;;P-N;;;18790;;;ARIZONA;;;36.9261;;;-111.4483
+39;;;Peach Springs;;;1G4;;;GCW;;;;;;Grand Canyon West Airport;;;P-N;;;59846;;;ARIZONA;;;35.5925;;;-113.4859
+40;;;Phoenix;;;PHX;;;PHX;;;KPHX;;;Phoenix Sky Harbor International Airport;;;P-L;;;44006205;;;ARIZONA;;;33.434278;;;-112.011583
+41;;;Tucson;;;TUS;;;TUS;;;KTUS;;;Tucson International Airport;;;P-S;;;2760660;;;ARIZONA;;;32.116083;;;-110.941028
+42;;;Yuma;;;NYL;;;YUM;;;KNYL;;;Yuma International Airport / MCAS Yuma;;;P-N;;;78395;;;ARIZONA;;;32.656578;;;-114.60598
 43;;;Fayetteville;;;XNA;;;XNA;;;KXNA;;;Northwest Arkansas Regional Airport;;;P-S;;;558218;;;ARKANSAS;;;36.2818694;;;-94.3068111
-44;;;Fort Smith;;;FSM;;;FSM;;;KFSM;;;Fort Smith Regional Airport;;;P-N;;;82742;;;ARKANSAS;;;35.336583;;;-94.367444
 45;;;Little Rock;;;LIT;;;LIT;;;KLIT;;;Bill and Hillary Clinton National Airport (Adams Field) (was Little Rock National);;;P-S;;;1055608;;;ARKANSAS;;;34.729444;;;-92.224306
-46;;;Texarkana;;;TXK;;;TXK;;;KTXK;;;Texarkana Regional Airport (Webb Field);;;P-N;;;32882;;;ARKANSAS;;;33.453722;;;-93.991028
-47;;;Arcata / Eureka;;;ACV;;;ACV;;;KACV;;;Arcata Airport;;;P-N;;;56682;;;CALIFORNIA;;;40.978111;;;-124.108611
 48;;;Bakersfield;;;BFL;;;BFL;;;KBFL;;;Meadows Field;;;P-N;;;143175;;;CALIFORNIA;;;35.433598;;;-119.05677
 49;;;Burbank;;;BUR;;;BUR;;;KBUR;;;Bob Hope Airport (Hollywood Burbank Airport);;;P-M;;;1919005;;;CALIFORNIA;;;34.200667;;;-118.358667
-50;;;Carlsbad;;;CRQ;;;CLD;;;KCRQ;;;McClellan-Palomar Airport;;;P-N;;;52561;;;CALIFORNIA;;;33.0742;;;-117.1648
-51;;;Chico;;;CIC;;;CIC;;;KCIC;;;Chico Municipal Airport;;;P-N;;;16835;;;CALIFORNIA;;;39.795383;;;-121.858422
-52;;;Crescent City;;;CEC;;;CEC;;;KCEC;;;Del Norte County Airport (Jack McNamara Field);;;P-N;;;12136;;;CALIFORNIA;;;41.7802;;;-124.237
 53;;;Fresno;;;FAT;;;FAT;;;KFAT;;;Fresno Yosemite International Airport;;;P-S;;;684849;;;CALIFORNIA;;;36.776194;;;-119.71814
 54;;;Long Beach;;;LGB;;;LGB;;;KLGB;;;Long Beach Airport (Daugherty Field);;;P-S;;;1438948;;;CALIFORNIA;;;33.817722;;;-118.151611
 55;;;Los Angeles;;;LAX;;;LAX;;;KLAX;;;Los Angeles International Airport;;;P-L;;;32427115;;;CALIFORNIA;;;33.942536;;;-118.408075
-56;;;Mammoth Lakes;;;MMH;;;MMH;;;KMMH;;;Mammoth Yosemite Airport;;;P-N[nb 4];;;30970;;;CALIFORNIA;;;37.624049;;;-118.837772
-57;;;Modesto;;;MOD;;;MOD;;;KMOD;;;Modesto City-County Airport (Harry Sham Field);;;P-N;;;11310;;;CALIFORNIA;;;37.625817;;;-120.954422
 58;;;Monterey;;;MRY;;;MRY;;;KMRY;;;Monterey Regional Airport (was Monterey Peninsula Airport);;;P-N;;;205838;;;CALIFORNIA;;;36.587;;;-121.842944
 59;;;Oakland;;;OAK;;;OAK;;;KOAK;;;Oakland International Airport;;;P-M;;;4771830;;;CALIFORNIA;;;37.721278;;;-122.220722
 60;;;Ontario;;;ONT;;;ONT;;;KONT;;;Ontario International Airport;;;P-M;;;1970538;;;CALIFORNIA;;;34.056;;;-117.601194
 61;;;Palm Springs;;;PSP;;;PSP;;;KPSP;;;Palm Springs International Airport;;;P-S;;;876428;;;CALIFORNIA;;;33.829667;;;-116.506694
-62;;;Redding;;;RDD;;;RDD;;;KRDD;;;Redding Municipal Airport;;;P-N;;;24875;;;CALIFORNIA;;;40.509;;;-122.293389
 63;;;Sacramento;;;SMF;;;SMF;;;KSMF;;;Sacramento International Airport;;;P-M;;;4255145;;;CALIFORNIA;;;38.695417;;;-121.590778
 64;;;San Diego;;;SAN;;;SAN;;;KSAN;;;San Diego International Airport (Lindbergh Field);;;P-L;;;8876777;;;CALIFORNIA;;;32.733556;;;-117.189667
 65;;;San Francisco;;;SFO;;;SFO;;;KSFO;;;San Francisco International Airport;;;P-L;;;21706567;;;CALIFORNIA;;;37.618972;;;-122.374889
 66;;;San Jose;;;SJC;;;SJC;;;KSJC;;;Norman Y. Mineta San José International Airport;;;P-M;;;4317896;;;CALIFORNIA;;;37.3626;;;-121.929022
-67;;;San Luis Obispo;;;SBP;;;SBP;;;KSBP;;;San Luis Obispo County Regional Airport(McChesney Field);;;P-N;;;135844;;;CALIFORNIA;;;35.2368;;;-120.642
 68;;;Santa Ana;;;SNA;;;SNA;;;KSNA;;;John Wayne Airport (was Orange County Airport);;;P-M;;;4542376;;;CALIFORNIA;;;33.675667;;;-117.868222
 69;;;Santa Barbara;;;SBA;;;SBA;;;KSBA;;;Santa Barbara Municipal Airport (Santa Barbara Airport);;;P-N;;;365036;;;CALIFORNIA;;;34.426211;;;-119.840372
-70;;;Santa Maria;;;SMX;;;SMX;;;KSMX;;;Santa Maria Public Airport (Capt G. Allan Hancock Field);;;P-N;;;51395;;;CALIFORNIA;;;34.8989;;;-120.457
-71;;;Santa Rosa;;;STS;;;STS;;;KSTS;;;Charles M. Schulz-Sonoma County Airport;;;P-N;;;113083;;;CALIFORNIA;;;38.508978;;;-122.81288
-72;;;Stockton;;;SCK;;;SCK;;;KSCK;;;Stockton Metropolitan Airport;;;P-N;;;71757;;;CALIFORNIA;;;37.894167;;;-121.238306
 73;;;Aspen;;;ASE;;;ASE;;;KASE;;;Aspen-Pitkin County Airport (Sardy Field);;;P-N;;;208682;;;COLORADO;;;39.2232;;;-106.869
 74;;;Colorado Springs;;;COS;;;COS;;;KCOS;;;City of Colorado Springs Municipal Airport;;;P-S;;;658318;;;COLORADO;;;38.805805;;;-104.700778
 75;;;Denver;;;DEN;;;DEN;;;KDEN;;;Denver International Airport;;;P-L;;;25497348;;;COLORADO;;;39.861656;;;-104.673178
@@ -102,13 +86,9 @@ ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;L
 101;;;Tampa;;;TPA;;;TPA;;;KTPA;;;Tampa International Airport;;;P-L;;;13306354;;;FLORIDA;;;27.975472;;;-82.53325
 102;;;Valparaiso;;;VPS;;;VPS;;;KVPS;;;Destin-Fort Walton Beach Airport / Eglin Air Force Base;;;P-N;;;353953;;;FLORIDA;;;30.48325;;;-86.5254
 103;;;West Palm Beach;;;PBI;;;PBI;;;KPBI;;;Palm Beach International Airport;;;P-M;;;2848901;;;FLORIDA;;;26.683161;;;-80.095589
-104;;;Albany;;;ABY;;;ABY;;;KABY;;;Southwest Georgia Regional Airport;;;P-N;;;31276;;;GEORGIA;;;31.5355;;;-84.1945
 105;;;Atlanta;;;ATL;;;ATL;;;KATL;;;Hartsfield-Jackson Atlanta International Airport;;;P-L;;;45308685;;;GEORGIA;;;33.636719;;;-84.428067
 106;;;Augusta;;;AGS;;;AGS;;;KAGS;;;Augusta Regional Airport (Bush Field);;;P-N;;;261079;;;GEORGIA;;;33.369944;;;-81.9645
-107;;;Brunswick;;;BQK;;;BQK;;;KBQK;;;Brunswick Golden Isles Airport;;;P-N;;;32450;;;GEORGIA;;;31.2588;;;-81.4665
-108;;;Columbus;;;CSG;;;CSG;;;KCSG;;;Columbus Metropolitan Airport;;;P-N;;;59675;;;GEORGIA;;;32.5163333;;;-84.9388611
 109;;;Savannah;;;SAV;;;SAV;;;KSAV;;;Savannah/Hilton Head International Airport;;;P-S;;;798970;;;GEORGIA;;;32.127583;;;-81.202139
-110;;;Valdosta;;;VLD;;;VLD;;;KVLD;;;Valdosta Regional Airport;;;P-N;;;36814;;;GEORGIA;;;30.7825;;;-83.2767
 111;;;Hilo, Hawaii;;;ITO;;;ITO;;;PHTO;;;Hilo International Airport;;;P-S;;;640411;;;HAWAII;;;19.721375;;;-155.048469
 112;;;Honolulu, Oahu;;;HNL;;;HNL;;;PHNL;;;Honolulu International Airport;;;P-L;;;9466995;;;HAWAII;;;21.318681;;;-157.922428
 113;;;Kahului, Maui;;;OGG;;;OGG;;;PHOG;;;Kahului Airport;;;P-M;;;2955304;;;HAWAII;;;20.89865;;;-156.430458
@@ -127,10 +107,8 @@ ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;L
 126;;;Champaign / Urbana;;;CMI;;;CMI;;;KCMI;;;University of Illinois - Willard Airport;;;P-N;;;84853;;;ILLINOIS;;;40.03925;;;-88.278056
 127;;;Chicago;;;ORD;;;ORD;;;KORD;;;Chicago O'Hare International Airport;;;P-L;;;32278906;;;ILLINOIS;;;41.978603;;;-87.904842
 128;;;Chicago;;;MDW;;;MDW;;;KMDW;;;Chicago Midway International Airport;;;P-L;;;9919985;;;ILLINOIS;;;41.785972;;;-87.752417
-129;;;Marion;;;MWA;;;MWA;;;KMWA;;;Williamson County Regional Airport;;;P-N;;;11241;;;ILLINOIS;;;37.7549569;;;-89.0110936
 130;;;Moline;;;MLI;;;MLI;;;KMLI;;;Quad City International Airport;;;P-N;;;384198;;;ILLINOIS;;;41.448528;;;-90.507539
 131;;;Peoria;;;PIA;;;PIA;;;KPIA;;;General Wayne A. Downing Peoria International Airport;;;P-M;;;491000;;;ILLINOIS;;;40.664203;;;-89.693258
-132;;;Quincy;;;UIN;;;UIN;;;KUIN;;;Quincy Regional Airport (Baldwin Field);;;P-N;;;10679;;;ILLINOIS;;;39.9427;;;-91.1946
 133;;;Rockford;;;RFD;;;RFD;;;KRFD;;;Chicago Rockford International Airport (was Northwest Chicagoland Regional Airport at Rockford);;;P-N;;;109384;;;ILLINOIS;;;42.1953611;;;-89.0972222
 134;;;Springfield;;;SPI;;;SPI;;;KSPI;;;Abraham Lincoln Capital Airport;;;P-N;;;70685;;;ILLINOIS;;;39.8441;;;-89.677889
 135;;;Evansville;;;EVV;;;EVV;;;KEVV;;;Evansville Regional Airport;;;P-N;;;161279;;;INDIANA;;;38.036997;;;-87.532364
@@ -153,7 +131,6 @@ ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;L
 152;;;Alexandria;;;AEX;;;AEX;;;KAEX;;;Alexandria International Airport;;;P-N;;;183899;;;LOUISIANA;;;31.3274;;;-92.549833
 153;;;Baton Rouge;;;BTR;;;BTR;;;KBTR;;;Baton Rouge Metropolitan Airport (Ryan Field);;;P-S;;;401035;;;LOUISIANA;;;30.533167;;;-91.149639
 154;;;Lafayette;;;LFT;;;LFT;;;KLFT;;;Lafayette Regional Airport;;;P-N;;;233498;;;LOUISIANA;;;30.205278;;;-91.987611
-155;;;Lake Charles;;;LCH;;;LCH;;;KLCH;;;Lake Charles Regional Airport;;;P-N;;;65281;;;LOUISIANA;;;30.126112;;;-93.223335
 156;;;Monroe;;;MLU;;;MLU;;;KMLU;;;Monroe Regional Airport;;;P-N;;;115757;;;LOUISIANA;;;32.510864;;;-92.037689
 157;;;New Orleans;;;MSY;;;MSY;;;KMSY;;;Louis Armstrong New Orleans International Airport;;;P-M;;;4577498;;;LOUISIANA;;;29.993389;;;-90.258028
 158;;;Shreveport;;;SHV;;;SHV;;;KSHV;;;Shreveport Regional Airport;;;P-N;;;279897;;;LOUISIANA;;;32.446629;;;-93.8256
@@ -168,7 +145,6 @@ ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;L
 167;;;Boston;;;BOS;;;BOS;;;KBOS;;;Gen. Edward Lawrence Logan International Airport;;;P-L;;;15425869;;;MASSACHUSETTS;;;42.364347;;;-71.005181
 168;;;Hyannis;;;HYA;;;HYA;;;KHYA;;;Barnstable Municipal Airport(Boardman/Polando Field);;;P-N;;;85184;;;MASSACHUSETTS;;;41.669336;;;-70.280356
 169;;;Nantucket;;;ACK;;;ACK;;;KACK;;;Nantucket Memorial Airport;;;P-N;;;170361;;;MASSACHUSETTS;;;41.253053;;;-70.060181
-170;;;Provincetown;;;PVC;;;PVC;;;KPVC;;;Provincetown Municipal Airport;;;P-N;;;10410;;;MASSACHUSETTS;;;42.071945;;;-70.22139
 171;;;Vineyard Haven;;;MVY;;;MVY;;;KMVY;;;Martha's Vineyard Airport;;;P-N;;;52362;;;MASSACHUSETTS;;;41.391667;;;-70.615278
 172;;;Worcester;;;ORH;;;ORH;;;KORH;;;Worcester Regional Airport;;;P-N;;;57818;;;MASSACHUSETTS;;;42.2673;;;-71.8757
 173;;;Alpena;;;APN;;;APN;;;KAPN;;;Alpena County Regional Airport;;;P-N;;;15914;;;MICHIGAN;;;45.0781;;;-83.5603
@@ -194,9 +170,7 @@ ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;L
 193;;;Minneapolis;;;MSP;;;MSP;;;KMSP;;;Minneapolis-St. Paul International Airport(Wold-Chamberlain Field);;;P-L;;;16282038;;;MINNESOTA;;;44.881956;;;-93.221767
 194;;;Rochester;;;RST;;;RST;;;KRST;;;Rochester International Airport;;;P-N;;;110104;;;MINNESOTA;;;43.908283;;;-92.500014
 195;;;St. Cloud;;;STC;;;STC;;;KSTC;;;St. Cloud Regional Airport;;;P-N;;;15842;;;MINNESOTA;;;45.546556;;;-94.059889
-196;;;Columbus / West Point / Starkville;;;GTR;;;GTR;;;KGTR;;;Golden Triangle Regional Airport;;;P-N;;;41140;;;MISSISSIPPI;;;33.450333;;;-88.591361
 197;;;Gulfport / Biloxi;;;GPT;;;GPT;;;KGPT;;;Gulfport-Biloxi International Airport;;;P-N;;;369597;;;MISSISSIPPI;;;30.407278;;;-89.070111
-198;;;Hattiesburg / Laurel;;;PIB;;;PIB;;;KPIB;;;Hattiesburg-Laurel Regional Airport;;;P-N;;;10633;;;MISSISSIPPI;;;31.4671;;;-89.3371
 199;;;Jackson;;;JAN;;;JAN;;;KJAN;;;Jackson-Evers International Airport;;;P-S;;;596045;;;MISSISSIPPI;;;32.311167;;;-90.075889
 200;;;Columbia;;;COU;;;COU;;;KCOU;;;Columbia Regional Airport;;;P-N;;;45714;;;MISSOURI;;;38.818094;;;-92.219631
 201;;;Joplin;;;JLN;;;JLN;;;KJLN;;;Joplin Regional Airport;;;P-N;;;23329;;;MISSOURI;;;37.151814;;;-94.498269
@@ -307,28 +281,21 @@ ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;L
 306;;;Abilene;;;ABI;;;ABI;;;KABI;;;Abilene Regional Airport;;;P-N;;;73605;;;TEXAS;;;32.411319;;;-99.681897
 307;;;Amarillo;;;AMA;;;AMA;;;KAMA;;;Rick Husband Amarillo International Airport;;;P-S;;;394593;;;TEXAS;;;35.219369;;;-101.705931
 308;;;Austin;;;AUS;;;AUS;;;KAUS;;;Austin-Bergstrom International Airport;;;P-M;;;4201136;;;TEXAS;;;30.194528;;;-97.669889
-309;;;Beaumont / Port Arthur;;;BPT;;;BPT;;;KBPT;;;Jack Brooks Regional Airport (was Southeast Texas Regional);;;P-N;;;17394;;;TEXAS;;;29.950833;;;-94.020694
 310;;;Brownsville;;;BRO;;;BRO;;;KBRO;;;Brownsville/South Padre Island International Airport;;;P-N;;;84401;;;TEXAS;;;25.906833;;;-97.425861
 311;;;College Station;;;CLL;;;CLL;;;KCLL;;;Easterwood Airport (Easterwood Field);;;P-N;;;72188;;;TEXAS;;;30.588583;;;-96.363833
 312;;;Corpus Christi /Kingsville;;;CRP;;;CRP;;;KCRP;;;Corpus Christi International Airport;;;P-S;;;339193;;;TEXAS;;;27.770361;;;-97.501222
 313;;;Dallas;;;DAL;;;DAL;;;KDAL;;;Dallas Love Field;;;P-M;;;3783407;;;TEXAS;;;32.847111;;;-96.851778
 314;;;Dallas-Fort Worth;;;DFW;;;DFW;;;KDFW;;;Dallas/Fort Worth International Airport;;;P-L;;;27100656;;;TEXAS;;;32.896828;;;-97.037997
-315;;;Del Rio;;;DRT;;;DRT;;;KDRT;;;Del Rio International Airport;;;P-N;;;13180;;;TEXAS;;;29.374208;;;-100.927158
 316;;;El Paso;;;ELP;;;ELP;;;KELP;;;El Paso International Airport;;;P-S;;;1509093;;;TEXAS;;;31.80725;;;-106.377583
-317;;;Fort Hood / Killeen /Temple;;;GRK;;;GRK;;;KGRK;;;Killeen-Fort Hood Regional Airport / Robert Gray Army Airfield;;;P-N;;;243861;;;TEXAS;;;31.06725;;;-97.828917
 318;;;Harlingen;;;HRL;;;HRL;;;KHRL;;;Valley International Airport;;;P-S;;;373438;;;TEXAS;;;26.2285;;;-97.654389
 319;;;Houston;;;IAH;;;IAH;;;KIAH;;;George Bush Intercontinental Airport;;;P-L;;;19528631;;;TEXAS;;;29.984433;;;-95.341442
 320;;;Houston;;;HOU;;;HOU;;;KHOU;;;William P. Hobby Airport;;;P-M;;;4357835;;;TEXAS;;;29.645419;;;-95.278889
 321;;;Laredo;;;LRD;;;LRD;;;KLRD;;;Laredo International Airport;;;P-N;;;112520;;;TEXAS;;;27.54375;;;-99.461556
-322;;;Longview;;;GGG;;;GGG;;;KGGG;;;East Texas Regional Airport;;;P-N;;;21830;;;TEXAS;;;32.384014;;;-94.711486
 323;;;Lubbock;;;LBB;;;LBB;;;KLBB;;;Lubbock Preston Smith International Airport;;;P-S;;;508858;;;TEXAS;;;33.663639;;;-101.822778
 324;;;McAllen;;;MFE;;;MFE;;;KMFE;;;McAllen-Miller International Airport (McAllen Miller International);;;P-S;;;344302;;;TEXAS;;;26.175833;;;-98.238611
 325;;;Midland;;;MAF;;;MAF;;;KMAF;;;Midland International Airport;;;P-S;;;445043;;;TEXAS;;;31.942528;;;-102.201914
-326;;;San Angelo;;;SJT;;;SJT;;;KSJT;;;San Angelo Regional Airport (Mathis Field);;;P-N;;;56021;;;TEXAS;;;31.35775;;;-100.496306
 327;;;San Antonio;;;SAT;;;SAT;;;KSAT;;;San Antonio International Airport;;;P-M;;;3916320;;;TEXAS;;;29.533694;;;-98.469778
-328;;;Tyler;;;TYR;;;TYR;;;KTYR;;;Tyler Pounds Regional Airport;;;P-N;;;74357;;;TEXAS;;;32.354139;;;-95.402386
 329;;;Waco;;;ACT;;;ACT;;;KACT;;;Waco Regional Airport;;;P-N;;;61401;;;TEXAS;;;31.611289;;;-97.230519
-330;;;Wichita Falls;;;SPS;;;SPS;;;KSPS;;;Wichita Falls Municipal Airport / Sheppard Air Force Base;;;P-N;;;44296;;;TEXAS;;;33.988797;;;-98.491894
 331;;;Provo;;;PVU;;;PVU;;;KPVU;;;Provo Municipal Airport (14,858 enplanements in 2011)[1];;;P-N[nb 6];;;1124;;;UTAH;;;40.21805555;;;-111.72222222
 332;;;Salt Lake City;;;SLC;;;SLC;;;KSLC;;;Salt Lake City International Airport;;;P-L;;;9910493;;;UTAH;;;40.788389;;;-111.977772
 333;;;St. George / Beaver;;;SGU;;;SGU;;;KSGU;;;St. George Regional Airport (opened 2011);;;P-N[nb 7];;;37596;;;UTAH;;;37.090583;;;-113.593056
@@ -355,7 +322,6 @@ ord;;;City;;;FAA;;;IATA;;;ICAO;;;Airport;;;Role;;;Enplanements;;;State;;;Lat;;;L
 354;;;Wenatchee;;;EAT;;;EAT;;;KEAT;;;Pangborn Memorial Airport;;;P-N;;;46837;;;WASHINGTON;;;47.398;;;-120.206
 355;;;Yakima;;;YKM;;;YKM;;;KYKM;;;Yakima Air Terminal (McAllister Field);;;P-N;;;53832;;;WASHINGTON;;;46.5682;;;-120.544
 356;;;Charleston;;;CRW;;;CRW;;;KCRW;;;Yeager Airport;;;P-N;;;272901;;;WEST VIRGINIA;;;38.373147;;;-81.593189
-357;;;Clarksburg;;;CKB;;;CKB;;;KCKB;;;North Central West Virginia Airport (was Harrison-Marion Regional);;;P-N;;;10153;;;WEST VIRGINIA;;;39.2966;;;-80.2281
 358;;;Huntington;;;HTS;;;HTS;;;KHTS;;;Tri-State Airport (Milton J. Ferguson Field);;;P-N;;;105548;;;WEST VIRGINIA;;;38.3667;;;-82.558
 359;;;Lewisburg;;;LWB;;;LWB;;;KLWB;;;Greenbrier Valley Airport;;;P-N;;;10849;;;WEST VIRGINIA;;;37.858333;;;-80.399444
 360;;;Morgantown;;;MGW;;;MGW;;;KMGW;;;Morgantown Municipal Airport (Walter L. Bill Hart Field);;;P-N;;;10239;;;WEST VIRGINIA;;;39.642908;;;-79.916314

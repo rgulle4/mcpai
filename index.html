@@ -66,7 +66,7 @@ if (document.addEventListener) { // IE >= 9; other browsers
  *
  */
 
-d3.json("data.json", function(data) {
+var d3tree = d3.json("data.json", function(data) {
   console.log(data);
   var treeData = [];
   treeData.push(data);
@@ -271,22 +271,22 @@ d3.json("data.json", function(data) {
       .on("contextmenu", rightclickaction);
 
     nodeEnter.append("circle")
-      .attr("r", function(d) { return d.value; })
+      // .attr("r", function(d) { return d.value; })
       .style("stroke", function(d) { return d.outlinecolor; })
       .style("fill", function(d) { return d.edgeandfillcolor; });
 
     nodeEnter.append("text")
       .attr("x", function(d) {
         return d.children || d._children ?
-        (d.value + 4) * -1 : d.value + 4 })
+        (4) * -1 : 4 })
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) {
         return d.children || d._children ? "end" : "start"; })
       .text(function(d) {
         if (d.value)
-          return d.name + "(" + d.value + ")";
+          return d.name + " (" + d.value + ")";
         else
-          return d.name + "(null)";
+          return d.name + " (null)";
       })
       .style("fill-opacity", 1e-6)
       ;
@@ -298,7 +298,7 @@ d3.json("data.json", function(data) {
         return "translate(" + d.y + "," + d.x + ")";
       });
 
-    nodeUpdate.select("circle")  // <-------------
+    nodeUpdate.select("rectangle")  // <-------------
       .attr("r", 10)
       .style("stroke", function(d) { return d._onPath ? "green" : d.outlinecolor; });
 
@@ -307,10 +307,12 @@ d3.json("data.json", function(data) {
       .style("fill", function(d) {
         if (d.children)        // has visible children
           return "#fff"
-        else if (d._children)  // has hidden children
-          return "yellow";
-        else                   // leaf node
+        // else if (d._children)  // has hidden chidren
+        //   return "yellow";
+        else if (d.isgoal)     // goal node
           return "#0f0";
+        else  // has hidden chidren
+          return "yellow";
         // return d._children ? "blue" : "#fff";
       });
 
