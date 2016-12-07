@@ -16,9 +16,9 @@ public final class Airports {
     
     /* --------------------------------------------------------- */
     
-    public static final double DEFAULT_RADIUS = 400.0;
+    public static final double DEFAULT_RADIUS = 500.0;
     public static final int MAX_NUMBER_OF_NEARBY_AIRPORTS = 3;
-    public static final int MINIMUM_AIRPORT_SIZE = 300000;
+    public static final int MINIMUM_AIRPORT_SIZE = 350000;
     
     private static final Map<String, LatLng> AIRPORTS_DICT = new HashMap<>();
     
