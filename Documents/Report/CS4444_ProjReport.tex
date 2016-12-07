@@ -78,7 +78,8 @@ When searching for a path, given the number of airports and cities in the US, ou
 
 \subsubsection{Driving Assumptions}
 
-\FIXME{Add from pres}
+In order to calculate driving time and cost, a few assumptions were hard coded into our application. To give a more accurate description of the time it takes to drive across the country, every 12 hours we will assume that our user will spend \$75 on a hotel. We will add this price to our path price when searching for a solution. Similarly, when calculating time we will only assume that the user will drive 12 hours a day. In other words, for every 12 hours of driving, a cost of \$75 is added to the path price and 12 hours are added to the path time.
+
 
 
 \section{AI Concept : Search Strategies}\label{sec:search}
@@ -143,17 +144,58 @@ Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7) $\rightarrow$ S
 
 %\subsection{Conclusions}
 
+\pagebreak
 
 \section{Software System Design and Implementation}
-To compute the time and price of each edge we are using many different Google APIs.
 
-\subsection{Object Oriented Design using Java}
+We chose to use Java for our project in the IDE IntelliJ. We developed our GUI in JavaFX using the JFoenix design library.
+o compute the time and price of each edge we are using many different Google APIs. 
 
-\FIXME{UML Diagram from pres}
+\subsection{Object Oriented Design for Searching}
+
+Given the latitude and longitude of the initial point (origin) and destination (goal), our search algorithm uses a few different classes to arrive at a solution.
+Call the initial point A and the goal B. Below you can see the relevant fields and methods for each class.
+\begin{enumerate}
+\item Problem.java : stores information about the travel plans of the user. 
+	\begin{enumerate}
+	\item Fields :\texttt{  double originLat, originLng, goalLat, goalLng, limit}
+	\item Methods : \texttt{goalTest(Node)}
+	\end{enumerate}
+\item FindAirports.java : finds the n airports around a place
+\begin{enumerate}
+\item Fields :\texttt{double lat, lon, n}
+\end{enumerate}
+\item Node.java 
+	\begin{enumerate}
+	\item Fields :\texttt{
+    private double lng, lat;
+    private boolean isairport;
+    private node parent;
+    private double pathcosttime, pathcostprice; }
+	\end{enumerate}
+\item Search.java : search algorithm logic
+	\begin{enumerate}
+	\item Fields :\texttt{Problem p;
+    List<Location> startAirports;
+    List<Location> goalAirports;}
+    \item Methods : \texttt{uniformSearch(), pathCost(Node m, Node n)}
+	\end{enumerate}
+	
+\end{enumerate}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{UML.png}
+  \caption{Basic Diagram of Search Class Structure.}
+  \label{fig:time_lim}
+\end{figure}
 
 \subsection{APIs}
 
 \FIXME{Explain what each do because Chet seemed interested.}
+
+Using the latitude and longitude coordinates of places and 
+
 \begin{itemize}
 \item QPX Express Airfare API
 \item Google Maps Distance Matrix API

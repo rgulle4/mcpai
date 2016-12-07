@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  7 DEC 2016 11:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  7 DEC 2016 12:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -163,7 +163,11 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 144.
 )
-(./CS4444_ProjReport.aux)
+(./CS4444_ProjReport.aux
+
+LaTeX Warning: Label `fig:time_lim' multiply defined.
+
+)
 \openout1 = `CS4444_ProjReport.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -179,8 +183,7 @@ LaTeX Font Info:    ... okay on input line 22.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 22.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/lm/ot1lmr.fd
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -351,27 +354,45 @@ Package pdftex.def Info: Graph_example_n2.jpg used on input line 75.
 <time.png, id=24, 926.46124pt x 605.26125pt>
 File: time.png Graphic file (type png)
  <use time.png>
-Package pdftex.def Info: time.png used on input line 123.
+Package pdftex.def Info: time.png used on input line 124.
 (pdftex.def)             Requested size: 375.80544pt x 245.51735pt.
  [4 <./time.png>]
 <time_lim.png, id=30, 896.34875pt x 647.41875pt>
 File: time_lim.png Graphic file (type png)
  <use time_lim.png>
-Package pdftex.def Info: time_lim.png used on input line 137.
+Package pdftex.def Info: time_lim.png used on input line 138.
 (pdftex.def)             Requested size: 375.80544pt x 271.42995pt.
- [5 <./time_lim.png>] [6] (./CS4444_ProjReport.aux)
+ [5 <./time_lim.png>]
+Overfull \hbox (41.09195pt too wide) in paragraph at lines 170--175
+[]\OT1/lmr/m/n/10.95 Fields : \OT1/lmtt/m/n/10.95 private double lng, lat; priv
+ate boolean isairport; private node parent;
+ []
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Overfull \hbox (12.34828pt too wide) in paragraph at lines 178--181
+[]\OT1/lmr/m/n/10.95 Fields :\OT1/lmtt/m/n/10.95 Problem p; List<Location> star
+tAirports; List<Location> goalAirports; 
+ []
+
+<UML.png, id=35, 728.7225pt x 545.03625pt>
+File: UML.png Graphic file (type png)
+ <use UML.png>
+Package pdftex.def Info: UML.png used on input line 188.
+(pdftex.def)             Requested size: 375.80544pt x 281.07521pt.
+ [6] [7 <./UML.png>]
+[8] (./CS4444_ProjReport.aux)
+
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3422 strings out of 493014
- 54860 string characters out of 6133351
- 119614 words of memory out of 5000000
- 6898 multiletter control sequences out of 15000+600000
+ 3427 strings out of 493014
+ 54914 string characters out of 6133351
+ 119619 words of memory out of 5000000
+ 6902 multiletter control sequences out of 15000+600000
  39491 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,7n,39p,895b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,7n,39p,895b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
 texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
 16/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2016/texmf-d
@@ -385,10 +406,10 @@ mf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2016/texmf-dist/fon
 ts/type1/public/lm/lmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
 lic/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lms
 y10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on CS4444_ProjReport.pdf (6 pages, 561380 bytes).
+Output written on CS4444_ProjReport.pdf (8 pages, 663217 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 87 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
