@@ -3,7 +3,8 @@
 \usepackage{scalefnt}
 \usepackage{lmodern} 
 \usepackage{amsfonts}
-\usepackage{graphicx}
+\usepackage{graphicx, caption, subcaption} % Graphics
+\usepackage{float} % Graphics using H
 \usepackage[letterpaper, margin=1in]{geometry}
 
 \usepackage{color}
@@ -55,7 +56,7 @@ We want to find the path from one point to another by minimizing time by either 
 \begin{itemize}
 \item State : Information about the contact point such as a name and latitude longitude coordinates
 \item Parent : The node in the search tree which generated this node
-\item Action: The action (fly or drive) applied to the parent to generate this node
+\item Action : The action (fly or drive) applied to the parent to generate this node
 \item Path costs in time and price : the time and price needed to travel from the initial node to the current node
 \end{itemize}
 
@@ -68,10 +69,16 @@ To find the optimal solution we are using the A* algorithm.
 \FIXME{Or just Dijkstra's/Uniform-cost-search?} 
 
 \subsection{Constraints}
-When searching for a path, given the number of airports and cities in the US, our branching factor could be very large. Because of this, some constraints must be considered. Let $A$ be the initial starting point and let $B$ be the destination point. We limit the number of airports around $A$, say $\{ A_i \}_{i=1}^n$, and the number of airports around the destination point, say $\{ B_j \}_{j=1}^m$. The agent can then drive from $A$ to one of the airports in $\{ A_i \}_{i=1}^n$ or drive directly to $B$. If the agent is at one of the airports in $\{ A_i \}_{i=1}^n$, the only option for the agent is to fly to one of the airports in $\{ B_j \}_{j=1}^m$. If the agent is at an airport around $B$, then the only possible action is to drive to the destination $B$.
+When searching for a path, given the number of airports and cities in the US, our branching factor could be very large. Because of this, some constraints must be considered. Let $A$ be the initial starting point and let $B$ be the destination point. We limit the number of airports around $A$, say $\{ A_i \}_{i=1}^n$, and the number of airports around the destination point, say $\{ B_j \}_{j=1}^m$. The agent can then drive from $A$ to one of the airports in $\{ A_i \}_{i=1}^n$ or drive directly to $B$. If the agent is at one of the airports in $\{ A_i \}_{i=1}^n$, the only option for the agent is to fly to one of the airports in $\{ B_j \}_{j=1}^m$. If the agent is at an airport around $B$, then the only possible action is to drive to the destination $B$. Figure~\ref{fig:graph_example} shows an example with a graph with $n = 2$ and $m = 2$.
+\begin{figure}[!ht]
+  \caption{Graph example with $n=2$ and $m=2$.}
+  \centering
+  \includegraphics[width=0.8\textwidth]{Graph_example_n2}
+  \label{fig:graph_example}
+\end{figure}
 
 \section{Software System Design and Implementation}
-To compute the time and price of each edge we are using the Google Maps API and QPX Express API, respectively. \FIXME{Is that true?} 
+To compute the time and price of each edge we are using many different Google APIs.
 
 \subsection{Object Oriented Design using Java}
 
@@ -89,6 +96,7 @@ To compute the time and price of each edge we are using the Google Maps API and 
 \end{itemize}
 
 \subsection{Caching with Bluemix}
+Some of the APIs are quite slow, especially the QPX Express Airfare API to find flights. To make our path search faster, we cache the information of roads and flights into two databases using Bluemix, one for the road data one for the flight data. This way we can access the databases before using the slow APIs.
 
 \section{Experimentation}
 
