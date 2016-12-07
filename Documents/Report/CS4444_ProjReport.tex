@@ -26,12 +26,14 @@ Vincent Rodomista}
 "The written report should provide a clear documentation about the project's motivation, the problem addressed by the project, the main technical (AI-related) ideas/concepts behind the project, and the software system design and implementation. 
 The report should describe the experiments performed in the project, and discussions should be included to explain the results of the experiments."}
 
+\FIXME{Add graphics to make pretty}
+
 \section{Motivation}
 
 Travel plans can be extremely complicated. As a college student, when planning a trip, you can sift through numerous flights looking for deals and also weigh the cost of driving based on gas prices and car mileage. On the other hand, a business person may do the same sort of sifting to find the fastest, most direct flights and available private transportation in order to get to their destination as fast as possible without considering the price. We are given many options when considering travel plans, and planning could end up in a series of calculations based on time, price of travel, or both. 
 
 \section{Problem}
-We want to find the path from one point to another by minimizing time by either driving, flying, or a combination of both. To ensure that the price of this path is not too high, we can specify a price limit so that we find the fastest path under that price limit.
+We want to find the path from one point to another by minimizing time or price by either driving, flying, or a combination of both. To ensure that the price of this path is not too high, we can specify a price limit so that we find the fastest path under that price limit.
 
 \subsection{Problem Formulation}
 \begin{enumerate}
@@ -48,9 +50,7 @@ We want to find the path from one point to another by minimizing time by either 
 \end{enumerate}
 
 
-\section{AI Concept : Searching for Solutions}
-
-\subsection{Search Tree}
+\section{AI Concept : Search Tree}
 
 \subsubsection{Node} A Node in the search tree represents a contact point along the path. Node attributes include
 \begin{itemize}
@@ -62,13 +62,12 @@ We want to find the path from one point to another by minimizing time by either 
 
 \subsubsection{Frontier}
 
-After expanding a leaf node in our search tree, the general search tree algorithm collects the next set of available leaf nodes for expansion in the frontier. But before searching can continue, our algorithm must check whether any of the frontier nodes will result in a path cost price which exceeds the user's price limit. In other words, if the price of a path exceeds the given price limit we do not add the next node to the frontier. This way we can ensure that we never find a path with a price that is above the limit.
-
-\subsubsection{Search Strategy}
-To find the optimal solution we are using the A* algorithm.
-\FIXME{Or just Dijkstra's/Uniform-cost-search?} 
+After expanding a leaf node in our search tree, the general search tree algorithm collects the next set of available leaf nodes for expansion in the frontier. But before searching can continue, our algorithm must check whether any of the frontier nodes will result in a path cost price which exceeds the user's price limit. In other words, if the price of a path exceeds the given price limit we do not add the next node to the frontier. This way we can ensure that we never find a path with a price that is above the limit. Nodes are selected for expansion based on the search strategies described in {\bf 4}.
 
 \subsection{Constraints}
+
+\subsubsection{Branching Factor}
+
 When searching for a path, given the number of airports and cities in the US, our branching factor could be very large. Because of this, some constraints must be considered. Let $A$ be the initial starting point and let $B$ be the destination point. We limit the number of airports around $A$, say $\{ A_i \}_{i=1}^n$, and the number of airports around the destination point, say $\{ B_j \}_{j=1}^m$. The agent can then drive from $A$ to one of the airports in $\{ A_i \}_{i=1}^n$ or drive directly to $B$. If the agent is at one of the airports in $\{ A_i \}_{i=1}^n$, the only option for the agent is to fly to one of the airports in $\{ B_j \}_{j=1}^m$. If the agent is at an airport around $B$, then the only possible action is to drive to the destination $B$. Figure~\ref{fig:graph_example} shows an example with a graph with $n = 2$ and $m = 2$.
 \begin{figure}[!ht]
   \caption{Graph example with $n=2$ and $m=2$.}
@@ -77,15 +76,51 @@ When searching for a path, given the number of airports and cities in the US, ou
   \label{fig:graph_example}
 \end{figure}
 
+\subsubsection{Driving Assumptions}
+
+\FIXME{Add from pres}
+
+
+\section{AI Concept : Search Strategies}
+
+\subsection{Uniform Cost Search}
+
+At the base line, our algorithm performs a tree search seeking to minimize the time it takes to travel given a price limit. 
+Since different users may value their time more than their money or may not like driving, we considered the following features.
+
+\subsubsection{Minimize Time}
+
+\subsubsection{Minimize Price}
+
+\subsubsection{Weight on Driving}
+
+\subsection{A* Search with Straight Line Heuristic}
+
+In addition to the above features, we would like to improve upon our algorithm by adding a heuristic component to our cost function. 
+Across edges, we are mixing different modes of transportation which have different speeds. Additionally, costs for flying depends only on plane tickets where as costs for driving depends directly on the distance and miles per gallon of a vehicle. 
+For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.
+
+\subsubsection{Estimating Price based on Distance}
+
+\subsubsection{Estimating Time based on Distance}
+
+\FIXME{Alex - Commercial flights do not fly faster than 600 mph. So we could add (straight line distance)/600 to the path cost for time. This would favor contact points that are closer to the goal point.}
+
+\section{Experimentation : Amite to Stockton}
+
+%\subsection{Conclusions}
+
+
 \section{Software System Design and Implementation}
 To compute the time and price of each edge we are using many different Google APIs.
 
 \subsection{Object Oriented Design using Java}
 
-\FIXME{UML Diagrams}
+\FIXME{UML Diagram from pres}
 
 \subsection{APIs}
 
+\FIXME{Explain what each do because Chet seemed interested.}
 \begin{itemize}
 \item QPX Express Airfare API
 \item Google Maps Distance Matrix API
@@ -95,14 +130,10 @@ To compute the time and price of each edge we are using many different Google AP
 \item Google Places API Web Service
 \end{itemize}
 
-\subsection{Caching with Bluemix}
+\subsection{Caching \FIXME{with Bluemix}}
+\FIXME{Even if we don't get this working we should still explain what we have with sqlite and what we wanted to do with bluemix and maybe even why we had trouble with it. A screenshot like the one from the pwrpt would be nice}
+
 Some of the APIs are quite slow, especially the QPX Express Airfare API to find flights. To make our path search faster, we cache the information of roads and flights into two databases using Bluemix, one for the road data one for the flight data. This way we can access the databases before using the slow APIs.
-
-\section{Experimentation}
-
-%\subsection{Heuristics}
-
-%\subsection{Conclusions}
 
 \section{Future Work}
 This application is restricted to traveling within the US. Other countries could be included to give the user the option to travel internationally. The only modes of transportation that are used are driving and flying. To give the user a more flexibility when traveling, other modes of transportation could be incorporated into this application such as walking, bicycling, taking the train or metro, and taking a ferry.
