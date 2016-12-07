@@ -1,0 +1,118 @@
+{
+  "name": "Amite",
+  "children": [
+    {
+      "name": "BTR1",
+      "value": 1.0,
+      "children": [
+        {
+          "name": "SFO4",
+          "value": 12.7,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 1.4
+            }
+          ]
+        },
+        {
+          "name": "LAX1",
+          "value": 6.8,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 5.2
+            }
+          ]
+        },
+        {
+          "name": "OAK1",
+          "value": 13.1,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 1.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MSY",
+      "value": 1.2,
+      "children": [
+        {
+          "name": "SFO4",
+          "value": 12.7,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 1.4
+            }
+          ]
+        },
+        {
+          "name": "LAX1",
+          "value":4.4,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 5.2
+            }
+          ]
+        },
+        {
+          "name": "OAK1",
+          "value": 13.4,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 1.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IAH",
+      "value": 5.0,
+      "children": [
+        {
+          "name": "SFO4",
+          "value": 8.0,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 1.4
+            }
+          ]
+        },
+        {
+          "name": "LAX1",
+          "value": 3.7,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 5.2
+            }
+          ]
+        },
+        {
+          "name": "OAK1",
+          "value": 6.5,
+          "children": [
+            {
+              "name": "Stockton",
+              "value": 1.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "StocktonDrive",
+      "value": 47.0
+    }
+  ]
+}
+
