@@ -36,7 +36,7 @@ public final class TripInfoController {
     @FXML JFXDatePicker startDateInput;
     @FXML JFXDatePicker endDateInput;
     @FXML JFXTextField maxBudgetInput;
-    @FXML JFXCheckBox isRoundTripInput;
+    @FXML JFXCheckBox isGraphSearchInput;
     @FXML JFXSlider timeWeightInput;
     
     @FXML AnchorPane miscInfoContainer;
@@ -71,7 +71,7 @@ public final class TripInfoController {
         destinationLocationInput.setText(mainModel.getDestinationLocation().toString());
         startDateInput.setValue(mainModel.getStartDate());
         endDateInput.setValue(mainModel.getEndDate());
-        isRoundTripInput.setSelected(mainModel.getIsRoundTrip());
+        isGraphSearchInput.setSelected(mainModel.getIsGraphSearch());
         maxBudgetInput.setText(String.valueOf(mainModel.getMaxBudget()));
         timeWeightInput.setValue(mainModel.getTimeWeight());
     }
@@ -99,8 +99,8 @@ public final class TripInfoController {
 //            mainModel.calculateFlight();
         });
 
-        isRoundTripInput.selectedProperty().addListener((observable, oldValue, newValue) -> { {
-                mainModel.setIsRoundTrip(newValue);
+        isGraphSearchInput.selectedProperty().addListener((observable, oldValue, newValue) -> { {
+                mainModel.setIsGraphSearch(newValue);
             }
         });
 

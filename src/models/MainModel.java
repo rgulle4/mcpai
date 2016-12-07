@@ -1,6 +1,5 @@
 package models;
 
-import com.google.maps.model.LatLng;
 import controllers.TripInfoController;
 import helpers.Helper;
 import javafx.beans.property.BooleanProperty;
@@ -12,7 +11,6 @@ import searchtree.Search;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Map;
 
 public final class MainModel {
 
@@ -45,7 +43,7 @@ public final class MainModel {
     private LocalDate startDate = LocalDate.of(2016, 12, 25);
     private LocalDate endDate = LocalDate.of(2017, 1, 12);
 
-    private boolean isRoundTrip = false;
+    private boolean isGraphSearch = false;
     private int maxBudget = 700;
     private double timeWeight = 100;
     
@@ -62,6 +60,7 @@ public final class MainModel {
     private String searchStrings;
     
     public MainModel search() {
+        
         Location a = this.startLocation.geocode();
         Location b = this.destinationLocation.geocode();
         
@@ -177,9 +176,9 @@ public final class MainModel {
         return this;
     }
 
-    public boolean getIsRoundTrip() { return isRoundTrip; }
-    public MainModel setIsRoundTrip(boolean roundTrip) {
-        isRoundTrip = roundTrip;
+    public boolean getIsGraphSearch() { return isGraphSearch; }
+    public MainModel setIsGraphSearch(boolean isGraphSearch) {
+        this.isGraphSearch = isGraphSearch;
         return this;
     }
 

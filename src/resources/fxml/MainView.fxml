@@ -42,8 +42,8 @@
                     </left>
                     <center>
                         <HBox>
-                            <JFXButton fx:id="testButton" text="[println]"/>
-                            <JFXButton fx:id="calcButton" text="[Calculate]"/>
+                            <JFXButton fx:id="testButton" text="[Simple drive/fly]"/>
+                            <JFXButton fx:id="calcButton" text="[GRAPHSEARCH]"/>
                         </HBox>
                     </center>
                     <right>

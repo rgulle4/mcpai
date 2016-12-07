@@ -11,6 +11,7 @@ import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.beans.property.Property;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
@@ -37,6 +38,7 @@ public final class MainController {
     @FXML Tab drivingInfoTab;
     @FXML Tab flyingInfoTab;
     @FXML Tab resultsTab;
+    
 
     @FXML JFXButton testButton;
     @FXML JFXButton calcButton;
@@ -106,11 +108,13 @@ public final class MainController {
 
     private void printlnButtonAction() {
         new Thread(() -> {printTest();}).start();
-        Flight bestFlight = mainModel.bestFlight;
-        if (bestFlight == null)
-            setDebugTextArea("bestFlight = " + null);
-        setDebugTextArea("bestFlight = " + mainModel.bestFlight + "\n"
-              + Helper.toJsonPretty(bestFlight));
+//        Flight bestFlight = mainModel.bestFlight;
+//        if (bestFlight == null)
+//            setDebugTextArea("bestFlight = " + null);
+//        setDebugTextArea("bestFlight = " + mainModel.bestFlight + "\n"
+//              + Helper.toJsonPretty(bestFlight));
+        mainModel.calculateDrive();
+        mainModel.calculateFlight();
     }
     
     public void setDebugTextArea(String msg) {

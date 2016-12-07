@@ -38,7 +38,7 @@
                     <JFXDatePicker fx:id="endDateInput" promptText="" />
                 </VBox>
                 <VBox spacing="5">
-                    <JFXCheckBox fx:id="isRoundTripInput" text="Roundtrip?" />
+                    <JFXCheckBox fx:id="isGraphSearchInput" text="Do GraphSearch?" />
                 </VBox>
                 <VBox spacing="5">
                     <Label styleClass="input-label">Max budget ($): </Label>
