@@ -62,7 +62,7 @@ We want to find the path from one point to another by minimizing time or price b
 
 \subsubsection{Frontier}
 
-After expanding a leaf node in our search tree, the general search tree algorithm collects the next set of available leaf nodes for expansion in the frontier. But before searching can continue, our algorithm must check whether any of the frontier nodes will result in a path cost price which exceeds the user's price limit. In other words, if the price of a path exceeds the given price limit we do not add the next node to the frontier. This way we can ensure that we never find a path with a price that is above the limit. Nodes are selected for expansion based on the search strategies described in {\bf 4}.
+After expanding a leaf node in our search tree, the general search tree algorithm collects the next set of available leaf nodes for expansion in the frontier. But before searching can continue, our algorithm must check whether any of the frontier nodes will result in a path cost price which exceeds the user's price limit. In other words, if the price of a path exceeds the given price limit we do not add the next node to the frontier. This way we can ensure that we never find a path with a price that is above the limit. Nodes are selected for expansion based on the search strategies described in \ref{sec:search}.
 
 \subsection{Constraints}
 
@@ -81,18 +81,14 @@ When searching for a path, given the number of airports and cities in the US, ou
 \FIXME{Add from pres}
 
 
-\section{AI Concept : Search Strategies}
+\section{AI Concept : Search Strategies}\label{sec:search}
 
 \subsection{Uniform Cost Search}
 
 At the base line, our algorithm performs a tree search seeking to minimize the time it takes to travel given a price limit. 
 Since different users may value their time more than their money or may not like driving, we considered the following features.
 
-\subsubsection{Minimize Time}
-
-\subsubsection{Minimize Price}
-
-\subsubsection{Weight on Driving}
+\FIXME{\subsubsection{Weight on Driving}}
 
 \subsection{A* Search with Straight Line Heuristic}
 
@@ -100,13 +96,50 @@ In addition to the above features, we would like to improve upon our algorithm b
 Across edges, we are mixing different modes of transportation which have different speeds. Additionally, costs for flying depends only on plane tickets where as costs for driving depends directly on the distance and miles per gallon of a vehicle. 
 For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.
 
-\subsubsection{Estimating Price based on Distance}
+\FIXME{\subsubsection{Estimating Price based on Distance} Prob won't get to...}
 
 \subsubsection{Estimating Time based on Distance}
+
+
 
 \FIXME{Alex - Commercial flights do not fly faster than 600 mph. So we could add (straight line distance)/600 to the path cost for time. This would favor contact points that are closer to the goal point.}
 
 \section{Experimentation : Amite to Stockton}
+
+To experiment with our algorithm we have chosen the example trip from Amite, LA to Stockton, CA. To see that our ai responds to minimizing different factors we compared the resulting solution sequences. 
+
+\subsection{Uniform Cost Search}
+
+In order to check that our program will consider the users price limit, we have done two searches. One without a price limit and one with a price limit of \$250.
+\begin{center}
+Solution : Amite $\rightarrow$ MSY(1.2 hr) $\rightarrow$ LAX1(4.4 hr) $\rightarrow$ Stockton(5.2 hr) \\
+\quad Total Price: \$255 \\
+\quad Total Time: 10 hrs and 48 min
+\end{center}
+
+\begin{figure}[!ht]
+  %\caption{Search when minimizing time without price limit.}
+  \centering
+  \includegraphics[width=0.8\textwidth]{time}
+  \label{fig:time}
+\end{figure}
+
+\pagebreak
+
+\begin{center}
+Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7) $\rightarrow$ Stockton(5.2) \\
+\quad Total Price: \$230 \\
+\quad Total Time: 13 hrs and 54 min\\
+\end{center}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{time_lim}
+  %\caption{Search when minimizing time with price limit of \$250.}
+  \label{fig:time_lim}
+\end{figure}
+
+%\subsection{}
 
 %\subsection{Conclusions}
 
@@ -130,10 +163,11 @@ To compute the time and price of each edge we are using many different Google AP
 \item Google Places API Web Service
 \end{itemize}
 
-\subsection{Caching \FIXME{with Bluemix}}
+\subsection{Caching}
 \FIXME{Even if we don't get this working we should still explain what we have with sqlite and what we wanted to do with bluemix and maybe even why we had trouble with it. A screenshot like the one from the pwrpt would be nice}
 
-Some of the APIs are quite slow, especially the QPX Express Airfare API to find flights. To make our path search faster, we cache the information of roads and flights into two databases using Bluemix, one for the road data one for the flight data. This way we can access the databases before using the slow APIs.
+Some of the APIs are quite slow, especially the QPX Express Airfare API to find flights. 
+We use two separate caches to make searches faster. One cache is used for road travel and one for flight. When we call the function used to determine the best route it first searches the cache to see if the query has already been made in the past. If it has, it returns the result of the query. If this data is not stored, the API is called and the resulting distance is stored in the cache. This speeds up searching significantly over time because the cache will be able to referenced more and more, avoiding calls to the API. The API calls take significantly longer than the cache calls, so it becomes faster and faster over time. 
 
 \section{Future Work}
 This application is restricted to traveling within the US. Other countries could be included to give the user the option to travel internationally. The only modes of transportation that are used are driving and flying. To give the user a more flexibility when traveling, other modes of transportation could be incorporated into this application such as walking, bicycling, taking the train or metro, and taking a ferry.
