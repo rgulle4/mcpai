@@ -121,14 +121,15 @@ Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7 hr) $\rightarrow
 
 In addition to the above features, we thought that we could improve upon our algorithm by adding a heuristic component to our cost function. 
 Across edges, we are mixing different modes of transportation which have different speeds. Additionally, costs for flying depends only on plane tickets where as costs for driving depends directly on the distance and miles per gallon of a vehicle. 
-For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.
+For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.\\
+When we use a heuristic based on the straight line distance, node that are closer to the goal node are more likely to get chosen. We noticed that this heuristic did not improve the performance. Suppose we want to go from $A$ to $B$. There are two airports around $A$ that have the same distance to $A$. One of the airports, say $A_1$, is a small airport that lies along the way from $A$ to $B$. The other airport, say $A_2$, is a large airports that is out of the way. With this heuristic $A_1$ would get selected first. Since $A_1$ is a small airport, it does not have a direct flight towards the goal node. Having a layover would add a lot of time. The airport $A_2$, on the other hand, does have a direct flight. Thus, it would be better to select $A_2$ first. 
 
 \FIXME{\subsubsection{Estimating Price based on Distance} Prob won't get to...}
 
 \subsubsection{Estimating Time based on Distance}
 
 Since commercial flights do not reach a speed faster than 600 mph, we tested adding the distance between two places divided by this speed. 
-We found distance using the Haversine formula. If the latitude and longitude of a node $n$ and the destination are $(\phi_1,\phi_2)$ and $(\lambda_1,\lambda_2)$ and r is the radius of the Earth then,
+We found distance using the Haversine formula. If the latitude and longitude of a node $n$ and the destination are $(\phi_1,\phi_2)$ and $(\lambda_1,\lambda_2)$ and r is the radius of the earth then,
 
 $$d = 2r \arcsin \left( \sqrt{\sin^2 \left(\frac{\phi_2-\phi_1}{2} \right)+\cos(\phi_2) \cos(\phi_2) \sin^2 \left( \frac{\lambda_2 - \lambda_1}{2} \right)} \right)$$
 
