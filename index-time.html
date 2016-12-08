@@ -70,294 +70,106 @@ if (document.addEventListener) { // IE >= 9; other browsers
 
 var treeData = [
   {
-    "name": "Amite",
-    "children": [
-      {
-        "name": "BTR1",
-        "value": 1.0,
-        "children": [
-          {
-            "name": "SFO4",
-            "value": 12.7,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 1.4
-                }
-              ]
-          },
-          {
-            "name": "LAX1",
-            "value": 6.8,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 5.2
-                }
-              ]
-          },
-          {
-            "name": "OAK1",
-            "value": 13.1,
-            "children": [
-                {
-                  "name": "Stockton",
-                  "value": 1.1
-                }
-              ]
-          }
-        ]
-      },
-      {
-        "name": "MSY",
-        "value": 1.2,
-        "children": [
-          {
-            "name": "SFO4",
-            "value": 12.7,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 1.4
-                }
-              ]
-          },
-          {
-            "name": "LAX1",
-            "value":4.4,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 5.2
-                }
-              ]
-          },
-          {
-            "name": "OAK1",
-            "value": 13.4,
-            "children": [
-                {
-                  "name": "Stockton",
-                  "value": 1.1
-                }
-              ]
-          }
-        ]
-      },
-      {
-        "name": "IAH",
-        "value": 5.0,
-        "children": [
-          {
-            "name": "SFO4",
-            "value": 8.0,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 1.4
-                }
-              ]
-          },
-          {
-            "name": "LAX1",
-            "value": 3.7,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 5.2
-                }
-              ]
-          },
-          {
-            "name": "OAK1",
-            "value": 6.5,
-            "children": [
-                {
-                  "name": "Stockton",
-                  "value": 1.1
-                }
-              ]
-          }
-        ]
-      },
-      {
-      "name": "StocktonDrive",
-      "value": 47.0
+  "name": "Amite, LA",
+  "children": [
+    {
+      "name": "BTR",
+      "timeCost": 1.08,
+      "priceCost": 2.91,
+      "value": 1.08,
+      "children": [
+        {
+          "name": "OAK",
+          "timeCost": 13.06,
+          "priceCost": 469.6,
+          "value": 13.06
+        },
+        {
+          "name": "SFO",
+          "timeCost": 8.18,
+          "priceCost": 670.6,
+          "value": 8.18
+        },
+        {
+          "name": "SJC",
+          "timeCost": 6.65,
+          "priceCost": 407.6,
+          "value": 6.65
+        }
+      ]
+    },
+    {
+      "name": "MSY",
+      "timeCost": 1.04,
+      "priceCost": 3.88,
+      "value": 1.04,
+      "children": [
+        {
+          "name": "OAK",
+          "timeCost": 10.82,
+          "priceCost": 671.60,
+          "value": 10.82
+        },
+        {
+          "name": "SFO",
+          "timeCost": 4.87,
+          "priceCost": 525.10,
+          "value": 10.82,
+          "children": [
+            {
+              "name": "Hayward, CA",
+              "isgoal": true,
+              "timeCost": 0.48,
+              "priceCost": 1.41,
+              "value": 0.48
+            }
+          ]
+        },
+        {
+          "name": "SJC",
+          "timeCost": 6.98,
+          "priceCost": 358.60,
+          "value": 10.82
+        }
+      ]
+    },
+    {
+      "name": "GPT",
+      "timeCost": 1.67,
+      "priceCost": 6.71,
+      "value": 1.08,
+      "children": [
+        {
+          "name": "OAK",
+          "timeCost": 13.4,
+          "priceCost": 612.6,
+          "value": 13.4
+        },
+        {
+          "name": "SFO",
+          "timeCost": 9.15,
+          "priceCost": 687.6,
+          "value": 9.15
+        },
+        {
+          "name": "SJC",
+          "timeCost": 6.98,
+          "priceCost": 361.6,
+          "value": 6.98
+        }
+      ]
+    },
+    {
+      "name": "Hayward, CA",
+      "isgoal": true,
+      "timeCost": 31.41,
+      "priceCost": 286.95,
+      "value": 286.95
     }
-    ]
-  }
+  ]
+}
+
 ];
-
-var treeDataMoney = [
-  {
-    "name": "Amite",
-    "children": [
-      {
-        "name": "BTR1",
-        "value": 4.20,
-        "children": [
-          {
-            "name": "SFO4",
-            "value": 418.00,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 5.00
-                }
-              ]
-          },
-          {
-            "name": "LAX1",
-            "value": 394.00,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 21.00
-                }
-              ]
-          },
-          {
-            "name": "OAK1",
-            "value": 524.00,
-            "children": [
-                {
-                  "name": "Stockton",
-                  "value": 4
-                }
-              ]
-          }
-        ]
-      },
-      {
-        "name": "MSY",
-        "value": 3.95,
-        "children": [
-          {
-            "name": "SFO",
-            "value": 400.00,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 5.00
-                }
-              ]
-          },
-          {
-            "name": "LAX",
-            "value": 172,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 21.00
-                }
-              ]
-          },
-          {
-            "name": "OAK",
-            "value": 500,
-            "children": [
-                {
-                  "name": "Stockton",
-                  "value": 4
-                }
-              ]
-          }
-        ]
-      },
-      {
-        "name": "IAH",
-        "value": 22,
-        "children": [
-          {
-            "name": "SFO",
-            "value": 340.00,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 5.00
-                }
-              ]
-          },
-          {
-            "name": "LAX",
-            "value": 187,
-              "children": [
-                {
-                  "name": "Stockton",
-                  "value": 21.00
-                }
-              ]
-          },
-          {
-            "name": "OAK",
-            "value": 230.00,
-            "children": [
-                {
-                  "name": "Stockton",
-                  "value": 4
-                }
-              ]
-          }
-        ]
-      }
-    ]
-  }
-];
-
-
-var treeDataOld = [
-  {
-    "name": "NodeA",
-    "children": [
-      {
-        "name": "NodeB",
-        "parent": "NodeA",
-        "value": 15,
-        "outlinecolor": "grey",
-        "edgeandfillcolor": "pink",
-        "popuptext": "doijocxjvoxcjv",
-        "children": [
-          {
-            "name": "NodeD",
-            "parent": "NodeB",
-            "value": 5,
-            "outlinecolor": "steelblue",
-            "edgeandfillcolor": "orange"
-          },
-          {
-            "name": "NodeE",
-            "parent": "NodeB",
-            "value": 7,
-            "outlinecolor": "steelblue",
-            "edgeandfillcolor": "pink"
-          },
-          {
-            "name": "NodeF",
-            "parent": "NodeB",
-            "value": 8,
-            "outlinecolor": "steelblue",
-            "edgeandfillcolor": "pink"
-          },
-          {
-            "name": "NodeG",
-            "parent": "NodeB",
-            "value": 9,
-            "outlinecolor": "steelblue",
-            "edgeandfillcolor": "pink"
-          }
-        ]
-      },
-      {
-        "name": "NodeC",
-        "parent": "NodeA",
-        "value": 10,
-        "outlinecolor": "grey",
-        "edgeandfillcolor": "green"
-      }
-    ]
-  }
-];
-
 
 /* -- now draw it ------------------------------- */
 
@@ -533,139 +345,141 @@ function addChild(d, theNewNode) {
 /* -- updater ----------------------------------- */
 
 function update(source, someDuration) {
-  if (someDuration == null) {
-    someDuration = duration;
-  }
-  // Compute the new tree layout.
-  var nodes = tree.nodes(root).reverse(),
-    links = tree.links(nodes);
+    if (someDuration == null) {
+      someDuration = duration;
+    }
+    // Compute the new tree layout.
+    var nodes = tree.nodes(root).reverse(),
+      links = tree.links(nodes);
 
-  // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 180; });
+    // Normalize for fixed-depth.
+    nodes.forEach(function(d) { d.y = d.depth * 180; });
 
-  // Update the nodes…
-  var node = svg.selectAll("g.node")
-    .data(nodes, function(d) { return d.id || (d.id = ++i); });
+    // Update the nodes…
+    var node = svg.selectAll("g.node")
+      .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
-  // Enter any new nodes at the parent's previous position.
-  var nodeEnter = node.enter().append("g")
-    .attr("class", "node")
-    .attr("transform", function(d) {
-      return "translate(" + source.y0 + "," + source.x0 + ")";
-    })
-    .on("click", click)
-    .on("mouseover", mouseoveraction)
-    .on("mouseout", mouseoutaction)
-    .on("contextmenu", rightclickaction);
-
-  nodeEnter.append("circle")
-    .attr("r", function(d) { return d.value; })
-    .style("stroke", function(d) { return d.outlinecolor; })
-    .style("fill", function(d) { return d.edgeandfillcolor; });
-
-  nodeEnter.append("text")
-    .attr("x", function(d) {
-      return d.children || d._children ?
-      (d.value + 4) * -1 : d.value + 4 })
-    .attr("dy", ".35em")
-    .attr("text-anchor", function(d) {
-      return d.children || d._children ? "end" : "start"; })
-    .text(function(d) {
-      if (d.value)
-        return d.name + "(" + d.value + ")";
-      else
-        return d.name + "(null)";
-    })
-    .style("fill-opacity", 1e-6)
-    ;
-
-  // Transition nodes to their new position.
-  var nodeUpdate = node.transition()
-    .duration(someDuration)
-    .attr("transform", function(d) {
-      return "translate(" + d.y + "," + d.x + ")";
-    });
-
-  nodeUpdate.select("circle")  // <-------------
-    .attr("r", 10)
-    .style("stroke", function(d) { return d._onPath ? "green" : d.outlinecolor; });
-
-  nodeUpdate.select("circle")  // <-------------
-    .attr("r", 10)
-    .style("fill", function(d) {
-      if (d.children)        // has visible children
-        return "#fff"
-      else if (d._children)  // has hidden children
-        return "yellow";
-      else                   // leaf node
-        return "#0f0";
-      // return d._children ? "blue" : "#fff";
-    });
-
-
-  nodeUpdate.select("text")
-    .style("fill-opacity", 1);
-
-  // Transition exiting nodes to the parent's new position.
-  var nodeExit = node.exit().transition()
-    .duration(someDuration)
-    .attr("transform", function(d) {
-      return "translate(" + source.y + "," + source.x + ")";
-    })
-    .remove();
-
-  nodeExit.select("circle")
-    .attr("r", 1e-6);
-
-  nodeExit.select("text")
-    .style("fill-opacity", 1e-6);
-
-  // Update the links…
-  var link = svg.selectAll("path.link")
-    .data(links, function(d) { return d.target.id; });
-
-  link.enter().insert("path", "g")
-    .attr("class", "link")
-      .style("stroke", function(d) {
-        var normalColor = d.target.edgeandfillcolor;
-        var onPathColor = "#f00";
-        return d.target._onPath ? onPathColor : normalColor;
-      }) // <----
-    .attr("d", function(d) {
-      var o = {x: source.x0, y: source.y0};
-      return diagonal({source: o, target: o});
-    });
-
-  // Transition links to their new position.
-  link.transition()
-    .duration(someDuration * 1.5)
-    .attr("d", diagonal)
-
-    .attr("class", "link")
-      .style("stroke-width", function(d) {
-        return d.target._onPath ? 8 : 2;
+    // Enter any new nodes at the parent's previous position.
+    var nodeEnter = node.enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) {
+        return "translate(" + source.y0 + "," + source.x0 + ")";
       })
-      .style("stroke", function(d) {
-        var normalColor = d.target.edgeandfillcolor;
-        var onPathColor = "#f00";
-        return d.target._onPath ? onPathColor : normalColor;
-      }); // <----
+      .on("click", click)
+      .on("mouseover", mouseoveraction)
+      .on("mouseout", mouseoutaction)
+      .on("contextmenu", rightclickaction);
 
-  // Transition exiting nodes to the parent's new position.
-  link.exit().transition()
-    .duration(someDuration)
-    .attr("d", function(d) {
-      var o = {x: source.x, y: source.y};
-     return diagonal({source: o, target: o});
-    })
-    .remove();
+    nodeEnter.append("circle")
+      // .attr("r", function(d) { return d.value; })
+      .style("stroke", function(d) { return d.outlinecolor; })
+      .style("fill", function(d) { return d.edgeandfillcolor; });
 
-  // Stash the old positions for transition.
-  nodes.forEach(function(d) {
-    d.x0 = d.x;
-    d.y0 = d.y;
-  });
-}
+    nodeEnter.append("text")
+      .attr("x", function(d) {
+        return d.children || d._children ?
+        (4) * -1 : 4 })
+      .attr("dy", ".35em")
+      .attr("text-anchor", function(d) {
+        return d.children || d._children ? "end" : "start"; })
+      .text(function(d) {
+        if (d.value)
+          return d.name + " (" + d.value + ")";
+        else
+          return d.name + " (null)";
+      })
+      .style("fill-opacity", 1e-6)
+      ;
+
+    // Transition nodes to their new position.
+    var nodeUpdate = node.transition()
+      .duration(someDuration)
+      .attr("transform", function(d) {
+        return "translate(" + d.y + "," + d.x + ")";
+      });
+
+    nodeUpdate.select("rectangle")  // <-------------
+      .attr("r", 10)
+      .style("stroke", function(d) { return d._onPath ? "green" : d.outlinecolor; });
+
+    nodeUpdate.select("circle")  // <-------------
+      .attr("r", 10)
+      .style("fill", function(d) {
+        if (d.children)        // has visible children
+          return "#fff"
+        // else if (d._children)  // has hidden chidren
+        //   return "yellow";
+        else if (d.isgoal)     // goal node
+          return "#0f0";
+        else  // has hidden chidren
+          return "yellow";
+        // return d._children ? "blue" : "#fff";
+      });
+
+
+    nodeUpdate.select("text")
+      .style("fill-opacity", 1);
+
+    // Transition exiting nodes to the parent's new position.
+    var nodeExit = node.exit().transition()
+      .duration(someDuration)
+      .attr("transform", function(d) {
+        return "translate(" + source.y + "," + source.x + ")";
+      })
+      .remove();
+
+    nodeExit.select("circle")
+      .attr("r", 1e-6);
+
+    nodeExit.select("text")
+      .style("fill-opacity", 1e-6);
+
+    // Update the links…
+    var link = svg.selectAll("path.link")
+      .data(links, function(d) { return d.target.id; });
+
+    link.enter().insert("path", "g")
+      .attr("class", "link")
+        .style("stroke", function(d) {
+          var normalColor = d.target.edgeandfillcolor;
+          var onPathColor = "#f00";
+          return d.target._onPath ? onPathColor : normalColor;
+        }) // <----
+      .attr("d", function(d) {
+        var o = {x: source.x0, y: source.y0};
+        return diagonal({source: o, target: o});
+      });
+
+    // Transition links to their new position.
+    link.transition()
+      .duration(someDuration * 1.5)
+      .attr("d", diagonal)
+
+      .attr("class", "link")
+        .style("stroke-width", function(d) {
+          return d.target._onPath ? 8 : 2;
+        })
+        .style("stroke", function(d) {
+          var normalColor = d.target.edgeandfillcolor;
+          var onPathColor = "#f00";
+          return d.target._onPath ? onPathColor : normalColor;
+        }); // <----
+
+    // Transition exiting nodes to the parent's new position.
+    link.exit().transition()
+      .duration(someDuration)
+      .attr("d", function(d) {
+        var o = {x: source.x, y: source.y};
+       return diagonal({source: o, target: o});
+      })
+      .remove();
+
+    // Stash the old positions for transition.
+    nodes.forEach(function(d) {
+      d.x0 = d.x;
+      d.y0 = d.y;
+    });
+  }
 </script>
 
 </body>

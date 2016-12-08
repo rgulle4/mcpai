@@ -7,7 +7,10 @@ public class Test {
         Location a = new Location("Amite, LA");
         Location b = new Location("Hayward, CA");
         Search s1 = new Search(a, b);
-        
+    
+        System.out.println("***********************");
+        System.out.print("Search by time... ");
+        System.out.println(a.getLocationString() + " to " + b.getLocationString());
         s1.setLimit(900); // dollars
         s1.uniformSearch(Search.CostType.TIME);
         
@@ -20,7 +23,10 @@ public class Test {
         // MSY
         // Amite, LA
         // ----------------------
-    
+        
+        System.out.println("***********************");
+        System.out.print("Search by price... ");
+        System.out.println(a.getLocationString() + " to " + b.getLocationString());
         s1.setLimit(900); // hours
         s1.uniformSearch(Search.CostType.PRICE);
     
