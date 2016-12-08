@@ -37,16 +37,16 @@ We want to find the path from one point to another by minimizing time or price b
 
 \subsection{Problem Formulation}
 \begin{enumerate}
-\item \textbf{Initial State}: The traveller's starting point
-\item \textbf{States}: Traveller at one of the contact points
+\item \textbf{Initial State}: The user's starting point
+\item \textbf{States}: contact points
 %\item \textbf{State Space}: All possible contact points
-\item	 \textbf{Actions}: Either fly or drive to a destination. For example, Drive(\emph{destination}) or Fly(\emph{destination})
+\item	 \textbf{Actions}: either fly or drive to a destination. For example, Drive(\emph{destination}) or Fly(\emph{destination})
 %\item	 \textbf{Actions}: The modes of transportation used between two contact points, either drive or fly
-\item \textbf{Transition Model}: Given a state and action moves the traveller to the new contact point
-\item \textbf{Goal State}: The traveller's destination point
-\item \textbf{Path}: A sequence of actions from the initial state to the goal state
-\item \textbf{Path Costs}: The time it takes to get from one contact point to another % and a heuristic component
-\item \textbf{Solution}: The path from the initial state to the goal state that does not exceed the price limit
+\item \textbf{Transition Model}: given a state and action moves the user to the new contact point
+\item \textbf{Goal State}: the user's destination
+\item \textbf{Path}: a sequence of actions from the initial state to the goal state
+\item \textbf{Path Costs}: the time or price it takes to get from one contact point to another % and a heuristic component
+\item \textbf{Solution}: the path from the initial state to the goal state that does not exceed the price limit
 \end{enumerate}
 
 
@@ -78,7 +78,7 @@ When searching for a path, given the number of airports and cities in the US, ou
 
 \subsubsection{Driving Assumptions}
 
-In order to calculate driving time and cost, a few assumptions were hard coded into our application. To give a more accurate description of the time it takes to drive across the country, every 12 hours we will assume that our user will spend \$75 on a hotel. We will add this price to our path price when searching for a solution. Similarly, when calculating time we will only assume that the user will drive 12 hours a day. In other words, for every 12 hours of driving, a cost of \$75 is added to the path price and 12 hours are added to the path time.
+In order to calculate driving time and cost, a few assumptions were hard coded into our application. To give a more accurate description of the time it takes to drive across the country, every 12 hours we will assume that our user will spend \$75 on a hotel. We will add this price to our path price when searching for a solution. Similarly, when calculating time we will only assume that the user will drive 12 hours a day. In other words, for every 12 hours of driving, a cost of \$75 is added to the path price and 12 hours are added to the path time. These assumptions can be seen in \ref{drivuml}.
 
 
 
@@ -93,7 +93,7 @@ Since different users may value their time more than their money or may not like
 
 \subsection{A* Search with Straight Line Heuristic}
 
-In addition to the above features, we would like to improve upon our algorithm by adding a heuristic component to our cost function. 
+In addition to the above features, we thought that we could improve upon our algorithm by adding a heuristic component to our cost function. 
 Across edges, we are mixing different modes of transportation which have different speeds. Additionally, costs for flying depends only on plane tickets where as costs for driving depends directly on the distance and miles per gallon of a vehicle. 
 For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.
 
@@ -101,9 +101,9 @@ For this reason, we can not simply just use the distance as a heuristic but we n
 
 \subsubsection{Estimating Time based on Distance}
 
-
-
 \FIXME{Alex - Commercial flights do not fly faster than 600 mph. So we could add (straight line distance)/600 to the path cost for time. This would favor contact points that are closer to the goal point.}
+
+Since commericial flights do not fly 
 
 \section{Experimentation : Amite to Stockton}
 
@@ -111,7 +111,7 @@ To experiment with our algorithm we have chosen the example trip from Amite, LA 
 
 \subsection{Uniform Cost Search}
 
-In order to check that our program will consider the users price limit, we have done two searches. One without a price limit and one with a price limit of \$250.
+The following two searches were done without a price limit and with a price limit of \$250.
 \begin{center}
 Solution : Amite $\rightarrow$ MSY(1.2 hr) $\rightarrow$ LAX1(4.4 hr) $\rightarrow$ Stockton(5.2 hr) \\
 \quad Total Price: \$255 \\
@@ -149,45 +149,50 @@ Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7) $\rightarrow$ S
 \section{Software System Design and Implementation}
 
 We chose to use Java for our project in the IDE IntelliJ. We developed our GUI in JavaFX using the JFoenix design library.
-o compute the time and price of each edge we are using many different Google APIs. 
+To compute the time and price of each edge we use many different Google APIs. 
 
-\subsection{Object Oriented Design for Searching}
+\subsection{Search Classes}
 
 Given the latitude and longitude of the initial point (origin) and destination (goal), our search algorithm uses a few different classes to arrive at a solution.
-Call the initial point A and the goal B. Below you can see the relevant fields and methods for each class.
+In \ref{suml} you can see the relevant fields and methods for each class.
 \begin{enumerate}
-\item Problem.java : stores information about the travel plans of the user. 
-	\begin{enumerate}
-	\item Fields :\texttt{  double originLat, originLng, goalLat, goalLng, limit}
-	\item Methods : \texttt{goalTest(Node)}
-	\end{enumerate}
-\item FindAirports.java : finds the n airports around a place
-\begin{enumerate}
-\item Fields :\texttt{double lat, lon, n}
-\end{enumerate}
-\item Node.java 
-	\begin{enumerate}
-	\item Fields :\texttt{
-    private double lng, lat;
-    private boolean isairport;
-    private node parent;
-    private double pathcosttime, pathcostprice; }
-	\end{enumerate}
+\item Problem.java : stores information about the travel plans of the user 
+\item Node.java : represents a node in the search tree
 \item Search.java : search algorithm logic
-	\begin{enumerate}
-	\item Fields :\texttt{Problem p;
-    List<Location> startAirports;
-    List<Location> goalAirports;}
-    \item Methods : \texttt{uniformSearch(), pathCost(Node m, Node n)}
-	\end{enumerate}
-	
+\item FindAirports.java : finds the n airports around a place
 \end{enumerate}
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.8\textwidth]{UML.png}
-  \caption{Basic Diagram of Search Class Structure.}
-  \label{fig:time_lim}
+  \includegraphics[width=0.8\textwidth]{searchuml.png}
+  \caption{Search Classes}
+  \label{fig:suml}
+\end{figure}
+
+\pagebreak
+
+\subsection{Map Utilities}
+
+\subsubsection{Driving Calculator and Road Distance}
+
+\subsubsection{Flight Finder}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.4\textwidth}
+\centering
+  \includegraphics[width=1\linewidth]{FlightFinder.png}
+  \caption{Flight Finder}
+  \label{fig:flfinder}
+\end{subfigure}%
+\begin{subfigure}{.6\textwidth}
+\centering
+  \includegraphics[width=1\linewidth]{driveuml}
+  \caption{Driving Utilities}
+  \label{fig:drivuml}
+\end{subfigure}
+\caption{Map Utilities}
+\label{fig:util}
 \end{figure}
 
 \subsection{APIs}
