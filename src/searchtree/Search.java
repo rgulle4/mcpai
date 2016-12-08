@@ -16,6 +16,7 @@ public class Search {
     List<Location> goalAirports;
     boolean found;
     double limit;
+    CostType costType;
     
     public enum CostType { TIME, PRICE }
     
@@ -27,6 +28,7 @@ public class Search {
     public Location b;
     
     public Search(Location a, Location b, double limit) {
+        this.costType = CostType.TIME;
         this.a = a;
         this.b = b;
         startAirports = a.getNearbyAirports();
@@ -68,6 +70,12 @@ public class Search {
         return currentNode;
     }
     
+    private double getOtherPathCostOf(Node n) {
+        if (this.costType == CostType.PRICE)
+            return n.getPathCostTime();
+        return n.getPathCostPrice();
+    }
+    
     Set<String> unorganizedSearchData = new HashSet<>();
     SearchData searchData;
     SearchData searchDataRoot;
@@ -81,7 +89,7 @@ public class Search {
     
     /** Search by either costType.TIME or costType.PRICE */
     public void uniformSearch(CostType costType) {
-        
+        this.costType = costType;
         CompareBy myComparator = CompareBy.TIME;
         if (costType == CostType.PRICE)
             myComparator = CompareBy.PRICE;
@@ -125,6 +133,8 @@ public class Search {
 
             if (p.goalTest(current)){
                 found = true;
+                System.out.println("----------------------");
+                System.out.println("RESULTS....");
                 System.out.println("Time: "+current.getPathCostTime());
                 System.out.println("Price: "+current.getPathCostPrice());
                 while (current != null){
@@ -163,7 +173,7 @@ public class Search {
                     setPathCost(current, child);
                     if ((child.hasConnection()) &&
                         (!explored.contains(child)) &&
-                        (child.getPathCostPrice() < p.getLimit())){
+                        (getOtherPathCostOf(child) < getLimit())){
                             frontier.add(child);
                     }
                 }
@@ -179,7 +189,7 @@ public class Search {
                 
                 if ((child.hasConnection()) &&
                     (!explored.contains(child)) &&
-                    (child.getPathCostPrice() < p.getLimit()))
+                    (getOtherPathCostOf(child) < getLimit()))
                 {
                         frontier.add(child);
                 }
@@ -199,7 +209,7 @@ public class Search {
                     setPathCost(current,child);
                     if ((child.hasConnection()) &&
                         (!explored.contains(child)) &&
-                        (child.getPathCostPrice() < p.getLimit()))
+                        (getOtherPathCostOf(child) < getLimit()))
                     {
                             frontier.add(child);
                     }
@@ -217,7 +227,7 @@ public class Search {
                 setPathCost(current,child);
                 if ((child.hasConnection()) &&
                     (!explored.contains(child)) &&
-                    (child.getPathCostPrice()<p.getLimit()))
+                    (getOtherPathCostOf(child) < getLimit()))
                 {
                         frontier.add(child);
                 }
