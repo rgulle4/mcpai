@@ -69,7 +69,7 @@ public class Test {
 
 ### Price tree
 
-![amite-to-hayward-price.png](amite-to-hayward-price.png)
+![amite-to-hayward-money.png](amite-to-hayward-money.png)
 
 
 ## What we can get from the APIs
