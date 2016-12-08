@@ -2,7 +2,7 @@
 
 \usepackage{scalefnt}
 \usepackage{lmodern} 
-\usepackage{amsfonts}
+\usepackage{amsfonts, amsmath}
 \usepackage{graphicx, caption, subcaption} % Graphics
 \usepackage{float} % Graphics using H
 \usepackage[letterpaper, margin=1in]{geometry}
@@ -11,7 +11,7 @@
 \newcommand{\FIXME}[1]{ \ \\ \hspace* {-1.5 cm}
   \textcolor{red}{\texttt{FIXME:}#1} \medskip\par}
 
-\title{Minimal Cost Paths\\Project Report}
+\title{Minimal Time Paths\\Project Report}
 \author{ {\bf Group 2:} \\
 Alex Dunkel,
 Roy Gullem,
@@ -21,12 +21,6 @@ Vincent Rodomista}
 
 \begin{document}
 \maketitle
-
-\FIXME{Requirements for Report:
-"The written report should provide a clear documentation about the project's motivation, the problem addressed by the project, the main technical (AI-related) ideas/concepts behind the project, and the software system design and implementation. 
-The report should describe the experiments performed in the project, and discussions should be included to explain the results of the experiments."}
-
-\FIXME{Add graphics to make pretty}
 
 \section{Motivation}
 
@@ -78,7 +72,7 @@ When searching for a path, given the number of airports and cities in the US, ou
 
 \subsubsection{Driving Assumptions}
 
-In order to calculate driving time and cost, a few assumptions were hard coded into our application. To give a more accurate description of the time it takes to drive across the country, every 12 hours we will assume that our user will spend \$75 on a hotel. We will add this price to our path price when searching for a solution. Similarly, when calculating time we will only assume that the user will drive 12 hours a day. In other words, for every 12 hours of driving, a cost of \$75 is added to the path price and 12 hours are added to the path time. These assumptions can be seen in \ref{drivuml}.
+In order to calculate driving time and cost, a few assumptions were hard coded into our application. To give a more accurate description of the time it takes to drive across the country, every 12 hours we will assume that our user will spend \$75 on a hotel. We will add this price to our path price when searching for a solution. Similarly, when calculating time we will only assume that the user will drive 12 hours a day. In other words, for every 12 hours of driving, a cost of \$75 is added to the path price and 12 hours are added to the path time. These assumptions can be seen in \ref{fig:drivuml}.
 
 
 
@@ -89,29 +83,9 @@ In order to calculate driving time and cost, a few assumptions were hard coded i
 At the base line, our algorithm performs a tree search seeking to minimize the time it takes to travel given a price limit. 
 Since different users may value their time more than their money or may not like driving, we considered the following features.
 
-\FIXME{\subsubsection{Weight on Driving}}
+\subsection{Uniform Cost Search Experiment}
 
-\subsection{A* Search with Straight Line Heuristic}
-
-In addition to the above features, we thought that we could improve upon our algorithm by adding a heuristic component to our cost function. 
-Across edges, we are mixing different modes of transportation which have different speeds. Additionally, costs for flying depends only on plane tickets where as costs for driving depends directly on the distance and miles per gallon of a vehicle. 
-For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.
-
-\FIXME{\subsubsection{Estimating Price based on Distance} Prob won't get to...}
-
-\subsubsection{Estimating Time based on Distance}
-
-\FIXME{Alex - Commercial flights do not fly faster than 600 mph. So we could add (straight line distance)/600 to the path cost for time. This would favor contact points that are closer to the goal point.}
-
-Since commericial flights do not fly 
-
-\section{Experimentation : Amite to Stockton}
-
-To experiment with our algorithm we have chosen the example trip from Amite, LA to Stockton, CA. To see that our ai responds to minimizing different factors we compared the resulting solution sequences. 
-
-\subsection{Uniform Cost Search}
-
-The following two searches were done without a price limit and with a price limit of \$250.
+The following two searches were done without a price limit and with a price limit of \$250. At the very bottom of the tree, there is one node to represent the driving distance, which ends up being more expensive then either of the flights we found. 
 \begin{center}
 Solution : Amite $\rightarrow$ MSY(1.2 hr) $\rightarrow$ LAX1(4.4 hr) $\rightarrow$ Stockton(5.2 hr) \\
 \quad Total Price: \$255 \\
@@ -128,7 +102,7 @@ Solution : Amite $\rightarrow$ MSY(1.2 hr) $\rightarrow$ LAX1(4.4 hr) $\rightarr
 \pagebreak
 
 \begin{center}
-Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7) $\rightarrow$ Stockton(5.2) \\
+Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7 hr) $\rightarrow$ Stockton(5.2 hr) \\
 \quad Total Price: \$230 \\
 \quad Total Time: 13 hrs and 54 min\\
 \end{center}
@@ -139,6 +113,36 @@ Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7) $\rightarrow$ S
   %\caption{Search when minimizing time with price limit of \$250.}
   \label{fig:time_lim}
 \end{figure}
+
+
+\FIXME{\subsubsection{Weight on Driving}}
+
+\subsection{A* Search with Straight Line Heuristic}
+
+In addition to the above features, we thought that we could improve upon our algorithm by adding a heuristic component to our cost function. 
+Across edges, we are mixing different modes of transportation which have different speeds. Additionally, costs for flying depends only on plane tickets where as costs for driving depends directly on the distance and miles per gallon of a vehicle. 
+For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.
+
+\FIXME{\subsubsection{Estimating Price based on Distance} Prob won't get to...}
+
+\subsubsection{Estimating Time based on Distance}
+
+Since commercial flights do not reach a speed faster than 600 mph, we tested adding the distance between two places divided by this speed. 
+We found distance using the Haversine formula. If the latitude and longitude of a node $n$ and the destination are $(\phi_1,\phi_2)$ and $(\lambda_1,\lambda_2)$ and r is the radius of the Earth then,
+
+$$d = 2r \arcsin \left( \sqrt{\sin^2 \left(\frac{\phi_2-\phi_1}{2} \right)+\cos(\phi_2) \cos(\phi_2) \sin^2 \left( \frac{\lambda_2 - \lambda_1}{2} \right)} \right)$$
+
+We then let
+$$h(n) = \frac{d}{600} \text{ hours }$$
+
+\FIXME{Alex - Commercial flights do not fly faster than 600 mph. So we could add (straight line distance)/600 to the path cost for time. This would favor contact points that are closer to the goal point.}
+
+%Since commercial flights do not fly 
+
+\section{Experimentation : Amite to Stockton}
+
+To experiment with our algorithm we have chosen the example trip from Amite, LA to Stockton, CA. To see that our ai responds to minimizing different factors we compared the resulting solution sequences. 
+
 
 %\subsection{}
 
@@ -154,7 +158,7 @@ To compute the time and price of each edge we use many different Google APIs.
 \subsection{Search Classes}
 
 Given the latitude and longitude of the initial point (origin) and destination (goal), our search algorithm uses a few different classes to arrive at a solution.
-In \ref{suml} you can see the relevant fields and methods for each class.
+In \ref{fig:suml} you can see the relevant fields and methods for each class.
 \begin{enumerate}
 \item Problem.java : stores information about the travel plans of the user 
 \item Node.java : represents a node in the search tree
@@ -213,8 +217,8 @@ Using the latitude and longitude coordinates of places and
 \subsection{Caching}
 \FIXME{Even if we don't get this working we should still explain what we have with sqlite and what we wanted to do with bluemix and maybe even why we had trouble with it. A screenshot like the one from the pwrpt would be nice}
 
-Some of the APIs are quite slow, especially the QPX Express Airfare API to find flights. 
-We use two separate caches to make searches faster. One cache is used for road travel and one for flight. When we call the function used to determine the best route it first searches the cache to see if the query has already been made in the past. If it has, it returns the result of the query. If this data is not stored, the API is called and the resulting distance is stored in the cache. This speeds up searching significantly over time because the cache will be able to referenced more and more, avoiding calls to the API. The API calls take significantly longer than the cache calls, so it becomes faster and faster over time. 
+Some of the APIs are quite slow, especially the QPX Express Airfare API to find flights. So to speed up our search time, we tried caching the data we found for future searches.
+We use two separate caches to make searches faster. One cache is used for road travel and one for flight. When we call the function used to determine the best route, it first searches the cache to see if the query has already been made in the past. If it has, it returns the result of the query. If this data is not stored, the API is called and the resulting distance is stored in the cache. This speeds up searching significantly over time because the cache will be able to be referenced more, avoiding costly calls to the API. The API calls take significantly longer than the cache calls, so it becomes faster and faster over time. 
 
 \section{Future Work}
 This application is restricted to traveling within the US. Other countries could be included to give the user the option to travel internationally. The only modes of transportation that are used are driving and flying. To give the user a more flexibility when traveling, other modes of transportation could be incorporated into this application such as walking, bicycling, taking the train or metro, and taking a ferry.
