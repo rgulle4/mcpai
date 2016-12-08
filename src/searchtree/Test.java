@@ -11,30 +11,32 @@ public class Test {
         System.out.println("***********************");
         System.out.print("Search by time... ");
         System.out.println(a.getLocationString() + " to " + b.getLocationString());
-        s1.setLimit(900); // dollars
+        s1.setLimit(500); // dollars
         s1.uniformSearch(Search.CostType.TIME);
         
         // =>
         // ----------------------
-        // Time: 6.392222222222222
-        // Price: 530.3890315284527
+        // Time: 8.305277777777778
+        // Price: 412.2736541510362
         // Hayward, CA
-        // SFO
-        // MSY
+        // SJC
+        // BTR
         // Amite, LA
         // ----------------------
         
         System.out.println("***********************");
         System.out.print("Search by price... ");
         System.out.println(a.getLocationString() + " to " + b.getLocationString());
-        s1.setLimit(900); // hours
+        s1.setLimit(24); // hours
         s1.uniformSearch(Search.CostType.PRICE);
     
         // =>
         // ----------------------
-        // Time: 31.408055555555556
-        // Price: 286.94826184292054
+        // Time: 8.598055555555556
+        // Price: 364.2446236167799
         // Hayward, CA
+        // SJC
+        // MSY
         // Amite, LA
         // ----------------------
     }
