@@ -31,6 +31,8 @@ public class Search {
         this.b = b;
         startAirports = a.getNearbyAirports();
         goalAirports = b.getNearbyAirports();
+        Helper.printObject(startAirports);
+        Helper.printObject(goalAirports);
         p = new Problem(a.getLat(),
               a.getLng(),
               b.getLat(),
@@ -74,7 +76,6 @@ public class Search {
     private void addToAllTheNodes(Node n) {
         allTheNodes.add(n);
         unorganizedSearchData.add(Helper.GSON_PP.toJson(n));
-        System.out.println("***********************************");
         Helper.printDebug(unorganizedSearchData);
     }
     
@@ -124,15 +125,12 @@ public class Search {
 
             if (p.goalTest(current)){
                 found = true;
-                System.out.println("----------------------");
-                System.out.println("----------------------");
                 System.out.println("Time: "+current.getPathCostTime());
                 System.out.println("Price: "+current.getPathCostPrice());
                 while (current != null){
                     System.out.println(current.getLocation().getLocationString());
                     current = current.getParent();
                 }
-                System.out.println("----------------------");
                 System.out.println("----------------------");
                 writeOutSearchData();
                 return;
@@ -268,6 +266,14 @@ public class Search {
             time = RD.getRoadTime(nodeA.getLocation(), nodeB.getLocation());
             price = DC.getTripPrice(nodeA.getLocation(), nodeB.getLocation());
         }
+        double timeCumulative = time + nodeA.getPathCostTime();
+        double priceCumulative = price + nodeA.getPathCostPrice();
+        System.out.println("Costs for "
+              + nodeA.getLocation().getLocationString() + " to "
+              + nodeB.getLocation().getLocationString());
+        System.out.println("TIME: " + time + " ... (Cumulative: " + timeCumulative + ")");
+        System.out.println("PRICE: " + price + " ... (Cumulative: " + priceCumulative + ")");
+      
         nodeB.setPathCostTime(time + nodeA.getPathCostTime());
         nodeB.setPathCostPrice(price + nodeA.getPathCostPrice());
     }
