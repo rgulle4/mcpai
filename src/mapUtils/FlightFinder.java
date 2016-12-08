@@ -33,7 +33,7 @@ public final class FlightFinder {
     private String maxPrice = "USD1000";
     private String earliestTime = "";
     private String latestTime = "";
-    private int solutions = 4;
+    private int solutions = 15;
     
     // results
     private Flight bestFlight;
@@ -119,7 +119,20 @@ public final class FlightFinder {
     }
     
     /* -- the good stuff  -------------------------------------- */
-
+    
+    private CompareBy myComparator = CompareBy.TIME;
+    
+    public CompareBy getMyComparator() {
+        return myComparator;
+    }
+    
+    public FlightFinder setMyComparator(String priceOrDuration) {
+        if (priceOrDuration.trim().equalsIgnoreCase("price"))
+            myComparator = CompareBy.PRICE;
+        myComparator = CompareBy.TIME;
+        return this;
+    }
+    
     /**
      * Gets the best flight.
      * @param origin eg "btr" (String)
@@ -142,8 +155,8 @@ public final class FlightFinder {
     }
     
     /**
-     * List of Flights, sorted by price
-     * @return List of Flights, sorted by price
+     * List of Flights, sorted by price or duration.
+     * @return List of Flights, sorted by price or duration.
      */
     public List<Flight> getFlights() {
         List<Flight> flights = new ArrayList<Flight>();
@@ -173,12 +186,7 @@ public final class FlightFinder {
                   .getLastSegment().getLastLeg().destination));
             flights.add(f);
         }
-        flights.sort(new Comparator<Flight>() {
-            @Override
-            public int compare(Flight o1, Flight o2) {
-                return (int) (o1.getPrice() - o2.getPrice());
-            }
-        });
+        flights.sort(myComparator);
         return flights;
     }
     
@@ -482,5 +490,38 @@ public final class FlightFinder {
                 }
             }
         }
+    }
+    
+    public enum CostType { TIME, PRICE }
+}
+
+final class CompareBy implements Comparator<Flight> {
+    
+    public static final CompareBy TIME
+          = new CompareBy(FlightFinder.CostType.TIME);
+    public static final CompareBy PRICE
+          = new CompareBy(FlightFinder.CostType.PRICE);
+    
+    private CompareBy() {}
+    private FlightFinder.CostType costType;
+    private CompareBy(FlightFinder.CostType _costType) {
+        costType = _costType;
+    }
+    
+    @Override
+    public int compare(Flight a, Flight b){
+        double costA = getCost(a);
+        double costB = getCost(b);
+        if (costA > costB)
+            return 1;
+        else if (costA < costB)
+            return -1;
+        return 0;
+    }
+    
+    private double getCost(Flight f) {
+        if (costType == FlightFinder.CostType.PRICE)
+            return f.getPrice();
+        return f.getDuration();
     }
 }

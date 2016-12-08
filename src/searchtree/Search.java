@@ -8,10 +8,6 @@ import mapUtils.RoadDistance;
 import models.places.Location;
 
 import java.util.*;
-//import java.util.Collections;
-//import java.util.List;
-//import java.util.ArrayList;
-
 
 public class Search {
     int num = 4;
@@ -19,6 +15,9 @@ public class Search {
     List<Location> startAirports;
     List<Location> goalAirports;
     boolean found;
+    double limit;
+    
+    public enum CostType { TIME, PRICE }
     
     public Search(Location a, Location b) {
         this(a, b, Double.MAX_VALUE);
@@ -37,7 +36,15 @@ public class Search {
               b.getLat(),
               b.getLng(),
               limit);
-        uniformSearch();
+    }
+    
+    public double getLimit() {
+        return limit;
+    }
+    
+    public Search setLimit(double limit) {
+        this.limit = limit;
+        return this;
     }
     
     private void writeOutSearchData() {
@@ -68,14 +75,15 @@ public class Search {
         allTheNodes.add(n);
         unorganizedSearchData.add(Helper.GSON_PP.toJson(n));
         System.out.println("***********************************");
-        System.out.println("***********************************");
         Helper.printDebug(unorganizedSearchData);
-        System.out.println("***********************************");
-        System.out.println("***********************************");
-    
     }
     
-    public void uniformSearch() {
+    /** Search by either costType.TIME or costType.PRICE */
+    public void uniformSearch(CostType costType) {
+        
+        CompareBy myComparator = CompareBy.TIME;
+        if (costType == CostType.PRICE)
+            myComparator = CompareBy.PRICE;
         
         Node initialNode
               = new Node("root",
@@ -87,30 +95,16 @@ public class Search {
         initialNode.setPathCostTime(0);
         initialNode.setPathCostPrice(0);
         
+        // for drawing
         searchDataRoot = new SearchData();
         searchDataRoot.name = initialNode.getLocation().getLocationString();
         addToAllTheNodes(initialNode);
-    
         searchData = new SearchData();
         searchData.name = initialNode.getLocation().getLocationString();
         
         
-        PriorityQueue<Node> frontier = new PriorityQueue<Node>(20,
-            new Comparator<Node>() {
-            //override compare method
-                public int compare(Node nodeA, Node nodeB){
-                    if (nodeA.getPathCostTime() > nodeB.getPathCostTime()) {
-                        return 1;
-                    } else if (nodeA.getPathCostTime() < nodeB.getPathCostTime()) {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
-                }
-            }
-        );
-    
-        
+        PriorityQueue<Node> frontier
+              = new PriorityQueue<>(20, myComparator);
         
         frontier.add(initialNode);
         Set<Node> explored = new HashSet<Node>();
@@ -139,67 +133,99 @@ public class Search {
                     current = current.getParent();
                 }
                 System.out.println("----------------------");
+                System.out.println("----------------------");
                 writeOutSearchData();
                 return;
             }
+            
             // There are three cases:
             // current is initial node
-            if (current.getParent() == null){
-                for (Location airport : startAirports){
+            if (current.getParent() == null)
+            {
+                // add straight drive to goal
+                Node goalDrivenTo = new Node(b.getLocationString(),
+                      b.getLat(),
+                      b.getLng(),
+                      false,
+                      current);
+                goalDrivenTo.setLocation(b);
+                setPathCost(current, goalDrivenTo);
+                addToAllTheNodes(goalDrivenTo);
+                
+                // add nearby airports to frontier
+                for (Location airport : startAirports)
+                {
                     Node child = new Node(airport.getLocationString(),
-                                          airport.getLat(),
-                                          airport.getLng(),
-                                          true,
-                                          current);
+                          airport.getLat(),
+                          airport.getLng(),
+                          true,
+                          current);
                     child.setLocation(airport);
                     addToAllTheNodes(child);
-                    pathCost(current,child);
+                    setPathCost(current, child);
                     if ((child.hasConnection()) &&
                         (!explored.contains(child)) &&
-                        (child.getPathCostPrice()<p.getLimit())){
+                        (child.getPathCostPrice() < p.getLimit())){
                             frontier.add(child);
                     }
                 }
-                Node child = new Node("goal", p.getGoalLat(), p.getGoalLng(), false,current);
+                
+                Node child = new Node("goal",
+                      p.getGoalLat(),
+                      p.getGoalLng(),
+                      false,current);
                 child.setLocation(b);
                 child.setGoal(true);
                 addToAllTheNodes(child);
-                pathCost(current,child);
+                setPathCost(current,child);
+                
                 if ((child.hasConnection()) &&
                     (!explored.contains(child)) &&
-                    (child.getPathCostPrice()<p.getLimit())){
+                    (child.getPathCostPrice() < p.getLimit()))
+                {
                         frontier.add(child);
                 }
             // current is A airport
-            } else if (!current.getParent().isAirport()){
-                for (Location airport : goalAirports){
+            }
+            else if (!current.getParent().isAirport())
+            {
+                for (Location airport : goalAirports)
+                {
                     Node child = new Node(airport.getLocationString(),
-                                          airport.getLat(),
-                                          airport.getLng(),
-                                          true,
-                                          current);
+                          airport.getLat(),
+                          airport.getLng(),
+                          true,
+                          current);
                     child.setLocation(airport);
                     addToAllTheNodes(child);
-                    pathCost(current,child);
+                    setPathCost(current,child);
                     if ((child.hasConnection()) &&
                         (!explored.contains(child)) &&
-                        (child.getPathCostPrice()<p.getLimit())){
+                        (child.getPathCostPrice() < p.getLimit()))
+                    {
                             frontier.add(child);
                     }
                 }
+            }
             // current is B airport
-            } else if (current.getParent().isAirport()){
-                Node child = new Node("goal", p.getGoalLat(), p.getGoalLng(), false,current);
+            else if (current.getParent().isAirport())
+            {
+                Node child = new Node("goal",
+                      p.getGoalLat(),
+                      p.getGoalLng(),
+                      false,current);
                 child.setLocation(b);
                 addToAllTheNodes(child);
-                pathCost(current,child);
+                setPathCost(current,child);
                 if ((child.hasConnection()) &&
                     (!explored.contains(child)) &&
-                    (child.getPathCostPrice()<p.getLimit())){
+                    (child.getPathCostPrice()<p.getLimit()))
+                {
                         frontier.add(child);
                 }
             }
-        } while(!frontier.isEmpty());
+        }
+        while(!frontier.isEmpty());
         writeOutSearchData();
         return;
     }
@@ -208,7 +234,10 @@ public class Search {
     private final RoadDistance RD = new RoadDistance();
     private final DrivingCalculator DC = new DrivingCalculator();
     
-    public void pathCost(Node _nodeA, Node _nodeB){
+    public void setPathCost(Node _nodeA, Node _nodeB){
+        FF.setMaxPrice(String.valueOf((int) p.getLimit()));
+        FF.setMyComparator("duration");
+        
         Node nodeA = _nodeA; //from
         Node nodeB = _nodeB; //to
         Location locA = nodeA.getLocation();
@@ -216,28 +245,26 @@ public class Search {
         double time = 0;
         double price;
         price = 0;
-        if ((nodeA.isAirport() == true) && (nodeB.isAirport() == true)) {
+        if ((nodeA.isAirport() == true) && (nodeB.isAirport() == true))
+        {
             // Use flight finder to get time and price
             // put nodeB.setNoConnection() if no connection was found
-            Flight cheapestFlight = FF.getBestFlight(nodeA.getLocation().getAirportCode(),
-                  nodeB.getLocation().getAirportCode(), "2016-12-25");
+            Flight cheapestFlight = FF.getBestFlight(
+                  nodeA.getLocation().getAirportCode(),
+                  nodeB.getLocation().getAirportCode(),
+                  "2016-12-25");
             if (cheapestFlight == null)
+            {
                 nodeB.setNoConnection();
-            else {
+            }
+            else
+            {
                 time = cheapestFlight.getDuration();
                 price = cheapestFlight.getPrice();
             }
-            // Use road finder
-//        } else if((nodeA.isAirport() == false) && (nodeB.isAirport() == true)) {
-//            time = RD.getRoadTime(nodeA.getLocation(), nodeB.getLocation());
-//            price = DC.getTripPrice(nodeA.getLocation(), nodeB.getLocation());
-//
-//        } else if ((nodeA.isAirport() == true) && (nodeB.isAirport() == false)){
-//            time = RD.getRoadTime(nodeA.getLocation(), nodeB.getLocation());
-//            price = DC.getTripPrice(nodeA.getLocation(), nodeB.getLocation());
-//
-//        } else if ((nodeA.isAirport() == false) && (nodeB.isAirport() == false)){
-        } else {
+        }
+        else
+        {
             time = RD.getRoadTime(nodeA.getLocation(), nodeB.getLocation());
             price = DC.getTripPrice(nodeA.getLocation(), nodeB.getLocation());
         }
@@ -252,5 +279,36 @@ public class Search {
         Double timeCost;
         Double priceCost;
         ArrayList<SearchData> children;
+    }
+}
+
+final class CompareBy implements Comparator<Node> {
+    
+    public static final CompareBy TIME
+          = new CompareBy(Search.CostType.TIME);
+    public static final CompareBy PRICE
+          = new CompareBy(Search.CostType.PRICE);
+    
+    private CompareBy() {}
+    private Search.CostType costType;
+    private CompareBy(Search.CostType _costType) {
+        costType = _costType;
+    }
+    
+    @Override
+    public int compare(Node a, Node b){
+        double costA = getCost(a);
+        double costB = getCost(b);
+        if (costA > costB)
+            return 1;
+        else if (costA < costB)
+            return -1;
+        return 0;
+    }
+    
+    private double getCost(Node node) {
+        if (costType == Search.CostType.PRICE)
+            return node.getPathCostPrice();
+        return node.getPathCostTime();
     }
 }
