@@ -3,7 +3,7 @@ package searchtree;
 import models.places.Location;
 
 public class Test {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Location a = new Location("Amite, LA");
         Location b = new Location("Hayward, CA");
         Search s1 = new Search(a, b);
@@ -13,8 +13,9 @@ public class Test {
         System.out.println(a.getLocationString() + " to " + b.getLocationString());
         s1.setLimit(500); // dollars
         s1.uniformSearch(Search.CostType.TIME);
-        
+    
         // =>
+        // (For visual representation, see index-time.html)
         // ----------------------
         // Time: 8.305277777777778
         // Price: 412.2736541510362
@@ -30,7 +31,8 @@ public class Test {
         s1.setLimit(24); // hours
         s1.uniformSearch(Search.CostType.PRICE);
     
-        // =>
+        /// =>
+        // (For visual representation, see index-money.html)
         // ----------------------
         // Time: 8.598055555555556
         // Price: 364.2446236167799

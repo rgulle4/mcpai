@@ -3,6 +3,66 @@
 Minimum cost path, with multiple "superimposed" graphs. Probably
 A-star.
 
+## Usage
+
+See the code below. A visual representation of the two searches are
+shown in two html files:
+
+- [index-time.html](index-time.html)
+- [index-money.html](index-money.html)
+
+And the output in all its gory detail is given in:
+
+- [amite-to-hayward-output.txt](amite-to-hayward-output.txt)
+
+```java
+package searchtree;
+
+import models.places.Location;
+
+public class Test {
+    public static void main(String[] args) {
+        Location a = new Location("Amite, LA");
+        Location b = new Location("Hayward, CA");
+        Search s1 = new Search(a, b);
+    
+        System.out.println("***********************");
+        System.out.print("Search by time... ");
+        System.out.println(a.getLocationString() + " to " + b.getLocationString());
+        s1.setLimit(500); // dollars
+        s1.uniformSearch(Search.CostType.TIME);
+        
+        // => 
+        // (For visual representation, see index-time.html)
+        // ----------------------
+        // Time: 8.305277777777778
+        // Price: 412.2736541510362
+        // Hayward, CA
+        // SJC
+        // BTR
+        // Amite, LA
+        // ----------------------
+        
+        System.out.println("***********************");
+        System.out.print("Search by price... ");
+        System.out.println(a.getLocationString() + " to " + b.getLocationString());
+        s1.setLimit(24); // hours
+        s1.uniformSearch(Search.CostType.PRICE);
+    
+        // => 
+        // (For visual representation, see index-money.html)
+        // ----------------------
+        // Time: 8.598055555555556
+        // Price: 364.2446236167799
+        // Hayward, CA
+        // SJC
+        // MSY
+        // Amite, LA
+        // ----------------------
+    }
+}
+```
+
 ## What we can get from the APIs
 
 Given any place in the United States, we can get 
