@@ -103,7 +103,7 @@ These assumptions can be seen in \ref{fig:drivuml}.
 At the base line, our algorithm performs a tree search seeking to minimize the time it takes to travel given a price limit. 
 Since different users may value their time more than their money or may not like driving, we considered the following features.
 
-\subsubsection{UCS Experiment : Amite, LA to Stockton, CA}
+\subsubsection{UCS Experiment : Amite, LA to Stockton, CA and Hayward, CA}
 
 The following searches were done without a price limit and with a price limit of \$250. At the very bottom of the tree, there is one node to represent the driving distance, which ends up being more expensive then either of the flights we found. 
 
@@ -141,6 +141,35 @@ Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7 hr) $\rightarrow
   \includegraphics[width=0.8\textwidth]{time_lim}
   %\caption{Search when minimizing time with price limit of \$250.}
   \label{fig:time_lim}
+\end{figure}
+
+\pagebreak
+
+\subsubsection{Minimum time with minimum time flights}
+
+In the third search, we used UCS minimizing time. When choosing flights between two places, we chose the minimum priced flight.
+
+\begin{center}
+Solution : Amite  $\rightarrow$ Hayward \\
+\quad Total Price: \$530 \\
+\quad Total Time: 6 hrs 23 min\\
+\end{center}
+
+\subsubsection{Minimum price with minimum price flights}
+
+In the fourth search, we used UCS minimizing price. When choosing flights between two places, we chose the minimum priced flight.
+
+\begin{center}
+Solution : Amite $\rightarrow$ Hayward \\
+\quad Total Price: \$287 \\
+\quad Total Time: 31 hrs and 24 min\\
+\end{center}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{price}
+  %\caption{Search when minimizing time with price limit of \$250.}
+  \label{fig:tprice}
 \end{figure}
 
 \pagebreak
@@ -238,15 +267,13 @@ Main methods are:
 \end{subfigure}%
 \begin{subfigure}{.6\textwidth}
 \centering
-  \includegraphics[width=1\linewidth]{driveuml}
+  \includegraphics[width=1.1\linewidth]{driveuml}
   \caption{Driving Utilities}
   \label{fig:drivuml}
 \end{subfigure}
 \caption{Map Utilities}
 \label{fig:util}
 \end{figure}
-
-\pagebreak
 
 \subsection{APIs}
 
@@ -261,10 +288,20 @@ Below are the following APIs used and how they were used.
 \item Google Places API Web Service : places autocomplete
 \end{itemize}
 
+
+\pagebreak
+
 \subsection{Caching}
 
 Some of the APIs are quite slow, especially the QPX Express Airfare API to find flights. So to speed up our search time, we tried caching the data we found for future searches.
-We use two separate caches to make searches faster. One cache is used for road travel and one for flight. When we call the function used to determine the best route, it first searches the cache to see if the query has already been made in the past. If it has, it returns the result of the query. If this data is not stored, the API is called and the resulting distance is stored in the cache. This speeds up searching significantly over time because the cache will be able to be referenced more, avoiding costly calls to the API. The API calls take significantly longer than the cache calls, so it becomes faster and faster over time. 
+We use two separate caches to make searches faster. One cache is used for road travel and one for flight. When we call the function used to determine the best route, it first searches the cache to see if the query has already been made in the past. If it has, it returns the result of the query. If this data is not stored, the API is called and the resulting distance is stored in the cache. This speeds up searching significantly over time because the cache will be able to be referenced more, avoiding costly calls to the API. The API calls take significantly longer than the cache calls, so it becomes faster and faster over time. In Figure \ref{fig:db} you can see a view of the physical data in the schema. Initially, we thought to use Bluemix for our database. We tried to integrate Bluemix but ran into complications passing information onto their server. It ended up being much simpler to manage our data locally using our caches and calling the API when necessary. Given more times and resources, we would ideally integrate a Bluemix database into our project and analyze the data.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{db}
+  \caption{SQLite database}
+  \label{fig:db}
+\end{figure}
 
 \section{Future Work}
 This application is restricted to traveling within the US. Other countries could be included to give the user the option to travel internationally. The only modes of transportation that are used are driving and flying. To give the user a more flexibility when traveling, other modes of transportation could be incorporated into this application such as walking, bicycling, taking the train or metro, and taking a ferry.
