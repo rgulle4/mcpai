@@ -63,6 +63,15 @@ public class Test {
 }
 ```
 
+### Time tree
+
+![amite-to-hayward-time.png](amite-to-hayward-time.png)
+
+### Price tree
+
+![amite-to-hayward-price.png](amite-to-hayward-price.png)
+
+
 ## What we can get from the APIs
 
 Given any place in the United States, we can get 
