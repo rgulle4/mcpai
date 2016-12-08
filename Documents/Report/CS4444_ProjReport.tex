@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-
+\usepackage[utf8]{inputenc}
 \usepackage{scalefnt}
 \usepackage{lmodern} 
 \usepackage{amsfonts, amsmath}
@@ -11,16 +11,36 @@
 \newcommand{\FIXME}[1]{ \ \\ \hspace* {-1.5 cm}
   \textcolor{red}{\texttt{FIXME:}#1} \medskip\par}
 
-\title{Minimal Time Paths\\Project Report}
-\author{ {\bf Group 2:} \\
-Alex Dunkel,
+
+\begin{document}
+
+\begin{titlepage}
+
+\centering
+	\includegraphics[width=0.5\textwidth]{map}\par\vspace{1cm}
+	{\scshape\LARGE  \par}
+	\vspace{1cm}
+	{\scshape\Large Project Report \par}
+	\vspace{1.5cm}
+	{\huge\bfseries Minimal Time Paths \par}
+	\vspace{2cm}
+	{\Large\itshape Alex Dunkel,
 Roy Gullem,
 Keith Houpy, \\
 Emily Ribando-Gros, and
-Vincent Rodomista}
+Vincent Rodomista\par}
+	\vfill
+	\textsc{CSC 4444}
 
-\begin{document}
-\maketitle
+	\vfill
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+
+\pagebreak
 
 \section{Motivation}
 
@@ -43,8 +63,8 @@ We want to find the path from one point to another by minimizing time or price b
 \item \textbf{Solution}: the path from the initial state to the goal state that does not exceed the price limit
 \end{enumerate}
 
-
-\section{AI Concept : Search Tree}
+\section{AI Concepts}
+\subsection{Search Tree}
 
 \subsubsection{Node} A Node in the search tree represents a contact point along the path. Node attributes include
 \begin{itemize}
@@ -72,20 +92,25 @@ When searching for a path, given the number of airports and cities in the US, ou
 
 \subsubsection{Driving Assumptions}
 
-In order to calculate driving time and cost, a few assumptions were hard coded into our application. To give a more accurate description of the time it takes to drive across the country, every 12 hours we will assume that our user will spend \$75 on a hotel. We will add this price to our path price when searching for a solution. Similarly, when calculating time we will only assume that the user will drive 12 hours a day. In other words, for every 12 hours of driving, a cost of \$75 is added to the path price and 12 hours are added to the path time. These assumptions can be seen in \ref{fig:drivuml}.
+In order to calculate driving time and cost, a few assumptions were hard coded into our application. To give a more accurate description of the time it takes to drive across the country, every 12 hours we will assume that our user will spend \$75 on a hotel. We will add this price to our path price when searching for a solution. Similarly, when calculating time we will only assume that the user will drive 12 hours a day. In other words, for every 12 hours of driving, a cost of \$75 is added to the path price and 12 hours are added to the path time. Additionally, we assumed that a car has 35 miles per gallon and a gallon of gas is \$2.15.
+These assumptions can be seen in \ref{fig:drivuml}.
 
 
-
-\section{AI Concept : Search Strategies}\label{sec:search}
+\section{Search Strategies and Experimentation}\label{sec:search}
 
 \subsection{Uniform Cost Search}
 
 At the base line, our algorithm performs a tree search seeking to minimize the time it takes to travel given a price limit. 
 Since different users may value their time more than their money or may not like driving, we considered the following features.
 
-\subsection{Uniform Cost Search Experiment}
+\subsubsection{UCS Experiment : Amite, LA to Stockton, CA}
 
-The following two searches were done without a price limit and with a price limit of \$250. At the very bottom of the tree, there is one node to represent the driving distance, which ends up being more expensive then either of the flights we found. 
+The following searches were done without a price limit and with a price limit of \$250. At the very bottom of the tree, there is one node to represent the driving distance, which ends up being more expensive then either of the flights we found. 
+
+\subsubsection{Minimum time with minimum price flights}\label{sec:sol}
+
+In the first search, we used UCS minimizing time without a price limit. When choosing flights between two places, we chose the minimum priced flight.
+
 \begin{center}
 Solution : Amite $\rightarrow$ MSY(1.2 hr) $\rightarrow$ LAX1(4.4 hr) $\rightarrow$ Stockton(5.2 hr) \\
 \quad Total Price: \$255 \\
@@ -101,6 +126,10 @@ Solution : Amite $\rightarrow$ MSY(1.2 hr) $\rightarrow$ LAX1(4.4 hr) $\rightarr
 
 \pagebreak
 
+\subsubsection{Minimum time with minimum price flights and limit}
+
+In the second search, we used UCS minimizing time with a price limit of \$250. When choosing flights between two places, we chose the minimum priced flight.
+
 \begin{center}
 Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7 hr) $\rightarrow$ Stockton(5.2 hr) \\
 \quad Total Price: \$230 \\
@@ -114,19 +143,15 @@ Solution : Amite $\rightarrow$ IAH(5 hr) $\rightarrow$ LAX1(3.7 hr) $\rightarrow
   \label{fig:time_lim}
 \end{figure}
 
-
-\FIXME{\subsubsection{Weight on Driving}}
+\pagebreak
 
 \subsection{A* Search with Straight Line Heuristic}
 
 In addition to the above features, we thought that we could improve upon our algorithm by adding a heuristic component to our cost function. 
 Across edges, we are mixing different modes of transportation which have different speeds. Additionally, costs for flying depends only on plane tickets where as costs for driving depends directly on the distance and miles per gallon of a vehicle. 
-For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.\\
-When we use a heuristic based on the straight line distance, node that are closer to the goal node are more likely to get chosen. We noticed that this heuristic did not improve the performance. Suppose we want to go from $A$ to $B$. There are two airports around $A$ that have the same distance to $A$. One of the airports, say $A_1$, is a small airport that lies along the way from $A$ to $B$. The other airport, say $A_2$, is a large airports that is out of the way. With this heuristic $A_1$ would get selected first. Since $A_1$ is a small airport, it does not have a direct flight towards the goal node. Having a layover would add a lot of time. The airport $A_2$, on the other hand, does have a direct flight. Thus, it would be better to select $A_2$ first. 
+For this reason, we can not simply just use the distance as a heuristic but we need to first convert it to the proper units based on what we would like to minimize.
 
-\FIXME{\subsubsection{Estimating Price based on Distance} Prob won't get to...}
-
-\subsubsection{Estimating Time based on Distance}
+\subsubsection{A* Experiment : Estimating Time based on Distance}
 
 Since commercial flights do not reach a speed faster than 600 mph, we tested adding the distance between two places divided by this speed. 
 We found distance using the Haversine formula. If the latitude and longitude of a node $n$ and the destination are $(\phi_1,\phi_2)$ and $(\lambda_1,\lambda_2)$ and r is the radius of the earth then,
@@ -136,20 +161,20 @@ $$d = 2r \arcsin \left( \sqrt{\sin^2 \left(\frac{\phi_2-\phi_1}{2} \right)+\cos(
 We then let
 $$h(n) = \frac{d}{600} \text{ hours }$$
 
-\FIXME{Alex - Commercial flights do not fly faster than 600 mph. So we could add (straight line distance)/600 to the path cost for time. This would favor contact points that are closer to the goal point.}
+Using the previous example, we calculated the following costs for $h(n)$.
 
-%Since commercial flights do not fly 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.35\textwidth]{hn}
+  %\caption{Search when minimizing time with price limit of \$250.}
+  \label{fig:time_lim}
+\end{figure}
 
-\section{Experimentation : Amite to Stockton}
+In the end, we arrived at the same solution from \ref{sec:sol}.
 
-To experiment with our algorithm we have chosen the example trip from Amite, LA to Stockton, CA. To see that our ai responds to minimizing different factors we compared the resulting solution sequences. 
+\subsubsection{Conclusion}
 
-
-%\subsection{}
-
-%\subsection{Conclusions}
-
-\pagebreak
+When we use a heuristic based on the straight line distance, nodes that are closer to the goal node are more likely to get chosen. We noticed that this heuristic did not improve the performance. Suppose we want to go from $A$ to $B$. There are two airports around $A$ that have the same distance to $A$. One of the airports, say $A_1$, is a small airport that lies along the way from $A$ to $B$. The other airport, say $A_2$, is a large airports that is out of the way. With this heuristic $A_1$ would get selected first. Since $A_1$ is a small airport, it does not have a direct flight towards the goal node. Having a layover would add a lot of time. The airport $A_2$, on the other hand, does have a direct flight. Thus, it would be better to select $A_2$ first. 
 
 \section{Software System Design and Implementation}
 
@@ -161,10 +186,10 @@ To compute the time and price of each edge we use many different Google APIs.
 Given the latitude and longitude of the initial point (origin) and destination (goal), our search algorithm uses a few different classes to arrive at a solution.
 In \ref{fig:suml} you can see the relevant fields and methods for each class.
 \begin{enumerate}
-\item Problem.java : stores information about the travel plans of the user 
-\item Node.java : represents a node in the search tree
-\item Search.java : search algorithm logic
-\item FindAirports.java : finds the n airports around a place
+\item \texttt{Problem.java} : stores information about the travel plans of the user 
+\item \texttt{Node.java} : represents a node in the search tree
+\item \texttt{Search.java} : search algorithm logic
+\item \texttt{FindAirports.java} : finds the n airports around a place
 \end{enumerate}
 
 \begin{figure}[!ht]
@@ -178,9 +203,30 @@ In \ref{fig:suml} you can see the relevant fields and methods for each class.
 
 \subsection{Map Utilities}
 
-\subsubsection{Driving Calculator and Road Distance}
+\subsubsection{Road Distance and Driving Calculator }
 
-\subsubsection{Flight Finder}
+\texttt{RoadDistance.java} gives simple distance, and driving time between two places (no driving
+directions though); a place can be coordinates, a zip, an address, or any string that would turn up a result in Google Maps. Uses Google Maps
+Distance Matrix API. \\
+Main methods are: 
+\begin{itemize}
+\item \texttt{getRoadDistance(String, String)}
+\item \texttt{getRoadTime(String, String)}
+\item \texttt{getRoadDistance(Location, Location)}
+\item \texttt{getRoadTime(Location, Location)}
+\end{itemize}
+
+\texttt{DrivingCalculator.java} figures out total price (gas + hotel) and duration (driving plus sleep) of a road trip. Main inputs are miles and hours (which you can get from
+ \texttt{RoadDistance.java}).\\
+ Key constructor:
+ \begin{itemize}
+ \item  \texttt{DrivingCalculator(double, double)}
+ \end{itemize}
+  Key methods:
+  \begin{itemize}
+\item  \texttt{calc()},
+ \item  \texttt{calc(double, double)}
+ \end{itemize}
 
 \begin{figure}
 \centering
@@ -200,23 +246,22 @@ In \ref{fig:suml} you can see the relevant fields and methods for each class.
 \label{fig:util}
 \end{figure}
 
+\pagebreak
+
 \subsection{APIs}
 
-\FIXME{Explain what each do because Chet seemed interested.}
-
-Using the latitude and longitude coordinates of places and 
+To gather data, we chose Google APIs for their ease of use specifically using HTTP transport and JSON parsing features. 
+Below are the following APIs used and how they were used.
 
 \begin{itemize}
-\item QPX Express Airfare API
-\item Google Maps Distance Matrix API
-\item Google Maps Geocoding API
-\item Google Maps Geolocation API
-\item Google Maps Directions API
-\item Google Places API Web Service
+\item QPX Express Airfare API : flight finder
+\item Google Maps Distance Matrix API : estimate travel time
+\item Google Maps Geocoding API : convert between addresses and latitude/longitude coordinates
+\item Google Maps Directions API : driving directions
+\item Google Places API Web Service : places autocomplete
 \end{itemize}
 
 \subsection{Caching}
-\FIXME{Even if we don't get this working we should still explain what we have with sqlite and what we wanted to do with bluemix and maybe even why we had trouble with it. A screenshot like the one from the pwrpt would be nice}
 
 Some of the APIs are quite slow, especially the QPX Express Airfare API to find flights. So to speed up our search time, we tried caching the data we found for future searches.
 We use two separate caches to make searches faster. One cache is used for road travel and one for flight. When we call the function used to determine the best route, it first searches the cache to see if the query has already been made in the past. If it has, it returns the result of the query. If this data is not stored, the API is called and the resulting distance is stored in the cache. This speeds up searching significantly over time because the cache will be able to be referenced more, avoiding costly calls to the API. The API calls take significantly longer than the cache calls, so it becomes faster and faster over time. 
