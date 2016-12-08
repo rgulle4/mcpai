@@ -69,7 +69,7 @@ public final class Airports {
                     String faa = s.next();          // MSY
                     String iata = s.next();         // MSY
                     String icao = s.next();         // KMSY
-                    String airport = s.next();      // Louis Armstrong New Orleans International DeprecatedAirport
+                    String airport = s.next();      // Louis Armstrong New Orleans International Airport
                     String role = s.next();         // P-M
                     String enplanements = s.next(); // 4577498
                     String state = s.next();        // LOUISIANA

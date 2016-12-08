@@ -1,10 +1,10 @@
 package searchtree;
 
-class DeprecatedAirport {
+class Airport {
     private String name;
     private double lng;
     private double lat;
-    public DeprecatedAirport(String _name, double _la, double _lo){
+    public Airport(String _name, double _la, double _lo){
         name = _name;
         lng = _lo;
         lat = _la;

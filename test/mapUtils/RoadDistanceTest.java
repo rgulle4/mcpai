@@ -11,8 +11,8 @@ import static org.junit.Assert.*;
 public class RoadDistanceTest {
 
     private static final RoadDistance RD = new RoadDistance();
-    Location msy = new Location("MSY DeprecatedAirport");
-    Location iah = new Location("IAH DeprecatedAirport");
+    Location msy = new Location("MSY Airport");
+    Location iah = new Location("IAH Airport");
     double expectedDistance = 347.80717561236287;
     double expectedDuration = 5.1177777777777775;
 
