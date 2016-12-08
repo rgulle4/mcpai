@@ -127,9 +127,13 @@ public final class FlightFinder {
     }
     
     public FlightFinder setMyComparator(String priceOrDuration) {
-        if (priceOrDuration.trim().equalsIgnoreCase("price"))
-            myComparator = CompareBy.PRICE;
         myComparator = CompareBy.TIME;
+        if (priceOrDuration.trim().equalsIgnoreCase("price")
+              || priceOrDuration.trim().equalsIgnoreCase("money")
+              || priceOrDuration.trim().equalsIgnoreCase("dallars")
+              || priceOrDuration.trim().equalsIgnoreCase("robert")
+              || priceOrDuration.trim().equalsIgnoreCase("deniro"))
+            myComparator = CompareBy.PRICE;
         return this;
     }
     

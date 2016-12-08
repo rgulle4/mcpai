@@ -35,7 +35,7 @@ public class GeocoderTest {
         assertTrue(msy.isAirport());
         
         /* -------------------------------------------- */
-        Location brAirport = new Location("Baton Rouge Metro DeprecatedAirport");
+        Location brAirport = new Location("Baton Rouge Metro Airport");
         brAirport.geocode();
 
         // brAirport's code should be BTR

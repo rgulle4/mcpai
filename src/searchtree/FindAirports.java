@@ -4,18 +4,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-class DeprecatedFindAirports {
+class FindAirports {
     private double myLo,myLa;
     int n;
-    public DeprecatedFindAirports(double _la, double _lo, int _n){
+    public FindAirports(double _la, double _lo, int _n){
         myLo = _lo;
         myLa = _la;
         n = _n;
     }
 
-    public DeprecatedAirport[] nearAirports(){
-        DeprecatedAirport[] airports = new DeprecatedAirport[1459];
-        DeprecatedAirport[] closeAirports = new DeprecatedAirport[n];
+    public Airport[] nearAirports(){
+        Airport[] airports = new Airport[1459];
+        Airport[] closeAirports = new Airport[n];
         int[] min = new int[n];
         double[] x = new double[n];
         double[] y = new double[n];
@@ -34,7 +34,7 @@ class DeprecatedFindAirports {
                 name = line[0].substring(1,4);
                 la = Double.parseDouble(line[1]);
                 lo = Double.parseDouble(line[2]);
-                airports[i] = new DeprecatedAirport(name, la, lo);
+                airports[i] = new Airport(name, la, lo);
                 i++;
             }
         } catch (FileNotFoundException e) {
@@ -43,7 +43,7 @@ class DeprecatedFindAirports {
 
 
         for (int j = 0; j<1459; j++){
-            //get coordinates of current DeprecatedAirport
+            //get coordinates of current Airport
             currx = airports[j].getLng();
             curry = airports[j].getLat();
 
