@@ -1,0 +1,257 @@
+/usr/lib/jvm/java-8-oracle/bin/java -Didea.launcher.port=7535 -Didea.launcher.bin.path=/home/royg59/tools/IntelliJIdea/bin -Dfile.encoding=UTF-8 -classpath /usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/deploy.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/cldrdata.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/dnsns.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/jaccess.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/jfxrt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/localedata.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/nashorn.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunec.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunjce_provider.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/sunpkcs11.jar:/usr/lib/jvm/java-8-oracle/jre/lib/ext/zipfs.jar:/usr/lib/jvm/java-8-oracle/jre/lib/javaws.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfxswt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/management-agent.jar:/usr/lib/jvm/java-8-oracle/jre/lib/plugin.jar:/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/home/royg59/w/4444/mcpai/out/production/mcpai:/home/royg59/w/4444/mcpai/lib/gson-2.8.0.jar:/home/royg59/w/4444/mcpai/lib/jfoenix-1.0.0.jar:/home/royg59/w/4444/mcpai/lib/flow-8.0.7.jar:/home/royg59/w/4444/mcpai/lib/core-8.0.7.jar:/home/royg59/w/4444/mcpai/lib/flow-8.0b8.jar:/home/royg59/w/4444/mcpai/lib/javax.inject.jar:/home/royg59/w/4444/mcpai/lib/jfxrt.jar:/home/royg59/w/4444/mcpai/lib/core-8.0b8.jar:/home/royg59/w/4444/mcpai/lib/javassist.jar:/home/royg59/w/4444/mcpai/lib/retrolambda-2.0.6.jar:/home/royg59/w/4444/mcpai/lib/fontawesomefx-8.9.jar:/home/royg59/w/4444/mcpai/lib/fontawesomefx-8.0.10.jar:/home/royg59/w/4444/mcpai/lib/datafx-8.0.7.jar:/home/royg59/w/4444/mcpai/lib/google-maps-services-0.1.16.jar:/home/royg59/w/4444/mcpai/lib/gson-2.3.1.jar:/home/royg59/w/4444/mcpai/lib/okhttp-2.7.5.jar:/home/royg59/w/4444/mcpai/lib/okio-1.6.0.jar:/home/royg59/w/4444/mcpai/lib/joda-time-2.4.jar:/home/royg59/w/4444/mcpai/lib/google-api-services-qpxExpress-v1-rev23-1.22.0.jar:/home/royg59/w/4444/mcpai/lib/google-api-client-1.22.0.jar:/home/royg59/w/4444/mcpai/lib/google-oauth-client-1.22.0.jar:/home/royg59/w/4444/mcpai/lib/google-http-client-1.22.0.jar:/home/royg59/w/4444/mcpai/lib/jsr305-1.3.9.jar:/home/royg59/w/4444/mcpai/lib/httpclient-4.0.1.jar:/home/royg59/w/4444/mcpai/lib/httpcore-4.0.1.jar:/home/royg59/w/4444/mcpai/lib/commons-logging-1.1.1.jar:/home/royg59/w/4444/mcpai/lib/commons-codec-1.3.jar:/home/royg59/w/4444/mcpai/lib/google-http-client-jackson2-1.22.0.jar:/home/royg59/w/4444/mcpai/lib/jackson-core-2.1.3.jar:/home/royg59/w/4444/mcpai/lib/guava-jdk5-17.0.jar:/home/royg59/w/4444/mcpai/lib/sqlite-jdbc-3.8.11.1.jar:/home/royg59/tools/IntelliJIdea/lib/idea_rt.jar com.intellij.rt.execution.application.AppMain searchtree.Test
+Dec 07, 2016 11:26:07 PM com.google.maps.OkHttpRequestHandler handle
+INFO: Request: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg&address=Amite%2C+LA
+Dec 07, 2016 11:26:08 PM com.google.maps.OkHttpRequestHandler handle
+INFO: Request: https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg&address=Hayward%2C+CA
+[BTR, MSY, GPT]: [
+  {
+    "locationString": "BTR",
+    "isAirport": true,
+    "airportCode": "BTR",
+    "lat": 30.533167,
+    "lng": -91.149639,
+    "latlng": {
+      "lat": 30.533167,
+      "lng": -91.149639
+    },
+    "hasBeenGeocoded": false,
+    "hasBeenReverseGeocoded": false,
+    "airportCodesDistances": {},
+    "distancesAirportCodes": {},
+    "airportsWithinRadius": {}
+  },
+  {
+    "locationString": "MSY",
+    "isAirport": true,
+    "airportCode": "MSY",
+    "lat": 29.993389,
+    "lng": -90.258028,
+    "latlng": {
+      "lat": 29.993389,
+      "lng": -90.258028
+    },
+    "hasBeenGeocoded": false,
+    "hasBeenReverseGeocoded": false,
+    "airportCodesDistances": {},
+    "distancesAirportCodes": {},
+    "airportsWithinRadius": {}
+  },
+  {
+    "locationString": "GPT",
+    "isAirport": true,
+    "airportCode": "GPT",
+    "lat": 30.407278,
+    "lng": -89.070111,
+    "latlng": {
+      "lat": 30.407278,
+      "lng": -89.070111
+    },
+    "hasBeenGeocoded": false,
+    "hasBeenReverseGeocoded": false,
+    "airportCodesDistances": {},
+    "distancesAirportCodes": {},
+    "airportsWithinRadius": {}
+  }
+]
+[OAK, SFO, SJC]: [
+  {
+    "locationString": "OAK",
+    "isAirport": true,
+    "airportCode": "OAK",
+    "lat": 37.721278,
+    "lng": -122.220722,
+    "latlng": {
+      "lat": 37.721278,
+      "lng": -122.220722
+    },
+    "hasBeenGeocoded": false,
+    "hasBeenReverseGeocoded": false,
+    "airportCodesDistances": {},
+    "distancesAirportCodes": {},
+    "airportsWithinRadius": {}
+  },
+  {
+    "locationString": "SFO",
+    "isAirport": true,
+    "airportCode": "SFO",
+    "lat": 37.618972,
+    "lng": -122.374889,
+    "latlng": {
+      "lat": 37.618972,
+      "lng": -122.374889
+    },
+    "hasBeenGeocoded": false,
+    "hasBeenReverseGeocoded": false,
+    "airportCodesDistances": {},
+    "distancesAirportCodes": {},
+    "airportsWithinRadius": {}
+  },
+  {
+    "locationString": "SJC",
+    "isAirport": true,
+    "airportCode": "SJC",
+    "lat": 37.3626,
+    "lng": -121.929022,
+    "latlng": {
+      "lat": 37.3626,
+      "lng": -121.929022
+    },
+    "hasBeenGeocoded": false,
+    "hasBeenReverseGeocoded": false,
+    "airportCodesDistances": {},
+    "distancesAirportCodes": {},
+    "airportsWithinRadius": {}
+  }
+]
+***********************
+Search by time... Amite, LA to Hayward, CA
+
+Costs for Amite, LA to Hayward, CA
+TIME: 31.408055555555556 ... (Cumulative: 31.408055555555556)
+PRICE: 286.94826184292054 ... (Cumulative: 286.94826184292054)
+
+Costs for Amite, LA to BTR
+TIME: 1.0816666666666668 ... (Cumulative: 1.0816666666666668)
+PRICE: 2.908480672644864 ... (Cumulative: 2.908480672644864)
+
+Costs for Amite, LA to MSY
+TIME: 1.041111111111111 ... (Cumulative: 1.041111111111111)
+PRICE: 3.8794501383885853 ... (Cumulative: 3.8794501383885853)
+
+Costs for Amite, LA to GPT
+TIME: 1.6666666666666667 ... (Cumulative: 1.6666666666666667)
+PRICE: 6.713766424212944 ... (Cumulative: 6.713766424212944)
+
+Costs for Amite, LA to Hayward, CA
+TIME: 31.408055555555556 ... (Cumulative: 31.408055555555556)
+PRICE: 286.94826184292054 ... (Cumulative: 286.94826184292054)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for MSY to OAK
+TIME: 10.816666666666666 ... (Cumulative: 11.857777777777777)
+PRICE: 671.6 ... (Cumulative: 675.4794501383886)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for MSY to SFO
+TIME: 4.866666666666666 ... (Cumulative: 5.907777777777778)
+PRICE: 525.1 ... (Cumulative: 528.9794501383886)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for MSY to SJC
+TIME: 6.983333333333333 ... (Cumulative: 8.024444444444445)
+PRICE: 358.6 ... (Cumulative: 362.4794501383886)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for BTR to OAK
+TIME: 13.066666666666666 ... (Cumulative: 14.148333333333333)
+PRICE: 469.6 ... (Cumulative: 472.5084806726449)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for BTR to SFO
+TIME: 8.183333333333334 ... (Cumulative: 9.265)
+PRICE: 670.6 ... (Cumulative: 673.5084806726449)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for BTR to SJC
+TIME: 6.65 ... (Cumulative: 7.731666666666667)
+PRICE: 407.6 ... (Cumulative: 410.5084806726449)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for GPT to OAK
+TIME: 13.4 ... (Cumulative: 15.066666666666666)
+PRICE: 612.6 ... (Cumulative: 619.313766424213)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for GPT to SFO
+TIME: 9.15 ... (Cumulative: 10.816666666666666)
+PRICE: 687.6 ... (Cumulative: 694.313766424213)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for GPT to SJC
+TIME: 6.983333333333333 ... (Cumulative: 8.65)
+PRICE: 361.6 ... (Cumulative: 368.313766424213)
+
+Costs for SFO to Hayward, CA
+TIME: 0.48444444444444446 ... (Cumulative: 6.392222222222222)
+PRICE: 1.4095813900640723 ... (Cumulative: 530.3890315284527)
+Time: 6.392222222222222
+Price: 530.3890315284527
+Hayward, CA
+SFO
+MSY
+Amite, LA
+----------------------
+***********************
+Search by price... Amite, LA to Hayward, CA
+
+Costs for Amite, LA to Hayward, CA
+TIME: 31.408055555555556 ... (Cumulative: 31.408055555555556)
+PRICE: 286.94826184292054 ... (Cumulative: 286.94826184292054)
+
+Costs for Amite, LA to BTR
+TIME: 1.0816666666666668 ... (Cumulative: 1.0816666666666668)
+PRICE: 2.908480672644864 ... (Cumulative: 2.908480672644864)
+
+Costs for Amite, LA to MSY
+TIME: 1.041111111111111 ... (Cumulative: 1.041111111111111)
+PRICE: 3.8794501383885853 ... (Cumulative: 3.8794501383885853)
+
+Costs for Amite, LA to GPT
+TIME: 1.6666666666666667 ... (Cumulative: 1.6666666666666667)
+PRICE: 6.713766424212944 ... (Cumulative: 6.713766424212944)
+
+Costs for Amite, LA to Hayward, CA
+TIME: 31.408055555555556 ... (Cumulative: 31.408055555555556)
+PRICE: 286.94826184292054 ... (Cumulative: 286.94826184292054)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for BTR to OAK
+TIME: 13.066666666666666 ... (Cumulative: 14.148333333333333)
+PRICE: 469.6 ... (Cumulative: 472.5084806726449)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for BTR to SFO
+TIME: 8.183333333333334 ... (Cumulative: 9.265)
+PRICE: 670.6 ... (Cumulative: 673.5084806726449)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for BTR to SJC
+TIME: 6.65 ... (Cumulative: 7.731666666666667)
+PRICE: 407.6 ... (Cumulative: 410.5084806726449)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for MSY to OAK
+TIME: 10.816666666666666 ... (Cumulative: 11.857777777777777)
+PRICE: 671.6 ... (Cumulative: 675.4794501383886)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for MSY to SFO
+TIME: 4.866666666666666 ... (Cumulative: 5.907777777777778)
+PRICE: 525.1 ... (Cumulative: 528.9794501383886)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for MSY to SJC
+TIME: 6.983333333333333 ... (Cumulative: 8.024444444444445)
+PRICE: 358.6 ... (Cumulative: 362.4794501383886)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for GPT to OAK
+TIME: 13.4 ... (Cumulative: 15.066666666666666)
+PRICE: 624.6 ... (Cumulative: 631.313766424213)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for GPT to SFO
+TIME: 9.15 ... (Cumulative: 10.816666666666666)
+PRICE: 687.6 ... (Cumulative: 694.313766424213)
+https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAj9ZVjS2SXmw9cEUFjYQ0lpOJEtyzm5Lg
+
+Costs for GPT to SJC
+TIME: 6.983333333333333 ... (Cumulative: 8.65)
+PRICE: 361.6 ... (Cumulative: 368.313766424213)
+Time: 31.408055555555556
+Price: 286.94826184292054
+Hayward, CA
+Amite, LA
+----------------------
+
+Process finished with exit code 0

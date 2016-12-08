@@ -5,25 +5,25 @@
       "name": "BTR",
       "timeCost": 1.08,
       "priceCost": 2.91,
-      "value": 1.08,
+      "value": 2.91,
       "children": [
         {
           "name": "OAK",
           "timeCost": 13.06,
           "priceCost": 469.6,
-          "value": 13.06
+          "value": 469.6,
         },
         {
           "name": "SFO",
           "timeCost": 8.18,
           "priceCost": 670.6,
-          "value": 8.18
+          "value": 670.6,
         },
         {
           "name": "SJC",
           "timeCost": 6.65,
           "priceCost": 407.6,
-          "value": 6.65
+          "value": 407.6,
         }
       ]
     },
@@ -31,26 +31,26 @@
       "name": "MSY",
       "timeCost": 1.04,
       "priceCost": 3.88,
-      "value": 1.04,
+      "value": 3.88,
       "children": [
         {
           "name": "OAK",
           "timeCost": 10.82,
           "priceCost": 671.60,
-          "value": 10.82
+          "value": 671.60,
         },
         {
           "name": "SFO",
           "timeCost": 4.87,
           "priceCost": 525.10,
-          "value": 10.82,
+          "value": 525.10,
           "children": [
             {
               "name": "Hayward, CA",
               "isgoal": true,
               "timeCost": 0.48,
               "priceCost": 1.41,
-              "value": 0.48
+              "value": 1.41,
             }
           ]
         },
@@ -58,7 +58,7 @@
           "name": "SJC",
           "timeCost": 6.98,
           "priceCost": 358.60,
-          "value": 10.82
+          "value": 358.60,
         }
       ]
     },
@@ -66,25 +66,25 @@
       "name": "GPT",
       "timeCost": 1.67,
       "priceCost": 6.71,
-      "value": 1.08,
+      "value": 6.71,
       "children": [
         {
           "name": "OAK",
           "timeCost": 13.4,
           "priceCost": 612.6,
-          "value": 13.4
+          "value": 612.6,
         },
         {
           "name": "SFO",
           "timeCost": 9.15,
           "priceCost": 687.6,
-          "value": 9.15
+          "value": 687.6,
         },
         {
           "name": "SJC",
           "timeCost": 6.98,
           "priceCost": 361.6,
-          "value": 6.98
+          "value": 361.6,
         }
       ]
     },
@@ -93,7 +93,7 @@
       "isgoal": true,
       "timeCost": 31.41,
       "priceCost": 286.95,
-      "value": 286.95
+      "value": 286.95,
     }
   ]
 }
